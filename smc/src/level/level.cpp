@@ -673,7 +673,7 @@ void cLevel :: Process_Input( void )
 	}
 }
 
-bool cLevel :: Key_Down( const SDLKey key )
+bool cLevel :: Key_Down( const SDL_Keycode key )
 {
 	// debug key F2
 	if( key == SDLK_F2 && game_debug && !editor_level_enabled )
@@ -792,7 +792,7 @@ bool cLevel :: Key_Down( const SDLKey key )
 	return 1;
 }
 
-bool cLevel :: Key_Up( const SDLKey key )
+bool cLevel :: Key_Up( const SDL_Keycode key )
 {
 	// only if not in Editor
 	if( editor_level_enabled )

@@ -616,7 +616,7 @@ bool cEditor :: Handle_Event( SDL_Event *ev )
 	return 0;
 }
 
-bool cEditor :: Key_Down( SDLKey key )
+bool cEditor :: Key_Down( SDL_Keycode key )
 {
 	if( !m_enabled )
 	{

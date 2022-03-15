@@ -84,6 +84,12 @@ public:
 	 * Returns true if GUI handled the event
 	*/
 	bool Handle_Mouse_Down( Uint8 button );
+
+	/* GUI handle mouse wheel function
+	 * Returns true if GUI handled the event
+	*/
+	bool Handle_Mouse_Wheel( Sint8 y_wheel );
+
 	/* GUI handle mouse up function
 	 * Returns true if GUI handled the event
 	*/

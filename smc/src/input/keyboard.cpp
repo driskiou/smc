@@ -49,10 +49,10 @@ void cKeyboard :: Reset_Keys( void )
 	memset( m_keys, 0, sizeof( m_keys ) );
 }
 
-bool cKeyboard :: CEGUI_Handle_Key_Up( SDLKey key ) const
+bool cKeyboard :: CEGUI_Handle_Key_Up( SDL_Keycode key ) const
 {
 	// inject the scancode directly
-	if( pGuiSystem->injectKeyUp( SDLKey_to_CEGUIKey( key ) ) )
+	if( pGuiSystem->injectKeyUp( SDL_Keycode_to_CEGUIKey( key ) ) )
 	{
 		// input was processed by the gui system
 		return 1;
@@ -61,7 +61,7 @@ bool cKeyboard :: CEGUI_Handle_Key_Up( SDLKey key ) const
 	return 0;
 }
 
-bool cKeyboard :: Key_Up( SDLKey key )
+bool cKeyboard :: Key_Up( SDL_Keycode key )
 {
 	// set key to 0
 	m_keys[key] = 0;
@@ -92,20 +92,31 @@ bool cKeyboard :: Key_Up( SDLKey key )
 
 	return 0;
 }
-
-bool cKeyboard :: CEGUI_Handle_Key_Down( SDLKey key ) const
+#include <string>
+bool cKeyboard :: CEGUI_Handle_Key_Down( SDL_Keycode key ) const
 {
 	// inject the scancode
-	if( pGuiSystem->injectKeyDown( SDLKey_to_CEGUIKey( key ) ) == 1 )
+	if( pGuiSystem->injectKeyDown( SDL_Keycode_to_CEGUIKey( key ) ) == 1 )
 	{
 		// input got processed by the gui system
 		return 1;
 	}
 
 	// use for translated unicode value
-	if( input_event.key.keysym.unicode != 0 )
+	if( key >= 0x20 && key <= 0x7A)
 	{
-		if( pGuiSystem->injectChar( input_event.key.keysym.unicode ) )
+		char t[2];
+		t[0] = key;
+		if(t[0] >= 0x61 && key <= 0x7A && input_event.key.keysym.mod & KMOD_SHIFT)
+		{
+			t[0] = t[0] - 0x20;
+		}
+		t[1] = '\0';
+		
+		CEGUI::String str;
+
+		str.assign(t);
+		if( pGuiSystem->injectChar(str[0]))
 		{
 			// input got processed by the gui system
 			return 1;
@@ -115,7 +126,7 @@ bool cKeyboard :: CEGUI_Handle_Key_Down( SDLKey key ) const
 	return 0;
 }
 
-bool cKeyboard :: Key_Down( SDLKey key )
+bool cKeyboard :: Key_Down( SDL_Keycode key )
 {
 	// input was processed by the gui system
 	if( CEGUI_Handle_Key_Down( key ) )
@@ -306,7 +317,7 @@ bool cKeyboard :: Key_Down( SDLKey key )
 	return 0;
 }
 
-unsigned int cKeyboard :: SDLKey_to_CEGUIKey( const SDLKey key ) const
+unsigned int cKeyboard :: SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const
 {
     switch( key )
     {
@@ -363,16 +374,16 @@ unsigned int cKeyboard :: SDLKey_to_CEGUIKey( const SDLKey key ) const
     case SDLK_y:            return CEGUI::Key::Y;
     case SDLK_z:            return CEGUI::Key::Z;
     case SDLK_DELETE:       return CEGUI::Key::Delete;
-    case SDLK_KP0:          return CEGUI::Key::Numpad0;
-    case SDLK_KP1:          return CEGUI::Key::Numpad1;
-    case SDLK_KP2:          return CEGUI::Key::Numpad2;
-    case SDLK_KP3:          return CEGUI::Key::Numpad3;
-    case SDLK_KP4:          return CEGUI::Key::Numpad4;
-    case SDLK_KP5:          return CEGUI::Key::Numpad5;
-    case SDLK_KP6:          return CEGUI::Key::Numpad6;
-    case SDLK_KP7:          return CEGUI::Key::Numpad7;
-    case SDLK_KP8:          return CEGUI::Key::Numpad8;
-    case SDLK_KP9:          return CEGUI::Key::Numpad9;
+    case SDLK_KP_0:          return CEGUI::Key::Numpad0;
+    case SDLK_KP_1:          return CEGUI::Key::Numpad1;
+    case SDLK_KP_2:          return CEGUI::Key::Numpad2;
+    case SDLK_KP_3:          return CEGUI::Key::Numpad3;
+    case SDLK_KP_4:          return CEGUI::Key::Numpad4;
+    case SDLK_KP_5:          return CEGUI::Key::Numpad5;
+    case SDLK_KP_6:          return CEGUI::Key::Numpad6;
+    case SDLK_KP_7:          return CEGUI::Key::Numpad7;
+    case SDLK_KP_8:          return CEGUI::Key::Numpad8;
+    case SDLK_KP_9:          return CEGUI::Key::Numpad9;
     case SDLK_KP_PERIOD:    return CEGUI::Key::Decimal;
     case SDLK_KP_DIVIDE:    return CEGUI::Key::Divide;
     case SDLK_KP_MULTIPLY:  return CEGUI::Key::Multiply;
@@ -404,16 +415,16 @@ unsigned int cKeyboard :: SDLKey_to_CEGUIKey( const SDLKey key ) const
     case SDLK_F13:          return CEGUI::Key::F13;
     case SDLK_F14:          return CEGUI::Key::F14;
     case SDLK_F15:          return CEGUI::Key::F15;
-    case SDLK_NUMLOCK:      return CEGUI::Key::NumLock;
-    case SDLK_SCROLLOCK:    return CEGUI::Key::ScrollLock;
+    case SDLK_CAPSLOCK:      return CEGUI::Key::NumLock;
+    case SDLK_SCROLLLOCK:    return CEGUI::Key::ScrollLock;
     case SDLK_RSHIFT:       return CEGUI::Key::RightShift;
     case SDLK_LSHIFT:       return CEGUI::Key::LeftShift;
     case SDLK_RCTRL:        return CEGUI::Key::RightControl;
     case SDLK_LCTRL:        return CEGUI::Key::LeftControl;
     case SDLK_RALT:         return CEGUI::Key::RightAlt;
     case SDLK_LALT:         return CEGUI::Key::LeftAlt;
-    case SDLK_LSUPER:       return CEGUI::Key::LeftWindows;
-    case SDLK_RSUPER:       return CEGUI::Key::RightWindows;
+    case SDLK_LGUI:       return CEGUI::Key::LeftWindows;
+    case SDLK_RGUI:       return CEGUI::Key::RightWindows;
     case SDLK_SYSREQ:       return CEGUI::Key::SysRq;
     case SDLK_MENU:         return CEGUI::Key::AppMenu;
     case SDLK_POWER:        return CEGUI::Key::Power;

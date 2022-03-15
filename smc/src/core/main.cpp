@@ -507,7 +507,7 @@ void Exit_Game( void )
 		pResource_Manager = NULL;
 	}
 
-	char *last_sdl_error = SDL_GetError();
+	const char *last_sdl_error = SDL_GetError();
 	if( strlen( last_sdl_error ) > 0 )
 	{
 		printf( "Last known SDL Error : %s\n", last_sdl_error );
@@ -531,9 +531,30 @@ bool Handle_Input_Global( SDL_Event *ev )
 			// handle on all handlers ?
 			return 0;
 		}
-		case SDL_VIDEORESIZE:
+		case SDL_WINDOWEVENT:
 		{
-			pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size( static_cast<float>(ev->resize.w), static_cast<float>(ev->resize.h) ) );
+			if(ev->window.event == SDL_WINDOWEVENT_RESIZED)
+			{
+			pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size( static_cast<float>(ev->window.data1), static_cast<float>(ev->window.data2) ) );
+			}
+			else if(ev->window.event ==  SDL_WINDOWEVENT_LEAVE)
+			{
+				bool music_paused = 0;
+				// pause music
+				if( pAudio->Is_Music_Playing() )
+				{
+					pAudio->Pause_Music();
+					music_paused = 1;
+				}
+				SDL_WaitEvent( NULL );
+				// resume if music got paused
+				if( music_paused )
+				{
+					pAudio->Resume_Music();
+				}
+				return 1;
+
+			}
 			break;
 		}
 		case SDL_KEYDOWN:
@@ -578,7 +599,7 @@ bool Handle_Input_Global( SDL_Event *ev )
 			pJoystick->Handle_Motion( ev );
 			break;
 		}
-		case SDL_ACTIVEEVENT:
+	/*	case SDL_ACTIVEEVENT:
 		{
 			// lost visibility
 			if( ev->active.gain == 0 )
@@ -599,7 +620,7 @@ bool Handle_Input_Global( SDL_Event *ev )
 				return 1;
 			}
 			break;
-		}
+		}*/
 		default: // other events
 		{
 			// mouse

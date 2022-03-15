@@ -88,23 +88,23 @@ public:
 
 	// Keyboard
 	// key definitions
-	SDLKey m_key_up;
-	SDLKey m_key_down;
-	SDLKey m_key_left;
-	SDLKey m_key_right;
-	SDLKey m_key_jump;
-	SDLKey m_key_shoot;
-	SDLKey m_key_item;
-	SDLKey m_key_action;
-	SDLKey m_key_screenshot;
-	SDLKey m_key_editor_fast_copy_up;
-	SDLKey m_key_editor_fast_copy_down;
-	SDLKey m_key_editor_fast_copy_left;
-	SDLKey m_key_editor_fast_copy_right;
-	SDLKey m_key_editor_pixel_move_up;
-	SDLKey m_key_editor_pixel_move_down;
-	SDLKey m_key_editor_pixel_move_left;
-	SDLKey m_key_editor_pixel_move_right;
+	SDL_Keycode m_key_up;
+	SDL_Keycode m_key_down;
+	SDL_Keycode m_key_left;
+	SDL_Keycode m_key_right;
+	SDL_Keycode m_key_jump;
+	SDL_Keycode m_key_shoot;
+	SDL_Keycode m_key_item;
+	SDL_Keycode m_key_action;
+	SDL_Keycode m_key_screenshot;
+	SDL_Keycode m_key_editor_fast_copy_up;
+	SDL_Keycode m_key_editor_fast_copy_down;
+	SDL_Keycode m_key_editor_fast_copy_left;
+	SDL_Keycode m_key_editor_fast_copy_right;
+	SDL_Keycode m_key_editor_pixel_move_up;
+	SDL_Keycode m_key_editor_pixel_move_down;
+	SDL_Keycode m_key_editor_pixel_move_left;
+	SDL_Keycode m_key_editor_pixel_move_right;
 	// scroll speed
 	float m_scroll_speed;
 	// Joystick
@@ -166,23 +166,23 @@ public:
 	static const float m_geometry_quality_default;
 	static const float m_texture_quality_default;
 	// Keyboard
-	static const SDLKey m_key_up_default;
-	static const SDLKey m_key_down_default;
-	static const SDLKey m_key_left_default;
-	static const SDLKey m_key_right_default;
-	static const SDLKey m_key_jump_default;
-	static const SDLKey m_key_shoot_default;
-	static const SDLKey m_key_item_default;
-	static const SDLKey m_key_action_default;
-	static const SDLKey m_key_screenshot_default;
-	static const SDLKey m_key_editor_fast_copy_up_default;
-	static const SDLKey m_key_editor_fast_copy_down_default;
-	static const SDLKey m_key_editor_fast_copy_left_default;
-	static const SDLKey m_key_editor_fast_copy_right_default;
-	static const SDLKey m_key_editor_pixel_move_up_default;
-	static const SDLKey m_key_editor_pixel_move_down_default;
-	static const SDLKey m_key_editor_pixel_move_left_default;
-	static const SDLKey m_key_editor_pixel_move_right_default;
+	static const SDL_Keycode m_key_up_default;
+	static const SDL_Keycode m_key_down_default;
+	static const SDL_Keycode m_key_left_default;
+	static const SDL_Keycode m_key_right_default;
+	static const SDL_Keycode m_key_jump_default;
+	static const SDL_Keycode m_key_shoot_default;
+	static const SDL_Keycode m_key_item_default;
+	static const SDL_Keycode m_key_action_default;
+	static const SDL_Keycode m_key_screenshot_default;
+	static const SDL_Keycode m_key_editor_fast_copy_up_default;
+	static const SDL_Keycode m_key_editor_fast_copy_down_default;
+	static const SDL_Keycode m_key_editor_fast_copy_left_default;
+	static const SDL_Keycode m_key_editor_fast_copy_right_default;
+	static const SDL_Keycode m_key_editor_pixel_move_up_default;
+	static const SDL_Keycode m_key_editor_pixel_move_down_default;
+	static const SDL_Keycode m_key_editor_pixel_move_left_default;
+	static const SDL_Keycode m_key_editor_pixel_move_right_default;
 	static const float m_scroll_speed_default;
 	// Joystick
 	static const bool m_joy_enabled_default;

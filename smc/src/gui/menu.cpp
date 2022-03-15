@@ -337,7 +337,7 @@ bool cMenuCore :: Handle_Event( SDL_Event *ev )
 	return 0;
 }
 
-bool cMenuCore :: Key_Down( SDLKey key )
+bool cMenuCore :: Key_Down( SDL_Keycode key )
 {
 	// Down (todo: detect event for joystick better)
 	if( key == SDLK_DOWN || key == pPreferences->m_key_down )
@@ -419,7 +419,7 @@ bool cMenuCore :: Key_Down( SDLKey key )
 	return 1;
 }
 
-bool cMenuCore :: Key_Up( SDLKey key )
+bool cMenuCore :: Key_Up( SDL_Keycode key )
 {
 	// nothing yet
 	if( 0 )

@@ -125,7 +125,7 @@ void cEditor_Level :: Disable( bool native_mode /* = 0 */ )
 	cEditor::Disable( native_mode );
 }
 
-bool cEditor_Level :: Key_Down( SDLKey key )
+bool cEditor_Level :: Key_Down( SDL_Keycode key )
 {
 	if( !m_enabled )
 	{

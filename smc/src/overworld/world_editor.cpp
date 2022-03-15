@@ -98,7 +98,7 @@ void cEditor_World :: Disable( bool native_mode /* = 0 */ )
 	cEditor::Disable( native_mode );
 }
 
-bool cEditor_World :: Key_Down( SDLKey key )
+bool cEditor_World :: Key_Down( SDL_Keycode key )
 {
 	if( !m_enabled )
 	{

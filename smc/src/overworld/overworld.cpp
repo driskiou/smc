@@ -657,7 +657,7 @@ void cOverworld :: Update_Camera( void )
 	}
 }
 
-bool cOverworld :: Key_Down( SDLKey key )
+bool cOverworld :: Key_Down( SDL_Keycode key )
 {
 	if( key == SDLK_LEFT )
 	{
@@ -744,7 +744,7 @@ bool cOverworld :: Key_Down( SDLKey key )
 	return 1;
 }
 
-bool cOverworld :: Key_Up( SDLKey key )
+bool cOverworld :: Key_Up( SDL_Keycode key )
 {
 	// nothing yet
 	if( 0 )

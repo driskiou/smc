@@ -121,9 +121,10 @@ void cVideo :: Delete_CEGUI_Fake( void ) const
 void cVideo :: Init_CEGUI( void ) const
 {
 	// create renderer
-	try
-	{
-		pGuiRenderer = &CEGUI::OpenGLRenderer::create( CEGUI::Size( screen->w, screen->h ) );
+	try	
+	{	int windowWidth, windowHeight;
+		SDL_GetWindowSize(screen, &windowWidth, &windowHeight);
+		pGuiRenderer = &CEGUI::OpenGLRenderer::create( CEGUI::Size( windowWidth, windowHeight) );
 	}
 	// catch CEGUI Exceptions
 	catch( CEGUI::Exception &ex )
@@ -250,7 +251,6 @@ void cVideo :: Init_SDL( void )
 	// preload the sdl_image png library
 	IMG_Init( IMG_INIT_PNG );
 
-	SDL_EnableUNICODE( 1 );
 	// hide by default
 	SDL_ShowCursor( SDL_DISABLE );
 }
@@ -260,12 +260,12 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	Render_Finish();
 
 	// set the video flags
-	int flags = SDL_OPENGL | SDL_SWSURFACE;
+	int flags = SDL_WINDOW_OPENGL ;
 
 	// only enter fullscreen if set in preferences
 	if( use_preferences && pPreferences->m_video_fullscreen )
 	{
-		flags |= SDL_FULLSCREEN;
+		flags |= SDL_WINDOW_FULLSCREEN;
 	}
 
 	int screen_w, screen_h, screen_bpp;
@@ -288,10 +288,8 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	// first initialization
 	if( !m_initialised )
 	{
-		// Set Caption
-		SDL_WM_SetCaption( CAPTION, NULL );
 		// Set Icon
-		std::string filename_icon = DATA_DIR "/" GAME_ICON_DIR "/window_32.png";
+	/*	std::string filename_icon = DATA_DIR "/" GAME_ICON_DIR "/window_32.png";
 		if( File_Exists( filename_icon ) )
 		{
 			SDL_Surface *icon = IMG_Load( filename_icon.c_str() );
@@ -301,7 +299,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 		else
 		{
 			printf( "Warning : Window icon %s does not exist\n", filename_icon.c_str() );
-		}
+		}*/
 	}
 
 	// test screen mode
@@ -385,7 +383,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	// if vertical synchronization is enabled
 	if( use_preferences && pPreferences->m_video_vsync )
 	{
-		SDL_GL_SetAttribute( SDL_GL_SWAP_CONTROL, 1 );
+		SDL_GL_SetSwapInterval( 1 );
 	}
 
 	// if reinitialization
@@ -414,7 +412,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	}
 
 	// Note: As of SDL 1.2.10, if width and height are both 0, SDL_SetVideoMode will use the desktop resolution.
-	screen = SDL_SetVideoMode( screen_w, screen_h, screen_bpp, flags );
+	screen = SDL_CreateWindow(CAPTION,SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_w, screen_h, flags );
 
 	if( !screen )
 	{
@@ -422,10 +420,18 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 		exit( EXIT_FAILURE );
 	}
 
+	glContext = SDL_GL_CreateContext(screen);
+
+	if( !glContext )
+	{
+		printf( "Error : glContext creation failed\nReason : %s\n", SDL_GetError() );
+		exit( EXIT_FAILURE );
+	}
+
 	// check if fullscreen got set
 	if( use_preferences && pPreferences->m_video_fullscreen )
 	{
-		bool is_fullscreen = ( ( screen->flags & SDL_FULLSCREEN ) == SDL_FULLSCREEN );
+		bool is_fullscreen = ( ( SDL_GetWindowFlags(screen) & SDL_WINDOW_FULLSCREEN ) == SDL_WINDOW_FULLSCREEN );
 
 		if( !is_fullscreen )
 		{
@@ -450,9 +456,9 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	// check if vertical synchronization got set
 	if( use_preferences && pPreferences->m_video_vsync )
 	{
-		int is_vsync;
+		
 		// seems to return always true even if not available
-		SDL_GL_GetAttribute( SDL_GL_SWAP_CONTROL, &is_vsync );
+		int is_vsync = SDL_GL_GetSwapInterval();
 
 		if( !is_vsync )
 		{
@@ -495,7 +501,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	printf( "accel %d\n", accelerated );*/
 
 	// get window manager information
-	if( !SDL_GetWMInfo( &wm_info ) )
+	if( !SDL_GetWindowWMInfo( screen, &wm_info ) )
 	{
 		printf( "Error: SDL_GetWMInfo not implemented\n" );
 	}
@@ -625,7 +631,7 @@ void cVideo :: Init_OpenGL( void )
 	// clear screen
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-	SDL_GL_SwapBuffers();
+	SDL_GL_SwapWindow(screen);
 }
 
 void cVideo :: Init_Geometry( void )
@@ -909,19 +915,21 @@ void cVideo :: Init_Image_Cache( bool recreate /* = 0 */, bool draw_gui /* = 0 *
 
 int cVideo :: Test_Video( int width, int height, int bpp, int flags /* = 0 */ ) const
 {
-	// auto set the video flags
+	/*// auto set the video flags
 	if( !flags )
 	{
-		flags = SDL_OPENGL | SDL_SWSURFACE;
+		flags = SDL_WINDOW_OPENGL ;
 
 		// if fullscreen is set
 		if( pPreferences->m_video_fullscreen )
 		{
-			flags |= SDL_FULLSCREEN;
+			flags |= SDL_WINDOW_FULLSCREEN;
 		}
 	}
 
-	return SDL_VideoModeOK( width, height, bpp, flags );
+	return SDL_VideoModeOK( width, height, bpp, flags );*/
+
+	return 1;
 }
 
 vector<cSize_Int> cVideo :: Get_Supported_Resolutions( int flags /* = 0 */ ) const
@@ -932,27 +940,28 @@ vector<cSize_Int> cVideo :: Get_Supported_Resolutions( int flags /* = 0 */ ) con
 	if( !flags )
 	{
 		// always set fullscreen
-		flags = SDL_OPENGL | SDL_SWSURFACE | SDL_FULLSCREEN;
+		flags = SDL_WINDOW_OPENGL |  SDL_WINDOW_FULLSCREEN;
 	}
 
-	SDL_Rect** modes = SDL_ListModes( NULL, flags );
-	bool create_default_list = 0;
+	int numDispModes = SDL_GetNumDisplayModes(0);
+	bool create_default_list = false;
 
 	// no dimension is available
-	if( modes == NULL )
+	if( numDispModes < 1 )
 	{
-		create_default_list = 1;
-	}
-	// any dimension is allowed
-	else if( modes == (SDL_Rect**)-1 )
-	{
-		create_default_list = 1;
+		create_default_list = true;
 	}
 	else
 	{
-		for( int i = 0; modes[i]; ++i )
+		SDL_DisplayMode mode;
+		for( int i = 0; numDispModes; ++i )
 		{
-			valid_resolutions.push_back( cSize_Int( modes[i]->w, modes[i]->h ) );
+			if (SDL_GetDisplayMode(0, i, &mode) != 0) {
+				create_default_list = true;
+				break;
+			}
+
+			valid_resolutions.push_back( cSize_Int( mode.w, mode.h ) );
 		}
 	}
 
@@ -980,14 +989,14 @@ void cVideo :: Make_GL_Context_Current( void )
 #elif __unix__
 	if( glx_context != NULL )
 	{
-		glXMakeCurrent( wm_info.info.x11.gfxdisplay, wm_info.info.x11.window, glx_context );
+		glXMakeCurrent( wm_info.info.x11.display, wm_info.info.x11.window, glx_context );
 	}
 #elif __APPLE__
 	// party time
 #endif
 
 	// update info (needed?)
-	SDL_GetWMInfo( &wm_info );
+	SDL_GetWindowWMInfo( screen, &wm_info );
 }
 
 void cVideo :: Make_GL_Context_Inactive( void )
@@ -995,13 +1004,13 @@ void cVideo :: Make_GL_Context_Inactive( void )
 #ifdef _WIN32
 	wglMakeCurrent( NULL, NULL );
 #elif __unix__
-	glXMakeCurrent( wm_info.info.x11.gfxdisplay, None, NULL );
+	glXMakeCurrent( wm_info.info.x11.display, None, NULL );
 #elif __APPLE__
 	// party time
 #endif
 
 	// update info (needed?)
-	SDL_GetWMInfo( &wm_info );
+	SDL_GetWindowWMInfo( screen, &wm_info );
 }
 
 void cVideo :: Render_From_Thread( void )
@@ -1009,7 +1018,7 @@ void cVideo :: Render_From_Thread( void )
 	Make_GL_Context_Current();
 
 	pRenderer_current->Render();
-	// under linux with sofware mesa 7.9 it only showed the rendered output with SDL_GL_SwapBuffers()
+	// under linux with sofware mesa 7.9 it only showed the rendered output with SDL_GL_SwapWindow(screen)
 
 	// update performance timer
 	//pFramerate->m_perf_timer[PERF_RENDER_GAME]->Update();
@@ -1028,7 +1037,7 @@ void cVideo :: Render( bool threaded /* = 0 */ )
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_GUI]->Update();
 
-		SDL_GL_SwapBuffers();
+		SDL_GL_SwapWindow(screen);
 
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_BUFFER]->Update();
@@ -1063,7 +1072,7 @@ void cVideo :: Render( bool threaded /* = 0 */ )
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_GUI]->Update();
 
-		SDL_GL_SwapBuffers();
+		SDL_GL_SwapWindow(screen);
 
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_BUFFER]->Update();
@@ -1095,13 +1104,7 @@ void cVideo :: Toggle_Fullscreen( void )
 	GLclampf clear_color[4];
 	glGetFloatv( GL_COLOR_CLEAR_VALUE, clear_color );
 
-#ifdef _WIN32
-	// windows needs reinitialization
-	Init_Video();
-#else
-	// works only for X11 platforms
-	SDL_WM_ToggleFullScreen( screen );
-#endif
+	SDL_SetWindowFullscreen( screen, SDL_WINDOW_FULLSCREEN);
 
 	// set back clear color
 	glClearColor( clear_color[0], clear_color[1], clear_color[2], clear_color[3] );
@@ -1294,7 +1297,7 @@ SDL_Surface *cVideo :: Convert_To_Final_Software_Image( SDL_Surface *surface ) c
 		#endif
 
 		// set the entire surface alpha to 0
-		SDL_SetAlpha( surface, 0, SDL_ALPHA_TRANSPARENT );
+		SDL_SetSurfaceAlphaMod( surface, 0 );
 		// blit to 32 bit surface
 		SDL_BlitSurface( surface, NULL, final, NULL );
 		// delete original surface
@@ -2460,7 +2463,7 @@ void Loading_Screen_Draw( void )
 	// Render
 	pRenderer->Render();
 	pGuiSystem->renderGUI();
-	SDL_GL_SwapBuffers();
+	SDL_GL_SwapWindow( screen );
 }
 
 void Loading_Screen_Exit( void )
@@ -2492,7 +2495,8 @@ cVideo *pVideo = NULL;
 CEGUI::OpenGLRenderer *pGuiRenderer = NULL;
 CEGUI::System *pGuiSystem = NULL;
 
-SDL_Surface *screen = NULL;
+SDL_Window *screen = NULL;
+SDL_GLContext glContext  = NULL;
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

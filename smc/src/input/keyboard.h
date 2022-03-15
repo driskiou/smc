@@ -38,22 +38,22 @@ public:
 	/* CEGUI Key Up handler
 	 * returns true if CEGUI processed the given key up event
 	*/
-	bool CEGUI_Handle_Key_Up( SDLKey key ) const;
+	bool CEGUI_Handle_Key_Up( SDL_Keycode key ) const;
 
 	/* Key Up Handler
 	 * returns true if the event was processed
 	*/
-	bool Key_Up( SDLKey key );
+	bool Key_Up( SDL_Keycode key );
 
 	/* CEGUI Key Down handler
 	 * returns true if CEGUI processed the given key down event
 	*/
-	bool CEGUI_Handle_Key_Down( SDLKey key ) const;
+	bool CEGUI_Handle_Key_Down( SDL_Keycode key ) const;
 
 	/* Key Down handler
 	 * returns true if the event was processed
 	*/
-	bool Key_Down( SDLKey key );
+	bool Key_Down( SDL_Keycode key );
 
 	// Is the CTRL key pressed
 	inline bool Is_Ctrl_Down( void ) const
@@ -71,11 +71,11 @@ public:
 		return m_keys[SDLK_RALT] || m_keys[SDLK_LALT];
 	};
 
-	// Translate a SDLKey to the proper CEGUI::Key
-	unsigned int SDLKey_to_CEGUIKey( const SDLKey key ) const;
+	// Translate a SDL_Keycode to the proper CEGUI::Key
+	unsigned int SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const;
 
 	// Pressed keys
-	Uint8 m_keys[SDLK_LAST];
+	Uint8 m_keys[SDLK_AUDIOFASTFORWARD - SDLK_UNKNOWN];
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

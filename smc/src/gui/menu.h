@@ -117,11 +117,11 @@ public:
 	/* handle key down event
 	 * returns true if processed
 	*/
-	bool Key_Down( SDLKey key );
+	bool Key_Down( SDL_Keycode key );
 	/* handle key up event
 	 * returns true if processed
 	*/
-	bool Key_Up( SDLKey key );
+	bool Key_Up( SDL_Keycode key );
 	/* handle mouse button down event
 	 * returns true if processed
 	*/

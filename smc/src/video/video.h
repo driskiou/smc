@@ -297,7 +297,10 @@ extern CEGUI::OpenGLRenderer *pGuiRenderer;
 extern CEGUI::System *pGuiSystem;
 
 // Screen
-extern SDL_Surface *screen;
+ extern SDL_Window  *screen;
+
+// GL context
+extern SDL_GLContext glContext;
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

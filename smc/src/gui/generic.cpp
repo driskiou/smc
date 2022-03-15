@@ -522,11 +522,12 @@ std::string Get_Clipboard_Content( void )
 	delete[] buffer;
 #elif __unix__
 	// only works with the cut-buffer method (xterm) and not with the more recent selections method
+	SDL_Window * window = SDL_GL_GetCurrentWindow();
 	SDL_SysWMinfo sdlinfo;
 	SDL_VERSION( &sdlinfo.version );
-	if( SDL_GetWMInfo( &sdlinfo ) )
+	if( SDL_GetWindowWMInfo(window, &sdlinfo ) )
 	{
-		sdlinfo.info.x11.lock_func();
+	//	sdlinfo.info.x11.lock_func();
 		Display *display = sdlinfo.info.x11.display;
 		int count = 0;
 		char *msg = XFetchBytes( display, &count );
@@ -540,7 +541,7 @@ std::string Get_Clipboard_Content( void )
 			XFree( msg );
 		}
 
-		sdlinfo.info.x11.unlock_func();
+		//sdlinfo.info.x11.unlock_func();
 	}
 #endif
 	return content;
@@ -593,11 +594,12 @@ void Set_Clipboard_Content( std::string str )
 #elif __APPLE__
 	// not implemented
 #elif __unix__
+	SDL_Window * window = SDL_GL_GetCurrentWindow();
 	SDL_SysWMinfo sdlinfo;
 	SDL_VERSION( &sdlinfo.version );
-	if( SDL_GetWMInfo( &sdlinfo ) )
+	if( SDL_GetWindowWMInfo(window, &sdlinfo ) )
 	{
-		sdlinfo.info.x11.lock_func();
+		//sdlinfo.info.x11.lock_func();
 		Display *display = sdlinfo.info.x11.display;
 		Window window = sdlinfo.info.x11.window;
 
@@ -608,7 +610,7 @@ void Set_Clipboard_Content( std::string str )
 			XSetSelectionOwner( display, XA_PRIMARY, window, CurrentTime );
 		}
 
-		sdlinfo.info.x11.unlock_func();
+		//sdlinfo.info.x11.unlock_func();
 	}
 #endif
 }

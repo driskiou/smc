@@ -144,7 +144,7 @@ public:
 	/* handle key down event
 	 * returns true if processed
 	*/
-	virtual bool Key_Down( SDLKey key );
+	virtual bool Key_Down( SDL_Keycode key );
 	/* handle mouse button down event
 	 * returns true if processed
 	*/

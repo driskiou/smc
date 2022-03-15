@@ -799,7 +799,7 @@ bool cMenu_Start :: TabControl_Keydown( const CEGUI::EventArgs &e )
 		return 1;
 	}
 	// Left (todo: only for joystick when CEGUI supports these events)
-	else if( ke.scancode == pKeyboard->SDLKey_to_CEGUIKey( pPreferences->m_key_left ) )
+	else if( ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey( pPreferences->m_key_left ) )
 	{
 		// Get Tab Control
 		CEGUI::TabControl *tabcontrol = static_cast<CEGUI::TabControl *>(CEGUI::WindowManager::getSingleton().getWindow( "tabcontrol_main" ));
@@ -813,7 +813,7 @@ bool cMenu_Start :: TabControl_Keydown( const CEGUI::EventArgs &e )
 		return 1;
 	}
 	// Right (todo: only for joystick when CEGUI supports these events)
-	else if( ke.scancode == pKeyboard->SDLKey_to_CEGUIKey( pPreferences->m_key_right ) )
+	else if( ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey( pPreferences->m_key_right ) )
 	{
 		// Get Tab Control
 		CEGUI::TabControl *tabcontrol = static_cast<CEGUI::TabControl *>(CEGUI::WindowManager::getSingleton().getWindow( "tabcontrol_main" ));
@@ -859,7 +859,7 @@ bool cMenu_Start :: Listbox_Keydown( const CEGUI::EventArgs &e )
 	// Down/Up (todo: detect event for joystick properly when CEGUI supports these events)
 	if( ke.scancode == CEGUI::Key::ArrowDown || ke.scancode == CEGUI::Key::ArrowUp || ke.scancode == CEGUI::Key::PageDown || ke.scancode == CEGUI::Key::PageUp ||
 		ke.scancode == CEGUI::Key::Home || ke.scancode == CEGUI::Key::End ||
-		ke.scancode == pKeyboard->SDLKey_to_CEGUIKey(pPreferences->m_key_up) || ke.scancode == pKeyboard->SDLKey_to_CEGUIKey(pPreferences->m_key_down) )
+		ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey(pPreferences->m_key_up) || ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey(pPreferences->m_key_down) )
 	{
 		int new_selected = 0;
 		int last_selected = 0;
@@ -874,12 +874,12 @@ bool cMenu_Start :: Listbox_Keydown( const CEGUI::EventArgs &e )
 		}
 
 		// down (todo: detect event for joystick properly when CEGUI supports these events)
-		if( ke.scancode == CEGUI::Key::ArrowDown || ke.scancode == pKeyboard->SDLKey_to_CEGUIKey(pPreferences->m_key_down) )
+		if( ke.scancode == CEGUI::Key::ArrowDown || ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey(pPreferences->m_key_down) )
 		{
 			new_selected = last_selected + 1;
 		}
 		// up (todo: detect event for joystick properly when CEGUI supports these events)
-		else if( ke.scancode == CEGUI::Key::ArrowUp || ke.scancode == pKeyboard->SDLKey_to_CEGUIKey(pPreferences->m_key_up) )
+		else if( ke.scancode == CEGUI::Key::ArrowUp || ke.scancode == pKeyboard->SDL_Keycode_to_CEGUIKey(pPreferences->m_key_up) )
 		{
 			new_selected = last_selected - 1;
 		}
@@ -2201,8 +2201,8 @@ void cMenu_Options :: Build_Shortcut_List( bool joystick /* = 0 */ )
 		// Keyboard
 		if( !joystick )
 		{
-			SDLKey *key = static_cast<SDLKey *>(shortcut_item.m_key);
-			const SDLKey *key_default = static_cast<const SDLKey *>(shortcut_item.m_key_default);
+			SDL_Keycode *key = static_cast<SDL_Keycode *>(shortcut_item.m_key);
+			const SDL_Keycode *key_default = static_cast<const SDL_Keycode *>(shortcut_item.m_key_default);
 			shortcut_key = SDL_GetKeyName( *key );
 
 			if( *key != *key_default )
@@ -2281,7 +2281,7 @@ void cMenu_Options :: Set_Shortcut( std::string name, void *data, bool joystick 
 		// Keyboard
 		if( !joystick )
 		{
-			SDLKey *key = static_cast<SDLKey *>(data);
+			SDL_Keycode *key = static_cast<SDL_Keycode *>(data);
 			*key = input_event.key.keysym.sym;
 		}
 		// Joystick
@@ -2300,7 +2300,7 @@ void cMenu_Options :: Set_Shortcut( std::string name, void *data, bool joystick 
 void cMenu_Options :: Joy_Default( unsigned int index )
 {
 	pPreferences->m_joy_enabled = 1;
-	pPreferences->m_joy_name = SDL_JoystickName( index );
+	pPreferences->m_joy_name = SDL_JoystickName( SDL_JoystickOpen( index ) );
 
 	// initialize and if no joystick available disable
 	pJoystick->Init();
@@ -2580,8 +2580,8 @@ bool cMenu_Options :: Video_Button_Apply_Clicked( const CEGUI::EventArgs &event 
 
 	pGuiSystem->renderGUI();
 	pRenderer->Render();
-	SDL_GL_SwapBuffers();
-
+	
+	
 	// apply new settings
 	pPreferences->Apply_Video( m_vid_w, m_vid_h, m_vid_bpp, m_vid_fullscreen, m_vid_vsync, m_vid_geometry_detail, m_vid_texture_detail );
 

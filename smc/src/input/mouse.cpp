@@ -169,6 +169,16 @@ bool cMouseCursor :: Handle_Event( SDL_Event *ev )
 
 			break;
 		}
+		case SDL_MOUSEWHEEL:
+		{
+			if( Handle_Mouse_Wheel( ev->wheel.y ) )
+			{
+				// processed
+				return 1;
+			}
+
+			break;
+		}
 		default:
 		{
 			break;
@@ -210,23 +220,6 @@ bool cMouseCursor :: Handle_Mouse_Down( Uint8 button )
 			m_right = 1;
 			break;
 		}
-		// mouse wheel
-		case SDL_BUTTON_WHEELDOWN:
-		{
-			if( CEGUI::System::getSingleton().injectMouseWheelChange( -1 ) )
-			{
-				return 1;
-			}
-			break;
-		}
-		case SDL_BUTTON_WHEELUP:
-		{
-			if( CEGUI::System::getSingleton().injectMouseWheelChange( +1 ) )
-			{
-				return 1;
-			}
-			break;
-		}
 		default:
 		{
 			break;
@@ -254,6 +247,28 @@ bool cMouseCursor :: Handle_Mouse_Down( Uint8 button )
 	{
 		// processed by the menu
 		if( pMenuCore->Mouse_Down( button ) )
+		{
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+
+bool cMouseCursor :: Handle_Mouse_Wheel( Sint8 y_wheel )
+{
+	// mouse wheel
+	if(y_wheel < 0)
+	{
+		if( CEGUI::System::getSingleton().injectMouseWheelChange( -1 ) )
+		{
+			return 1;
+		}
+	}
+	if(y_wheel > 0)
+	{
+		if( CEGUI::System::getSingleton().injectMouseWheelChange( +1 ) )
 		{
 			return 1;
 		}
@@ -1638,10 +1653,10 @@ void cMouseCursor :: Mover_Update( Sint16 move_x, Sint16 move_y )
 	// mouse moves the camera
 	pActive_Camera->Move( move_x, move_y );
 	// keep mouse at it's position
-	SDL_WarpMouse( static_cast<Uint16>(m_x * global_upscalex), static_cast<Uint16>(m_y * global_upscaley) );
+//	SDL_CaptureMouse( static_cast<Uint16>(m_x * global_upscalex), static_cast<Uint16>(m_y * global_upscaley) );
 
 	SDL_Event inEvent;
-	SDL_PeepEvents( &inEvent, 1, SDL_GETEVENT, SDL_MOUSEMOTIONMASK );
+	SDL_PeepEvents( &inEvent, 1, SDL_GETEVENT, SDL_MOUSEMOTION,SDL_MOUSEWHEEL );
 
 	while( SDL_PollEvent( &inEvent ) )
 	{

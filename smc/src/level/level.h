@@ -81,11 +81,11 @@ public:
 	/* handle key down event
 	 * returns true processed
 	*/
-	bool Key_Down( const SDLKey key );
+	bool Key_Down( const SDL_Keycode key );
 	/* handle key up event
 	 * returns true if processed
 	*/
-	bool Key_Up( const SDLKey key );
+	bool Key_Up( const SDL_Keycode key );
 	/* handle mouse button down event
 	 * returns true if processed
 	*/

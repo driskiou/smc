@@ -42,7 +42,7 @@ public:
 	/* handle key down event
 	 * returns true if the key was processed
 	*/
-	virtual bool Key_Down( SDLKey key );
+	virtual bool Key_Down( SDL_Keycode key );
 
 	// Set the parent overworld
 	void Set_Overworld( cOverworld *overworld );

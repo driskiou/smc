@@ -17,55 +17,5 @@
 # http://www.kernel.org/pub/software/scm/git/docs/gitignore.html
 #
 
-# Generated
-/smc/*.log
-/smc/*.exe
-/smc/*.dll
-/smc/*.manifest
-/smc/stdout.txt
-/smc/stderr.txt
-Thumbs.db
-
-# Visual Studio
-/smc/makefiles/MSVC9.0/Debug
-/smc/makefiles/MSVC9.0/Mixed
-/smc/makefiles/MSVC9.0/Release
-/smc/makefiles/MSVC9.0/*.user
-/smc/makefiles/MSVC9.0/*.aps
-/smc/makefiles/AQtime
-/smc/extras/binaries
-*.ncb
-*.suo
-*.bsc
-*.ilk
-*.pgd
-*.pgc
-
-# Installer
-/smc/extras/Setup/*.exe
-
-# Extra
-/usable
-/*.txt
-/*.rtf
-/*.lnk
-
-# Autotools
-/smc/aclocal.m4
-/smc/autom4te.cache/
-/smc/config.*
-/smc/configure
-/smc/data/Makefile
-/smc/data/Makefile.in
-/smc/depcomp
-/smc/install-sh
-/smc/m4/
-/smc/Makefile
-/smc/Makefile.in
-/smc/missing
-/smc/src/.deps/
-/smc/src/Makefile
-/smc/src/Makefile.in
-/smc/src/*.o
-/smc/src/smc
-/smc/stamp-h1
+/smc/.vscode
+/smc/src/build

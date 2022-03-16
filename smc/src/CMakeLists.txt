@@ -8,7 +8,7 @@ endif()
 
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
-find_package(PkgConfig)
+set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
@@ -195,3 +195,21 @@ add_executable(smc core/main.cpp
 )
 
 target_link_libraries(smc ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY} Boost::thread Boost::filesystem Boost::system)
+
+message(STATUS "Copy: ${CMAKE_CURRENT_SOURCE_DIR}/../data")
+# copy data
+add_custom_command(
+OUTPUT
+${CMAKE_CURRENT_BINARY_DIR}/data
+COMMAND
+${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/../data
+${CMAKE_CURRENT_BINARY_DIR}/data
+DEPENDS
+${CMAKE_CURRENT_SOURCE_DIR}/../data
+)
+
+
+target_sources(smc
+PRIVATE
+${CMAKE_CURRENT_BINARY_DIR}/data
+)

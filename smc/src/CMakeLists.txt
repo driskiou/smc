@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
+set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
 find_package(PNG REQUIRED)
 find_package(SDL2  REQUIRED)

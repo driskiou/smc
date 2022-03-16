@@ -5,8 +5,8 @@ project(smc LANGUAGES CXX)
 if(NOT CMAKE_BUILD_TYPE)
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
-
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -196,7 +196,12 @@ add_executable(smc core/main.cpp
 
 target_link_libraries(smc ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY} Boost::thread Boost::filesystem Boost::system)
 
-message(STATUS "Copy: ${CMAKE_CURRENT_SOURCE_DIR}/../data")
+if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" OR CMAKE_BUILD_TYPE STREQUAL "Debug")
+target_compile_definitions(smc PUBLIC "_DEBUG")
+message(STATUS "Add _DEBUG macro")
+endif()
+
+
 # copy data
 add_custom_command(
 OUTPUT

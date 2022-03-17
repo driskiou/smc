@@ -240,6 +240,8 @@ public:
 	CEGUI::Listbox *m_listbox_items;
 	CEGUI::TabControl *m_tabcontrol_menu;
 
+
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
 protected:
 	// Check if the given tag is available in the string
 	bool Is_Tag_Available( const std::string &str, const std::string &tag, unsigned int search_pos = 0 );
@@ -258,6 +260,9 @@ private:
 
 	// XML element Item Tag list
 	CEGUI::XMLAttributes m_xml_attributes;
+
+	const CEGUI::String m_default_resource;
+
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

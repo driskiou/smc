@@ -20,7 +20,7 @@
 #include "../core/filesystem/resource_manager.h"
 #include "../core/i18n.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 #include <CEGUI/Exceptions.h>
 
 namespace SMC
@@ -186,7 +186,7 @@ cCampaign *cCampaign_Manager :: Get_from_Name( const std::string &name )
 
 /* *** *** *** *** *** *** *** cCampaign_XML_Handler *** *** *** *** *** *** *** *** *** *** */
 
-cCampaign_XML_Handler :: cCampaign_XML_Handler( const CEGUI::String &filename )
+cCampaign_XML_Handler :: cCampaign_XML_Handler( const CEGUI::String &filename ) : m_default_resource(filename)
 {
 	m_campaign = new cCampaign();
 
@@ -196,7 +196,7 @@ cCampaign_XML_Handler :: cCampaign_XML_Handler( const CEGUI::String &filename )
 	#ifdef _WIN32
 		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, (const CEGUI::utf8*)filename.c_str(), DATA_DIR "/" GAME_SCHEMA_DIR "/" "Campaign.xsd", "" );
 	#else
-		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, filename.c_str(), DATA_DIR "/" GAME_SCHEMA_DIR "/" "Campaign.xsd", "" );
+		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, filename, DATA_DIR "/" GAME_SCHEMA_DIR "/" "Campaign.xsd", m_default_resource);
 	#endif
 	}
 	// catch CEGUI Exceptions
@@ -207,6 +207,11 @@ cCampaign_XML_Handler :: cCampaign_XML_Handler( const CEGUI::String &filename )
 	}
 }
 
+const CEGUI::String & cCampaign_XML_Handler :: getDefaultResourceGroup () const
+{
+	return m_default_resource;
+}
+
 cCampaign_XML_Handler :: ~cCampaign_XML_Handler( void )
 {
 	if( m_campaign )
@@ -214,6 +219,7 @@ cCampaign_XML_Handler :: ~cCampaign_XML_Handler( void )
 		delete m_campaign;
 	}
 }
+
 
 void cCampaign_XML_Handler :: elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes )
 {

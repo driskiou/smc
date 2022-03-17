@@ -106,8 +106,16 @@ cPreferences :: ~cPreferences( void )
 	//
 }
 
+const CEGUI::String & getDefaultResourceGroup () const
+{
+	return m_default_resource;
+}
+
 bool cPreferences :: Load( const std::string &filename /* = "" */ )
 {
+	m_default_resource.clear();
+	m_default_resource.append(filename);
+
 	Reset_All();
 	
 	// if config file is given
@@ -144,7 +152,7 @@ bool cPreferences :: Load( const std::string &filename /* = "" */ )
 	#ifdef _WIN32
 		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, (const CEGUI::utf8*)m_config_filename.c_str(), DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", "" );
 	#else
-		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, m_config_filename, DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", "" );
+		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, m_config_filename, DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", m_default_resource );
 	#endif
 	}
 	// catch CEGUI Exceptions

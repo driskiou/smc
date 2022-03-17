@@ -13,6 +13,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 #include "../core/global_basic.h"
 #include "../core/game_core.h"
 #include "../core/main.h"
@@ -535,7 +536,7 @@ bool Handle_Input_Global( SDL_Event *ev )
 		{
 			if(ev->window.event == SDL_WINDOWEVENT_RESIZED)
 			{
-			pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size<int>( static_cast<float>(ev->window.data1), static_cast<float>(ev->window.data2) ) );
+			pGuiSystem->notifyDisplaySizeChanged( CEGUI::Sizef( static_cast<float>(ev->window.data1), static_cast<float>(ev->window.data2) ) );
 			}
 			else if(ev->window.event ==  SDL_WINDOWEVENT_LEAVE)
 			{

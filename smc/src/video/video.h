@@ -24,19 +24,19 @@
 	#include <GL/glx.h>
 #endif
 // SDL
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h> 
 #ifdef __unix__
 	#define NO_SDL_GLEXT
 #endif
-#include "SDL_opengl.h"
+#include <SDL2/SDL_opengl.h>
 #ifdef __unix__
 	#undef NO_SDL_GLEXT
 #endif
 #include "SDL_syswm.h"
 // CEGUI
 #include <CEGUI/System.h>
-#include <CEGUI/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
+#include <CEGUI/RendererModules/OpenGL/GLRenderer.h>
 // boost thread
 #include <boost/thread/thread.hpp>
 

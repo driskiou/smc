@@ -200,6 +200,7 @@ public:
 	static const bool m_editor_show_item_images_default;
 	static const unsigned int m_editor_item_image_size_default;
 
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
 private:
 	// XML element start
 	virtual void elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes );
@@ -207,6 +208,7 @@ private:
 	virtual void elementEnd( const CEGUI::String &element );
 	// handles an item
 	void handle_item( CEGUI::XMLAttributes attributes );
+	const CEGUI::String m_default_resource;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

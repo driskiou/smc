@@ -30,19 +30,19 @@
 #include "../core/filesystem/resource_manager.h"
 #include "../gui/spinner.h"
 // SDL
-#include "SDL_opengl.h"
+#include <SDL2/SDL_opengl.h>
 // CEGUI
 #include "CEGUIDefaultResourceProvider.h"
 #include <CEGUI/DefaultLogger.h>
 #include <CEGUI/Exceptions.h>
-#include "CEGUIWindowFactoryManager.h"
-#include "CEGUIImagesetManager.h"
-#include "CEGUIFontManager.h"
+#include "CEGUI/WindowFactoryManager.h"
+#include "CEGUI/ImagesetManager.h"
+#include "CEGUI/FontManager.h"
 #include <CEGUI/WindowManager.h>
-#include "CEGUISchemeManager.h"
+#include "CEGUI/SchemeManager.h"
 #include "falagard/CEGUIFalWidgetLookManager.h"
-CEGUI/widgets/ProgressBar..h
-#include "RendererModules/Null/CEGUINullRenderer.h"
+
+
 // png
 #include <png.h>
 #ifndef PNG_COLOR_TYPE_RGBA

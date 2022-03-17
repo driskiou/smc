@@ -89,6 +89,10 @@ public:
 
 	// object we are constructing
 	cCampaign *m_campaign;
+
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+private:
+	const CEGUI::String m_default_resource;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

@@ -26,7 +26,7 @@
 #include "../core/i18n.h"
 #include "../core/filesystem/filesystem.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "CEGUIFontManager.h"
 
 namespace SMC

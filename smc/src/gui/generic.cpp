@@ -31,11 +31,11 @@
 #endif
 
 // CEGUI
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "CEGUIFontManager.h"
-#include "elements/CEGUIEditbox.h"
-#include "elements/CEGUIFrameWindow.h"
-#include "elements/CEGUIPushButton.h"
+#include <CEGUI/widgets/Editbox.h>
+#include <CEGUI/widgets/FrameWindow.h>
+#include <CEGUI/widgets/PushButton.h>
 #include "elements/CEGUIMultiLineEditbox.h"
 
 namespace SMC
@@ -362,7 +362,7 @@ void Draw_Static_Text( const std::string &text, const Color *color_text /* = &wh
 	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::WindowManager::getSingleton().getWindow( "text_default" ));
 
 	// set text
-	text_default->setProperty( "TextColours", CEGUI::PropertyHelper::colourToString( CEGUI::colour( static_cast<float>(color_text->red) / 255, static_cast<float>(color_text->green) / 255, static_cast<float>(color_text->blue) / 255, 1 ) ) );
+	text_default->setProperty( "TextColours", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( static_cast<float>(color_text->red) / 255, static_cast<float>(color_text->green) / 255, static_cast<float>(color_text->blue) / 255, 1 ) ) );
 	CEGUI::String gui_text = reinterpret_cast<const CEGUI::utf8*>(text.c_str());
 	text_default->setText( gui_text );
 

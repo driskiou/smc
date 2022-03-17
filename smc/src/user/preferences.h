@@ -20,8 +20,8 @@
 // SDL
 #include "SDL.h"
 // CEGUI
-#include "CEGUIXMLHandler.h"
-#include "CEGUIXMLAttributes.h"
+#include <CEGUI/XMLHandler.h>
+#include <CEGUI/XMLAttributes.h>
 
 namespace SMC
 {

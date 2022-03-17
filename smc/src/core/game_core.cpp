@@ -32,8 +32,8 @@
 #include "../user/savegame.h"
 #include "../overworld/world_editor.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUIProgressBar.h"
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/widgets/ProgressBar.h>
 
 namespace SMC
 {
@@ -351,7 +351,7 @@ void Preload_Images( bool draw_gui /* = 0 */ )
 	if( draw_gui )
 	{
 		// get progress bar
-		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::WindowManager::getSingleton().getWindow( "progress_bar" ));
+		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::System::getSingleton()::getDefaultGUIContext()->getRootWindow()->getChild( "progress_bar" ));
 		progress_bar->setProgress( 0 );
 		// set loading screen text
 		Loading_Screen_Draw_Text( _("Loading Images") );

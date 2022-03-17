@@ -23,7 +23,7 @@
 #include "../core/i18n.h"
 #include "../enemies/bosses/turtle_boss.h"
 // CEGUI
-#include "CEGUIXMLAttributes.h"
+#include <CEGUI/XMLAttributes.h>
 
 namespace SMC
 {

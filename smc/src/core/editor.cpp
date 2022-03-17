@@ -33,13 +33,13 @@
 #include "../core/i18n.h"
 #include "../core/filesystem/filesystem.h"
 // CEGUI
-#include "CEGUIXMLParser.h"
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUIFrameWindow.h"
-#include "elements/CEGUIPushButton.h"
-#include "elements/CEGUITabControl.h"
-#include "elements/CEGUIScrollbar.h"
-#include "CEGUIGeometryBuffer.h"
+#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/widgets/FrameWindow.h>
+#include <CEGUI/widgets/PushButton.h>
+#include <CEGUI/widgets/TabControl.h>
+#include <CEGUI/widgets/Scrollbar.h>
+#include <CEGUI/GeometryBuffer.h>
 
 namespace SMC
 {
@@ -63,7 +63,7 @@ cEditor_Object_Settings_Item :: ~cEditor_Object_Settings_Item( void )
 
 /* *** *** *** *** *** *** *** *** cEditor_CEGUI_Texture *** *** *** *** *** *** *** *** *** */
 
-cEditor_CEGUI_Texture :: cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Size& size )
+cEditor_CEGUI_Texture :: cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Size<int>& size )
 : CEGUI::OpenGLTexture( owner, tex, size )
 {
 
@@ -96,7 +96,7 @@ cEditor_Item_Object :: cEditor_Item_Object( const std::string &text, const CEGUI
 {
 	m_parent = parent;
 	list_text = new CEGUI::ListboxTextItem( reinterpret_cast<const CEGUI::utf8*>(text.c_str()) );
-	list_text->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+	list_text->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 	list_text->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 
 	m_image = NULL;
@@ -146,15 +146,15 @@ void cEditor_Item_Object :: Init( cSprite *sprite )
 	preview_scale = pVideo->Get_Scale( sprite_obj->m_start_image, static_cast<float>(pPreferences->m_editor_item_image_size) * 2.0f, static_cast<float>(pPreferences->m_editor_item_image_size) );
 
 	// create CEGUI link
-	cEditor_CEGUI_Texture *texture = new cEditor_CEGUI_Texture( *pGuiRenderer, sprite_obj->m_start_image->m_image, CEGUI::Size( sprite_obj->m_start_image->m_tex_w, sprite_obj->m_start_image->m_tex_h ) );
+	cEditor_CEGUI_Texture *texture = new cEditor_CEGUI_Texture( *pGuiRenderer, sprite_obj->m_start_image->m_image, CEGUI::Size<int>( sprite_obj->m_start_image->m_tex_w, sprite_obj->m_start_image->m_tex_h ) );
 	CEGUI::String imageset_name = "editor_item " + list_text->getText() + " " + CEGUI::PropertyHelper::uintToString( m_parent->getItemCount() );
 	m_image = &CEGUI::ImagesetManager::getSingleton().create( imageset_name, *texture );
 	m_image->defineImage( "default", CEGUI::Point(0, 0), texture->getSize(), CEGUI::Point(0, 0) );
 }
 
-CEGUI::Size cEditor_Item_Object :: getPixelSize( void ) const
+CEGUI::Size<int> cEditor_Item_Object :: getPixelSize( void ) const
 {
-	CEGUI::Size tmp = list_text->getPixelSize();
+	CEGUI::Size<int> tmp = list_text->getPixelSize();
 
 	if( pPreferences->m_editor_show_item_images )
 	{
@@ -169,7 +169,7 @@ void cEditor_Item_Object :: draw( CEGUI::GeometryBuffer &buffer, const CEGUI::Re
 	// image
 	if( m_image && pPreferences->m_editor_show_item_images )
 	{
-		m_image->draw( buffer, CEGUI::Rect(CEGUI::Point(0, 0), m_image->getTexture()->getSize()), CEGUI::Rect(targetRect.d_left + 15, targetRect.d_top + 22, targetRect.d_left + 15 + (sprite_obj->m_start_image->m_start_w * preview_scale * global_upscalex), targetRect.d_top + 22 + (sprite_obj->m_start_image->m_start_h * preview_scale * global_upscaley) ), clipper, CEGUI::ColourRect(CEGUI::colour(1.0f, 1.0f, 1.0f, alpha)), CEGUI::TopLeftToBottomRight );
+		m_image->draw( buffer, CEGUI::Rect(CEGUI::Point(0, 0), m_image->getTexture()->getSize()), CEGUI::Rect(targetRect.d_left + 15, targetRect.d_top + 22, targetRect.d_left + 15 + (sprite_obj->m_start_image->m_start_w * preview_scale * global_upscalex), targetRect.d_top + 22 + (sprite_obj->m_start_image->m_start_h * preview_scale * global_upscaley) ), clipper, CEGUI::ColourRect(CEGUI::Colour(1.0f, 1.0f, 1.0f, alpha)), CEGUI::TopLeftToBottomRight );
 	}
 	// name text
 	list_text->draw( buffer, targetRect, alpha, clipper );
@@ -191,7 +191,7 @@ cEditor_Menu_Object :: ~cEditor_Menu_Object( void )
 
 void cEditor_Menu_Object :: Init( void )
 {
-	setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+	setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 	setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 }
 
@@ -1024,7 +1024,7 @@ void cEditor :: Set_Sprite_Manager( cSprite_Manager *sprite_manager )
 	m_sprite_manager = sprite_manager;
 }
 
-void cEditor :: Add_Menu_Object( const std::string &name, std::string tags, CEGUI::colour normal_color /* = CEGUI::colour( 1, 1, 1 ) */ )
+void cEditor :: Add_Menu_Object( const std::string &name, std::string tags, CEGUI::Colour normal_color /* = CEGUI::Colour( 1, 1, 1 ) */ )
 {
 	// Create Menu Object
 	cEditor_Menu_Object *new_menu = new cEditor_Menu_Object( name );
@@ -1045,7 +1045,7 @@ void cEditor :: Add_Menu_Object( const std::string &name, std::string tags, CEGU
 		tags.erase( 0, 6 );
 
 		// header color rect
-		new_menu->setTextColours( normal_color, normal_color, CEGUI::colour( 0.5f, 0.5f, 0.5f ), CEGUI::colour( 0.5f, 0.5f, 0.5f ) );
+		new_menu->setTextColours( normal_color, normal_color, CEGUI::Colour( 0.5f, 0.5f, 0.5f ), CEGUI::Colour( 0.5f, 0.5f, 0.5f ) );
 		// not selectable
 		new_menu->setDisabled( 1 );
 		// set tooltip

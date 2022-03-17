@@ -20,7 +20,7 @@
 #include "../core/i18n.h"
 #include "../core/game_core.h"
 // CEGUI
-#include "CEGUIXMLAttributes.h"
+#include <CEGUI/XMLAttributes.h>
 
 namespace SMC
 {

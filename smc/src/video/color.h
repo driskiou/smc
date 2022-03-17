@@ -19,7 +19,7 @@
 // SDL
 #include "SDL.h"
 // CEGUI
-#include "CEGUIcolour.h"
+#include <CEGUI/Colour.h>
 
 namespace SMC
 {
@@ -79,9 +79,9 @@ public:
 		return color;
 	}
 
-	inline CEGUI::colour Get_cegui_Color( void ) const
+	inline CEGUI::Colour Get_cegui_Color( void ) const
 	{
-		return CEGUI::colour( static_cast<float>(red) / 255, static_cast<float>(green) / 255, static_cast<float>(blue) / 255, static_cast<float>(alpha) / 255 );
+		return CEGUI::Colour( static_cast<float>(red) / 255, static_cast<float>(green) / 255, static_cast<float>(blue) / 255, static_cast<float>(alpha) / 255 );
 	}
 
 	// += operator

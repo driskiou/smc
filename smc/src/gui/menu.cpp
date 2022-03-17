@@ -27,9 +27,9 @@
 #include "../user/preferences.h"
 #include "../input/keyboard.h"
 // CEGUI
-#include "CEGUIXMLAttributes.h"
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUIListbox.h"
+#include <CEGUI/XMLAttributes.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/widgets/Listbox.h>
 #include "elements/CEGUIListboxItem.h"
 
 namespace SMC

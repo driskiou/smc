@@ -24,8 +24,8 @@
 #include "../gui/hud.h"
 #include "../audio/random_sound.h"
 // CEGUI
-#include "CEGUIXMLHandler.h"
-#include "CEGUIXMLAttributes.h"
+#include <CEGUI/XMLHandler.h>
+#include <CEGUI/XMLAttributes.h>
 
 namespace SMC
 {

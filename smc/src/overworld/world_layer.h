@@ -21,8 +21,8 @@
 #include "../core/obj_manager.h"
 #include "../overworld/world_waypoint.h"
 // CEGUI
-#include "CEGUIXMLHandler.h"
-#include "CEGUIXMLAttributes.h"
+#include <CEGUI/XMLHandler.h>
+#include <CEGUI/XMLAttributes.h>
 
 namespace SMC
 {

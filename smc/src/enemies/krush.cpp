@@ -23,10 +23,10 @@
 #include "../core/i18n.h"
 #include "../core/sprite_manager.h"
 // CEGUI
-#include "CEGUIXMLAttributes.h"
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUICombobox.h"
-#include "elements/CEGUIListboxTextItem.h"
+#include <CEGUI/XMLAttributes.h>
+#include <CEGUI/WindowManager.h>
+#include "CEGUI/widgets/Combobox.h"
+#include "CEGUI/widgets/ListboxTextItem.h"
 
 namespace SMC
 {

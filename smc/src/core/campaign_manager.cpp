@@ -20,8 +20,8 @@
 #include "../core/filesystem/resource_manager.h"
 #include "../core/i18n.h"
 // CEGUI
-#include "CEGUIXMLParser.h"
-#include "CEGUIExceptions.h"
+#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/Exceptions.h>
 
 namespace SMC
 {

@@ -21,7 +21,7 @@
 #include "SDL.h"
 #include <algorithm>
 // CEGUI
-#include "CEGUIString.h"
+#include <CEGUI/String.h>
 
 namespace SMC
 {

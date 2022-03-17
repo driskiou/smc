@@ -26,16 +26,16 @@
 #include "../gui/generic.h"
 #include "../core/i18n.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "elements/CEGUISpinner.h"
-#include "elements/CEGUIEditbox.h"
-#include "elements/CEGUICombobox.h"
+#include <CEGUI/widgets/Editbox.h>
+#include "CEGUI/widgets/Combobox.h"
 #include "elements/CEGUIMultiLineEditbox.h"
-#include "elements/CEGUIPushButton.h"
-#include "elements/CEGUITabControl.h"
+#include <CEGUI/widgets/PushButton.h>
+#include <CEGUI/widgets/TabControl.h>
 #include "elements/CEGUISlider.h"
-#include "elements/CEGUIListbox.h"
-#include "elements/CEGUIListboxTextItem.h"
+#include <CEGUI/widgets/Listbox.h>
+#include "CEGUI/widgets/ListboxTextItem.h"
 
 namespace SMC
 {
@@ -459,13 +459,13 @@ bool cLevel_Settings :: Update_BG_Colors( const CEGUI::EventArgs &event )
 
 
 	// color start
-	color_start_red->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1, 1 - ( static_cast<float>(m_bg_color_1.red) / 255 ), 1 - ( static_cast<float>(m_bg_color_1.red) / 255 ), 1 ) ) );
-	color_start_green->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1 - ( static_cast<float>(m_bg_color_1.green) / 255 ), 1, 1 - ( static_cast<float>(m_bg_color_1.green) / 255 ), 1 ) ) );
-	color_start_blue->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1 - ( static_cast<float>(m_bg_color_1.blue) / 255 ), 1 - ( static_cast<float>(m_bg_color_1.blue) / 255 ), 1, 1 ) ) );
+	color_start_red->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1, 1 - ( static_cast<float>(m_bg_color_1.red) / 255 ), 1 - ( static_cast<float>(m_bg_color_1.red) / 255 ), 1 ) ) );
+	color_start_green->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1 - ( static_cast<float>(m_bg_color_1.green) / 255 ), 1, 1 - ( static_cast<float>(m_bg_color_1.green) / 255 ), 1 ) ) );
+	color_start_blue->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1 - ( static_cast<float>(m_bg_color_1.blue) / 255 ), 1 - ( static_cast<float>(m_bg_color_1.blue) / 255 ), 1, 1 ) ) );
 	// color end
-	color_end_red->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1, 1 - ( static_cast<float>(m_bg_color_2.red) / 255 ), 1 - ( static_cast<float>(m_bg_color_2.red) / 255 ), 1 ) ) );
-	color_end_green->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1 - ( static_cast<float>(m_bg_color_2.green) / 255 ), 1, 1 - ( static_cast<float>(m_bg_color_2.green) / 255 ), 1 ) ) );
-	color_end_blue->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::colour( 1 - ( static_cast<float>(m_bg_color_2.blue) / 255 ), 1 - ( static_cast<float>(m_bg_color_2.blue) / 255 ), 1, 1 ) ) );
+	color_end_red->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1, 1 - ( static_cast<float>(m_bg_color_2.red) / 255 ), 1 - ( static_cast<float>(m_bg_color_2.red) / 255 ), 1 ) ) );
+	color_end_green->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1 - ( static_cast<float>(m_bg_color_2.green) / 255 ), 1, 1 - ( static_cast<float>(m_bg_color_2.green) / 255 ), 1 ) ) );
+	color_end_blue->setProperty( "NormalTextColour", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( 1 - ( static_cast<float>(m_bg_color_2.blue) / 255 ), 1 - ( static_cast<float>(m_bg_color_2.blue) / 255 ), 1, 1 ) ) );
 
 	CEGUI::Window *statictext = wmgr.getWindow( "text_color_start" );
 	statictext->setProperty( "TextColours", CEGUI::PropertyHelper::colourToString( m_bg_color_1.Get_cegui_Color() ) );
@@ -491,7 +491,7 @@ void cLevel_Settings :: Load_BG_Image_List( void )
 		}
 
 		CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( float_to_string( background->m_pos_z ).c_str(), 0, background );
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		listbox->addItem( static_cast<CEGUI::ListboxItem *>(item) );
 	}

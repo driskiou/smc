@@ -36,9 +36,9 @@
 #include "../core/filesystem/filesystem.h"
 #include "../video/renderer.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUICombobox.h"
-#include "elements/CEGUIListboxTextItem.h"
+#include <CEGUI/WindowManager.h>
+#include "CEGUI/widgets/Combobox.h"
+#include "CEGUI/widgets/ListboxTextItem.h"
 
 namespace SMC
 {

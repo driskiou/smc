@@ -24,9 +24,9 @@
 #include "../audio/audio.h"
 #include "../level/level.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "elements/CEGUIMultiLineEditbox.h"
-#include "elements/CEGUIScrollbar.h"
+#include <CEGUI/widgets/Scrollbar.h>
 
 namespace SMC
 {

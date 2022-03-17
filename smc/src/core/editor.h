@@ -21,14 +21,14 @@
 #include "../gui/hud.h"
 #include "../video/img_settings.h"
 // CEGUI
-#include "CEGUIXMLHandler.h"
-#include "CEGUIXMLAttributes.h"
-#include "elements/CEGUIListbox.h"
-#include "elements/CEGUIListboxTextItem.h"
-#include "CEGUIImageset.h"
-#include "RendererModules/OpenGL/CEGUIOpenGLTexture.h"
+#include <CEGUI/XMLHandler.h>
+#include <CEGUI/XMLAttributes.h>
+#include <CEGUI/widgets/Listbox.h>
+#include <CEGUI/widgets/ListboxTextItem.h>
+//#include <CEGUI/Imageset.h>
+#include <CEGUI/RendererModules/OpenGL/Texture.h>
 
-namespace SMC
+namespace SMC 
 {
 
 /* *** *** *** *** *** *** *** cEditor_Object_Settings_Item *** *** *** *** *** *** *** *** *** *** */
@@ -53,7 +53,7 @@ public:
 class cEditor_CEGUI_Texture : public CEGUI::OpenGLTexture
 {
 public:
-	cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Size& size );
+	cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Size<int>& size );
 	~cEditor_CEGUI_Texture( void );
 
 	void cleanupOpenGLTexture( void );
@@ -71,7 +71,7 @@ public:
 	void Init( cSprite *sprite );
 
 	// overridden from base class
-	virtual	CEGUI::Size getPixelSize( void ) const;
+	virtual	CEGUI::Size<int> getPixelSize( void ) const;
 	// overridden from base class
     void draw( CEGUI::GeometryBuffer& buffer, const CEGUI::Rect& targetRect, float alpha, const CEGUI::Rect* clipper ) const;
 
@@ -160,7 +160,7 @@ public:
 	// ##### Main Menu
 
 	// Add Menu Entry
-	void Add_Menu_Object( const std::string &name, std::string tags, CEGUI::colour normal_color = CEGUI::colour( 1, 1, 1 ) );
+	void Add_Menu_Object( const std::string &name, std::string tags, CEGUI::Colour normal_color = CEGUI::Colour( 1, 1, 1 ) );
 	// Set Active Menu Entry
 	virtual void Activate_Menu_Item( cEditor_Menu_Object *entry );
 

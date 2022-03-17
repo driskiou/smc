@@ -33,15 +33,15 @@
 #include "SDL_opengl.h"
 // CEGUI
 #include "CEGUIDefaultResourceProvider.h"
-#include "CEGUIDefaultLogger.h"
-#include "CEGUIExceptions.h"
+#include <CEGUI/DefaultLogger.h>
+#include <CEGUI/Exceptions.h>
 #include "CEGUIWindowFactoryManager.h"
 #include "CEGUIImagesetManager.h"
 #include "CEGUIFontManager.h"
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "CEGUISchemeManager.h"
 #include "falagard/CEGUIFalWidgetLookManager.h"
-#include "elements/CEGUIProgressBar.h"
+CEGUI/widgets/ProgressBar..h
 #include "RendererModules/Null/CEGUINullRenderer.h"
 // png
 #include <png.h>
@@ -124,7 +124,7 @@ void cVideo :: Init_CEGUI( void ) const
 	try	
 	{	int windowWidth, windowHeight;
 		SDL_GetWindowSize(screen, &windowWidth, &windowHeight);
-		pGuiRenderer = &CEGUI::OpenGLRenderer::create( CEGUI::Size( windowWidth, windowHeight) );
+		pGuiRenderer = &CEGUI::OpenGLRenderer::create( CEGUI::Size<int>( windowWidth, windowHeight) );
 	}
 	// catch CEGUI Exceptions
 	catch( CEGUI::Exception &ex )
@@ -526,7 +526,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 		pFont->Restore_Textures();
 
 		// send new size to CEGUI
-		pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size( static_cast<float>(screen_w), static_cast<float>(screen_h) ) );
+		pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size<int>( static_cast<float>(screen_w), static_cast<float>(screen_h) ) );
 
 		// check if CEGUI is initialized
 		bool cegui_initialized = pGuiSystem->getGUISheet() != NULL;

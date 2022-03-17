@@ -36,12 +36,12 @@
 #include "../core/filesystem/filesystem.h"
 #include "../core/filesystem/resource_manager.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
+#include <CEGUI/WindowManager.h>
 #include "CEGUIFontManager.h"
-#include "elements/CEGUITabControl.h"
-#include "elements/CEGUIPushButton.h"
-#include "elements/CEGUIEditbox.h"
-#include "elements/CEGUICombobox.h"
+#include <CEGUI/widgets/TabControl.h>
+#include <CEGUI/widgets/PushButton.h>
+#include <CEGUI/widgets/Editbox.h>
+#include "CEGUI/widgets/Combobox.h"
 #include "elements/CEGUISpinner.h"
 #include "elements/CEGUIMultiLineEditbox.h"
 #include "elements/CEGUISlider.h"
@@ -393,21 +393,21 @@ void cMenu_Start :: Init_GUI( void )
 		// is in game dir
 		if( campaign->m_user == 0 )
 		{
-			item->setTextColours( CEGUI::colour( 1, 0.8f, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 1, 0.8f, 0.6f ) );
 		}
 		// is in user dir
 		else if( campaign->m_user == 1 )
 		{
-			item->setTextColours( CEGUI::colour( 0.8f, 1, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 0.8f, 1, 0.6f ) );
 		}
 		// is in both
 		else if( campaign->m_user == 2 )
 		{
 			// mix colors
-			item->setTextColours( CEGUI::colour( 0.8f, 1, 0.6f ), CEGUI::colour( 0.8f, 1, 0.6f ), CEGUI::colour( 1, 0.8f, 0.6f ), CEGUI::colour( 1, 0.8f, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 0.8f, 1, 0.6f ), CEGUI::Colour( 0.8f, 1, 0.6f ), CEGUI::Colour( 1, 0.8f, 0.6f ), CEGUI::Colour( 1, 0.8f, 0.6f ) );
 		}
 
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		listbox_campaigns->addItem( item );
 	}
@@ -444,21 +444,21 @@ void cMenu_Start :: Init_GUI( void )
 		// is in game dir
 		if( world->m_user == 0 )
 		{
-			item->setTextColours( CEGUI::colour( 1, 0.8f, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 1, 0.8f, 0.6f ) );
 		}
 		// is in user dir
 		else if( world->m_user == 1 )
 		{
-			item->setTextColours( CEGUI::colour( 0.8f, 1, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 0.8f, 1, 0.6f ) );
 		}
 		// is in both
 		else if( world->m_user == 2 )
 		{
 			// mix colors
-			item->setTextColours( CEGUI::colour( 0.8f, 1, 0.6f ), CEGUI::colour( 0.8f, 1, 0.6f ), CEGUI::colour( 1, 0.8f, 0.6f ), CEGUI::colour( 1, 0.8f, 0.6f ) );
+			item->setTextColours( CEGUI::Colour( 0.8f, 1, 0.6f ), CEGUI::Colour( 0.8f, 1, 0.6f ), CEGUI::Colour( 1, 0.8f, 0.6f ), CEGUI::Colour( 1, 0.8f, 0.6f ) );
 		}
 
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		listbox_worlds->addItem( item );
 	}
@@ -480,9 +480,9 @@ void cMenu_Start :: Init_GUI( void )
 	listbox_levels->setSortingEnabled( 1 );
 
 	// get game level
-	Get_Levels( DATA_DIR "/" GAME_LEVEL_DIR, CEGUI::colour( 1, 0.8f, 0.6f ) );
+	Get_Levels( DATA_DIR "/" GAME_LEVEL_DIR, CEGUI::Colour( 1, 0.8f, 0.6f ) );
 	// get user level
-	Get_Levels( pResource_Manager->user_data_dir + USER_LEVEL_DIR, CEGUI::colour( 0.8f, 1, 0.6f ) );
+	Get_Levels( pResource_Manager->user_data_dir + USER_LEVEL_DIR, CEGUI::Colour( 0.8f, 1, 0.6f ) );
 
 	// events
 	listbox_levels->subscribeEvent( CEGUI::Listbox::EventSelectionChanged, CEGUI::Event::Subscriber( &cMenu_Start::Level_Select, this ) );
@@ -555,7 +555,7 @@ void cMenu_Start :: Draw( void )
 	Draw_End();
 }
 
-void cMenu_Start :: Get_Levels( std::string dir, CEGUI::colour color )
+void cMenu_Start :: Get_Levels( std::string dir, CEGUI::Colour color )
 {
 	// Level Listbox
 	CEGUI::Listbox *listbox_levels = static_cast<CEGUI::Listbox *>(CEGUI::WindowManager::getSingleton().getWindow( "listbox_levels" ));
@@ -595,7 +595,7 @@ void cMenu_Start :: Get_Levels( std::string dir, CEGUI::colour color )
 		}
 
 
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		listbox_levels->addItem( item );
 	}
@@ -1260,10 +1260,10 @@ void cMenu_Options :: Init_GUI_Game( void )
 	m_game_combo_always_run = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "game_combo_always_run" ));
 
 	CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_game_combo_always_run->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_game_combo_always_run->addItem( item );
 
 	if( pPreferences->m_always_run )
@@ -1302,7 +1302,7 @@ void cMenu_Options :: Init_GUI_Game( void )
 	m_game_combo_language = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "game_combo_language" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("default") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_game_combo_language->addItem( item );
 
 	// get available languages
@@ -1325,7 +1325,7 @@ void cMenu_Options :: Init_GUI_Game( void )
 		filename.erase( 0, strlen( DATA_DIR "/" GAME_TRANSLATION_DIR "/" ) );
 
 		item = new CEGUI::ListboxTextItem( filename );
-		item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+		item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 		m_game_combo_language->addItem( item );
 	}
 
@@ -1389,7 +1389,7 @@ void cMenu_Options :: Init_GUI_Video( void )
 		float ar = static_cast<float>(res.m_width) / static_cast<float>(res.m_height);
 
 		item = new CEGUI::ListboxTextItem( int_to_string( res.m_width ) + "x" + int_to_string( res.m_height ) );
-		CEGUI::colour color( 0, 0, 0 );
+		CEGUI::Colour color( 0, 0, 0 );
 		// if a badly stretched resolution, display it in red
 		if( ar < 1.1f || ar > 1.5f )
 		{
@@ -1430,10 +1430,10 @@ void cMenu_Options :: Init_GUI_Video( void )
 	m_video_combo_bpp = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "video_combo_bpp" ));
 
 	item = new CEGUI::ListboxTextItem( "16" );
-	item->setTextColours( CEGUI::colour( 1, 0.6f, 0.3f ) );
+	item->setTextColours( CEGUI::Colour( 1, 0.6f, 0.3f ) );
 	m_video_combo_bpp->addItem( item );
 	item = new CEGUI::ListboxTextItem( "32" );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_video_combo_bpp->addItem( item );
 
 	m_video_combo_bpp->setText( int_to_string( pPreferences->m_video_screen_bpp ) );
@@ -1447,10 +1447,10 @@ void cMenu_Options :: Init_GUI_Video( void )
 	m_video_combo_fullscreen = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "video_combo_fullscreen" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_video_combo_fullscreen->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_video_combo_fullscreen->addItem( item );
 
 	if( pPreferences->m_video_fullscreen )
@@ -1471,10 +1471,10 @@ void cMenu_Options :: Init_GUI_Video( void )
 	m_video_combo_vsync = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "video_combo_vsync" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_video_combo_vsync->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_video_combo_vsync->addItem( item );
 
 	if( pPreferences->m_video_vsync )
@@ -1542,13 +1542,13 @@ void cMenu_Options :: Init_GUI_Audio( void )
 	m_audio_combo_hz = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "audio_combo_hz" ));
 
 	CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( "22050" );
-	item->setTextColours( CEGUI::colour( 1, 0, 0 ) );
+	item->setTextColours( CEGUI::Colour( 1, 0, 0 ) );
 	m_audio_combo_hz->addItem( item );
 	item = new CEGUI::ListboxTextItem( "44100" );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_audio_combo_hz->addItem( item );
 	item = new CEGUI::ListboxTextItem( "48000" );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_audio_combo_hz->addItem( item );
 
 	// Set current value
@@ -1565,10 +1565,10 @@ void cMenu_Options :: Init_GUI_Audio( void )
 	m_audio_combo_music = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "audio_combo_music" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_audio_combo_music->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_audio_combo_music->addItem( item );
 
 	if( pAudio->m_music_enabled )
@@ -1598,10 +1598,10 @@ void cMenu_Options :: Init_GUI_Audio( void )
 	m_audio_combo_sounds = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "audio_combo_sounds" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_audio_combo_sounds->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 1, 0.6f, 0.3f ) );
+	item->setTextColours( CEGUI::Colour( 1, 0.6f, 0.3f ) );
 	m_audio_combo_sounds->addItem( item );
 
 	if( pAudio->m_sound_enabled )
@@ -1682,7 +1682,7 @@ void cMenu_Options :: Init_GUI_Joystick( void )
 
 	// Add None
 	CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( UTF8_("None") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	combo_joy->addItem( item );
 
 	// Add all Joy names
@@ -1691,7 +1691,7 @@ void cMenu_Options :: Init_GUI_Joystick( void )
 	for( unsigned int i = 0; i < joy_names.size(); i++ )
 	{
 		item = new CEGUI::ListboxTextItem( joy_names[i] );
-		item->setTextColours( CEGUI::colour( 0.3f, 1, 0.3f ) );
+		item->setTextColours( CEGUI::Colour( 0.3f, 1, 0.3f ) );
 		combo_joy->addItem( item );
 	}
 
@@ -1722,10 +1722,10 @@ void cMenu_Options :: Init_GUI_Joystick( void )
 	CEGUI::Combobox *combo_joy_analog_jump = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "joystick_combo_analog_jump" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	combo_joy_analog_jump->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	combo_joy_analog_jump->addItem( item );
 
 	if( pPreferences->m_joy_analog_jump )
@@ -1785,10 +1785,10 @@ void cMenu_Options :: Init_GUI_Editor( void )
 	m_game_combo_editor_show_item_images = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "editor_combo_show_item_images" ));
 
 	CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_game_combo_editor_show_item_images->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_game_combo_editor_show_item_images->addItem( item );
 
 	if( pPreferences->m_editor_show_item_images )
@@ -1818,10 +1818,10 @@ void cMenu_Options :: Init_GUI_Editor( void )
 	m_game_combo_editor_mouse_auto_hide = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "editor_combo_mouse_auto_hide" ));
 
 	item = new CEGUI::ListboxTextItem( UTF8_("On") );
-	item->setTextColours( CEGUI::colour( 0, 1, 0 ) );
+	item->setTextColours( CEGUI::Colour( 0, 1, 0 ) );
 	m_game_combo_editor_mouse_auto_hide->addItem( item );
 	item = new CEGUI::ListboxTextItem( UTF8_("Off") );
-	item->setTextColours( CEGUI::colour( 0, 0, 1 ) );
+	item->setTextColours( CEGUI::Colour( 0, 0, 1 ) );
 	m_game_combo_editor_mouse_auto_hide->addItem( item );
 
 	if( pPreferences->m_editor_mouse_auto_hide )
@@ -2190,7 +2190,7 @@ void cMenu_Options :: Build_Shortcut_List( bool joystick /* = 0 */ )
 		cShortcut_item shortcut_item = (*itr);
 		
 		CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( shortcut_item.m_name, 0, shortcut_item.m_key );
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		unsigned int row_id = listbox->addRow( item, 0 );
 
@@ -2230,9 +2230,9 @@ void cMenu_Options :: Build_Shortcut_List( bool joystick /* = 0 */ )
 		// if not default
 		if( shortcut_not_the_default )
 		{
-			item->setTextColours( CEGUI::colour( 0.9f, 0.6f, 0.0f ) );
+			item->setTextColours( CEGUI::Colour( 0.9f, 0.6f, 0.0f ) );
 		}
-		item->setSelectionColours( CEGUI::colour( 0.33f, 0.33f, 0.33f ) );
+		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
 		item->setSelectionBrushImage( "TaharezLook", "ListboxSelectionBrush" );
 		listbox->setItem( item, 1, row_id );
 	}

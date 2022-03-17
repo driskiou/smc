@@ -98,7 +98,7 @@ public:
 	virtual void Draw( void );
 
 	// Get all levels from the given directory
-	void Get_Levels( std::string dir, CEGUI::colour color );
+	void Get_Levels( std::string dir, CEGUI::Colour color );
 
 	/* Highlight the given level
 	 * and activates level tab if needed

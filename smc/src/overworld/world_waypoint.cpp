@@ -25,10 +25,10 @@
 #include "../video/gl_surface.h"
 #include "../core/filesystem/filesystem.h"
 // CEGUI
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUICombobox.h"
-#include "elements/CEGUIEditbox.h"
-#include "elements/CEGUIListboxTextItem.h"
+#include <CEGUI/WindowManager.h>
+#include "CEGUI/widgets/Combobox.h"
+#include <CEGUI/widgets/Editbox.h>
+#include "CEGUI/widgets/ListboxTextItem.h"
 
 namespace SMC
 {

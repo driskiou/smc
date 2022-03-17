@@ -25,8 +25,8 @@
 #include "../core/filesystem/filesystem.h"
 #include "../core/filesystem/resource_manager.h"
 // CEGUI
-#include "CEGUIXMLParser.h"
-#include "CEGUIExceptions.h"
+#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/Exceptions.h>
 
 namespace SMC
 {

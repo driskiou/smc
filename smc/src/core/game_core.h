@@ -20,7 +20,7 @@
 #include "../objects/sprite.h"
 #include "../core/camera.h"
 // CEGUI
-#include "CEGUIPropertyHelper.h"
+#include <CEGUI/PropertyHelper.h>
 
 namespace SMC
 {
@@ -106,11 +106,11 @@ void Preload_Sounds( bool draw_gui = 0 );
 void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &name, CEGUI::String val );
 inline void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &name, int val )
 {
-	Write_Property( stream, name, CEGUI::PropertyHelper::intToString( val ) );
+	Write_Property( stream, name, CEGUI::PropertyHelper<int>::toString( val ) );
 };
 inline void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &name, unsigned int val )
 {
-	Write_Property( stream, name, CEGUI::PropertyHelper::uintToString( val ) );
+	Write_Property( stream, name, CEGUI::PropertyHelper<uint>::toString( val ) );
 };
 inline void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &name, Uint64 val )
 {
@@ -122,7 +122,7 @@ inline void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &n
 };
 inline void Write_Property( CEGUI::XMLSerializer &stream, const CEGUI::String &name, float val )
 {
-	Write_Property( stream, name, CEGUI::PropertyHelper::floatToString( val ) );
+	Write_Property( stream, name, CEGUI::PropertyHelper<float>::toString( val ) );
 };
 
 // Changes the image path in the given xml attributes to the new one

@@ -22,10 +22,10 @@
 #include "../core/math/utilities.h"
 #include "../core/i18n.h"
 // CEGUI
-#include "CEGUIXMLAttributes.h"
-#include "CEGUIWindowManager.h"
-#include "elements/CEGUIEditbox.h"
-#include "elements/CEGUICheckbox.h"
+#include <CEGUI/XMLAttributes.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/widgets/Editbox.h>
+#include <CEGUI/widgets/ToggleButton.h>
 
 namespace SMC
 {

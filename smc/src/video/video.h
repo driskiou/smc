@@ -35,8 +35,8 @@
 #endif
 #include "SDL_syswm.h"
 // CEGUI
-#include "CEGUISystem.h"
-#include "RendererModules/OpenGL/CEGUIOpenGLRenderer.h"
+#include <CEGUI/System.h>
+#include <CEGUI/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
 // boost thread
 #include <boost/thread/thread.hpp>
 

@@ -20,10 +20,10 @@
 #include "../core/i18n.h"
 #include "../overworld/world_editor.h"
 // CEGUI
-#include "CEGUIXMLParser.h"
-#include "CEGUIWindowManager.h"
-#include "CEGUIExceptions.h"
-#include "elements/CEGUIEditbox.h"
+#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/Exceptions.h>
+#include <CEGUI/widgets/Editbox.h>
 
 namespace SMC
 {

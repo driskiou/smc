@@ -97,11 +97,11 @@ void cLevel_Settings :: Init( void )
 	m_spinner_difficulty->setCurrentValue( static_cast<float>(m_level->m_difficulty) );
 	m_spinner_difficulty->subscribeEvent( CEGUI::Spinner::EventValueChanged, CEGUI::Event::Subscriber( &cLevel_Settings::Spinner_Difficulty_Changed, this ) );
 
-	m_slider_difficulty = static_cast<CEGUI::Slider *>(CEGUI::WindowManager::getSingleton().getWindow( "slider_difficulty" ));
+	m_slider_difficulty = static_cast<CEGUI::Slider *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "slider_difficulty" ));
 	m_slider_difficulty->setCurrentValue( static_cast<float>(m_level->m_difficulty) );
 	m_slider_difficulty->subscribeEvent( CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber( &cLevel_Settings::Slider_Difficulty_Changed, this ) );
 
-	m_text_difficulty_name = CEGUI::WindowManager::getSingleton().getWindow( "text_difficulty_name" );
+	m_text_difficulty_name = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_difficulty_name" );
 	m_text_difficulty_name->setText( Get_Difficulty_Name( m_level->m_difficulty ) );
 
 	// land type
@@ -363,7 +363,7 @@ bool cLevel_Settings :: Add_Background_Image( const CEGUI::EventArgs &event )
 
 bool cLevel_Settings :: Delete_Background_Image( const CEGUI::EventArgs &event )
 {
-	CEGUI::Listbox *listbox = static_cast<CEGUI::Listbox *>(CEGUI::WindowManager::getSingleton().getWindow( "listbox_backgrounds" ));
+	CEGUI::Listbox *listbox = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "listbox_backgrounds" ));
 	CEGUI::ListboxItem *item = listbox->getFirstSelectedItem();
 
 	if( !item )
@@ -477,7 +477,7 @@ bool cLevel_Settings :: Update_BG_Colors( const CEGUI::EventArgs &event )
 
 void cLevel_Settings :: Load_BG_Image_List( void )
 {
-	CEGUI::Listbox *listbox = static_cast<CEGUI::Listbox *>(CEGUI::WindowManager::getSingleton().getWindow( "listbox_backgrounds" ));
+	CEGUI::Listbox *listbox = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "listbox_backgrounds" ));
 	listbox->resetList();
 
 	for( vector<cBackground *>::iterator itr = m_level->m_background_manager->objects.begin(); itr != m_level->m_background_manager->objects.end(); ++itr )
@@ -496,7 +496,7 @@ void cLevel_Settings :: Load_BG_Image_List( void )
 		listbox->addItem( static_cast<CEGUI::ListboxItem *>(item) );
 	}
 
-	CEGUI::PushButton *button_add = static_cast<CEGUI::PushButton *>(CEGUI::WindowManager::getSingleton().getWindow( "button_add_background_image" ));
+	CEGUI::PushButton *button_add = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "button_add_background_image" ));
 	
 	// 9 layers + default background is the maximum
 	if( m_level->m_background_manager->size() >= 10 )

@@ -887,7 +887,7 @@ cDebugDisplay :: cDebugDisplay( cSprite_Manager *sprite_manager )
 	m_window_debug_text = CEGUI::WindowManager::getSingleton().loadWindowLayout( "debugtext.layout" );
 	pGuiSystem->getGUISheet()->addChildWindow( m_window_debug_text );
 	// debug text
-	m_text_debug_text = static_cast<CEGUI::Window *>(CEGUI::WindowManager::getSingleton().getWindow( "text_debugmessage" ));
+	m_text_debug_text = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_debugmessage" ));
 	// hide
 	m_text_debug_text->setVisible( 0 );
 

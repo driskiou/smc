@@ -25,7 +25,7 @@
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/widgets/Listbox.h>
 #include <CEGUI/widgets/ListboxTextItem.h>
-//#include <CEGUI/Imageset.h>
+#include <CEGUI/BasicImage.h>
 #include <CEGUI/RendererModules/OpenGL/Texture.h>
 
 namespace SMC 
@@ -53,7 +53,7 @@ public:
 class cEditor_CEGUI_Texture : public CEGUI::OpenGLTexture
 {
 public:
-	cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Size<int>& size );
+	cEditor_CEGUI_Texture( CEGUI::OpenGLRenderer& owner, GLuint tex, const CEGUI::Sizef& size );
 	~cEditor_CEGUI_Texture( void );
 
 	void cleanupOpenGLTexture( void );
@@ -71,16 +71,17 @@ public:
 	void Init( cSprite *sprite );
 
 	// overridden from base class
-	virtual	CEGUI::Size<int> getPixelSize( void ) const;
+	virtual	CEGUI::Sizef getPixelSize( void ) const;
 	// overridden from base class
-    void draw( CEGUI::GeometryBuffer& buffer, const CEGUI::Rect& targetRect, float alpha, const CEGUI::Rect* clipper ) const;
+    void draw(CEGUI::GeometryBuffer& buffer, const CEGUI::Rectf& targetRect,
+                      float alpha, const CEGUI::Rectf* clipper ) const;
 
 	// parent
 	const CEGUI::Listbox *m_parent;
 	// text
 	CEGUI::ListboxTextItem *list_text;
 	// cegui image
-	CEGUI::Imageset *m_image;
+	CEGUI::BasicImage*m_image;
 	// sprite
 	cSprite *sprite_obj;
 	// preview image scale

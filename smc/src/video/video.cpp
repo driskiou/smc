@@ -766,7 +766,7 @@ void cVideo :: Init_Image_Cache( bool recreate /* = 0 */, bool draw_gui /* = 0 *
 	if( draw_gui )
 	{
 		// get progress bar
-		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::WindowManager::getSingleton().getWindow( "progress_bar" ));
+		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "progress_bar" ));
 		progress_bar->setProgress( 0 );
 
 		// set loading screen text
@@ -2429,14 +2429,14 @@ void Loading_Screen_Init( void )
 	guisheet->addChildWindow( loading_window );
 
 	// set info text
-	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::WindowManager::getSingleton().getWindow( "text_loading" ));
+	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_loading" ));
 	text_default->setText( _("Loading") );
 }
 
 void Loading_Screen_Draw_Text( const std::string &str_info /* = "Loading" */ )
 {
 	// set info text
-	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::WindowManager::getSingleton().getWindow( "text_loading" ));
+	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_loading" ));
 	if( !text_default )
 	{
 		printf( "Warning: Loading Screen not initialized." );
@@ -2468,7 +2468,7 @@ void Loading_Screen_Draw( void )
 
 void Loading_Screen_Exit( void )
 {
-	CEGUI::Window *loading_window = CEGUI::WindowManager::getSingleton().getWindow( "loading" );
+	CEGUI::Window *loading_window = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "loading" );
 
 	// loading window is present
 	if( loading_window )

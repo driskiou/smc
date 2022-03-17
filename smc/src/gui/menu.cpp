@@ -384,7 +384,7 @@ bool cMenuCore :: Key_Down( SDL_Keycode key )
 
 			menu_start->Init();
 			// get levels listbox
-			CEGUI::Listbox *listbox_levels = static_cast<CEGUI::Listbox *>(CEGUI::WindowManager::getSingleton().getWindow( "listbox_levels" ));
+			CEGUI::Listbox *listbox_levels = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "listbox_levels" ));
 			// select random level
 			listbox_levels->setItemSelectState( rand() % listbox_levels->getItemCount(), 1 );
 			// get level name
@@ -396,7 +396,7 @@ bool cMenuCore :: Key_Down( SDL_Keycode key )
 		else
 		{
 			// Get levels listbox
-			CEGUI::Listbox *listbox_levels = static_cast<CEGUI::Listbox *>(CEGUI::WindowManager::getSingleton().getWindow( "listbox_levels" ));
+			CEGUI::Listbox *listbox_levels = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "listbox_levels" ));
 			// select random level
 			listbox_levels->setItemSelectState( rand() % listbox_levels->getItemCount(), 1 );
 			// get level name

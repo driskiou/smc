@@ -18,8 +18,8 @@
 
 #include "../core/global_basic.h"
 // CEGUI
-#include "elements/CEGUISpinner.h"
-#include "CEGUIWindowFactory.h"
+#include <CEGUI/widgets/Spinner.h>
+#include <CEGUI/WindowFactory.h>
 
 namespace CEGUI
 {

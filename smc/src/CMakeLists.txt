@@ -204,18 +204,18 @@ endif()
 
 
 # copy data
-add_custom_command(
-OUTPUT
-${CMAKE_CURRENT_BINARY_DIR}/data
-COMMAND
-${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/../data
-${CMAKE_CURRENT_BINARY_DIR}/data
-DEPENDS
-${CMAKE_CURRENT_SOURCE_DIR}/../data
-)
+# add_custom_command(
+# OUTPUT
+# ${CMAKE_CURRENT_BINARY_DIR}/data
+# COMMAND
+# ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/../data
+# ${CMAKE_CURRENT_BINARY_DIR}/data
+# DEPENDS
+# ${CMAKE_CURRENT_SOURCE_DIR}/../data
+# )
 
 
-target_sources(smc
-PRIVATE
-${CMAKE_CURRENT_BINARY_DIR}/data
-)
+# target_sources(smc
+# PRIVATE
+# ${CMAKE_CURRENT_BINARY_DIR}/data
+#)

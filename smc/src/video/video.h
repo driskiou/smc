@@ -16,16 +16,21 @@
 #ifndef SMC_VIDEO_H
 #define SMC_VIDEO_H
 
-#include "../core/global_basic.h"
-#include "../core/global_game.h"
-#include "../video/color.h"
-// glx
-#ifdef __unix__
-	#include <GL/glx.h>
-#endif
 // SDL
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h> 
+
+// CEGUI
+#include <CEGUI/CEGUI.h>
+#include <CEGUI/RendererModules/OpenGL/GLRenderer.h>
+
+
+
+#include "../core/global_basic.h"
+#include "../core/global_game.h"
+#include "../video/color.h"
+
+
 #ifdef __unix__
 	#define NO_SDL_GLEXT
 #endif
@@ -34,9 +39,7 @@
 	#undef NO_SDL_GLEXT
 #endif
 #include "SDL_syswm.h"
-// CEGUI
-#include <CEGUI/System.h>
-#include <CEGUI/RendererModules/OpenGL/GLRenderer.h>
+
 // boost thread
 #include <boost/thread/thread.hpp>
 
@@ -258,7 +261,7 @@ public:
 	SDL_SysWMinfo wm_info;
 #ifdef __unix__
 	// current opengl context
-	GLXContext glx_context;
+	//GLXContext glx_context;
 #endif
 	// rendering thread
 	boost::thread m_render_thread;

@@ -52,7 +52,8 @@ void cKeyboard :: Reset_Keys( void )
 bool cKeyboard :: CEGUI_Handle_Key_Up( SDL_Keycode key ) const
 {
 	// inject the scancode directly
-	if( pGuiSystem->injectKeyUp( SDL_Keycode_to_CEGUIKey( key ) ) )
+	
+	if( CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp( SDL_Keycode_to_CEGUIKey( key ) ) )
 	{
 		// input was processed by the gui system
 		return 1;
@@ -96,7 +97,7 @@ bool cKeyboard :: Key_Up( SDL_Keycode key )
 bool cKeyboard :: CEGUI_Handle_Key_Down( SDL_Keycode key ) const
 {
 	// inject the scancode
-	if( pGuiSystem->injectKeyDown( SDL_Keycode_to_CEGUIKey( key ) ) == 1 )
+	if( CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyDown( SDL_Keycode_to_CEGUIKey( key ) ) == 1 )
 	{
 		// input got processed by the gui system
 		return 1;
@@ -116,7 +117,7 @@ bool cKeyboard :: CEGUI_Handle_Key_Down( SDL_Keycode key ) const
 		CEGUI::String str;
 
 		str.assign(t);
-		if( pGuiSystem->injectChar(str[0]))
+		if( CEGUI::System::getSingleton().getDefaultGUIContext().injectChar(str[0]))
 		{
 			// input got processed by the gui system
 			return 1;
@@ -317,7 +318,7 @@ bool cKeyboard :: Key_Down( SDL_Keycode key )
 	return 0;
 }
 
-unsigned int cKeyboard :: SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const
+ CEGUI::Key::Scan cKeyboard :: SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const
 {
     switch( key )
     {
@@ -428,7 +429,7 @@ unsigned int cKeyboard :: SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const
     case SDLK_SYSREQ:       return CEGUI::Key::SysRq;
     case SDLK_MENU:         return CEGUI::Key::AppMenu;
     case SDLK_POWER:        return CEGUI::Key::Power;
-    default:                return 0;
+    default:                return CEGUI::Key::Unknown;
     }
 }
 

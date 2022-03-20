@@ -25,7 +25,7 @@
 #include "../core/filesystem/filesystem.h"
 #include "../core/filesystem/resource_manager.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 #include <CEGUI/Exceptions.h>
 
 namespace SMC
@@ -854,6 +854,11 @@ cSavegame_XML_Handler :: cSavegame_XML_Handler( const std::string &filename )
 	{
 		m_savegame->m_description = _("No Description");
 	}
+}
+
+const CEGUI::String & cSavegame_XML_Handler :: getDefaultResourceGroup () const
+{
+	return m_default_resource;
 }
 
 cSavegame_XML_Handler :: ~cSavegame_XML_Handler( void )

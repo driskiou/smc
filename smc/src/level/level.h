@@ -190,6 +190,9 @@ public:
 	GL_rect m_camera_limits;
 	float m_fixed_camera_hor_vel;
 
+
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+
 private:
 	// XML element start
 	virtual void elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes );
@@ -198,6 +201,8 @@ private:
 
 	// XML element Item Tag list
 	CEGUI::XMLAttributes m_xml_attributes;
+
+	const CEGUI::String m_default_resource = "default";
 };
 
 /* Return the Level Object if element name is available else NULL

@@ -19,6 +19,7 @@
 #include "../core/math/size.h"
 #include "../core/filesystem/filesystem.h"
 
+
 namespace SMC
 {
 

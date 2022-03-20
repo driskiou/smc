@@ -214,6 +214,7 @@ cEditor :: cEditor( cSprite_Manager *sprite_manager )
 	m_listbox_menu = NULL;
 	m_listbox_items = NULL;
 	m_tabcontrol_menu = NULL;
+	
 }
 
 const CEGUI::String & cEditor :: getDefaultResourceGroup () const

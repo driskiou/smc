@@ -32,15 +32,16 @@
 // SDL
 #include <SDL2/SDL_opengl.h>
 // CEGUI
-#include "CEGUIDefaultResourceProvider.h"
+#include <CEGUI/DefaultResourceProvider.h>
+#include <CEGUI/RendererModules/Null/Renderer.h>
 #include <CEGUI/DefaultLogger.h>
 #include <CEGUI/Exceptions.h>
 #include "CEGUI/WindowFactoryManager.h"
-#include "CEGUI/ImagesetManager.h"
-#include "CEGUI/FontManager.h"
+#include <CEGUI/ImageManager.h>
+#include <CEGUI/FontManager.h>
 #include <CEGUI/WindowManager.h>
-#include "CEGUI/SchemeManager.h"
-#include "falagard/CEGUIFalWidgetLookManager.h"
+#include <CEGUI/SchemeManager.h>
+#include <CEGUI/falagard/WidgetLookManager.h>
 
 
 // png
@@ -73,9 +74,7 @@ cVideo :: cVideo( void )
 	m_texture_quality = cPreferences::m_texture_quality_default;
 
 	SDL_VERSION( &wm_info.version );
-#ifdef __unix__
-	glx_context = NULL;
-#endif
+
 	m_render_thread = boost::thread();
 
 	m_initialised = 0;
@@ -105,10 +104,12 @@ void cVideo :: Init_CEGUI_Fake( void ) const
 #endif
 	// create fake system and renderer
 	pGuiSystem = &CEGUI::System::create( CEGUI::NullRenderer::create(), rp, NULL, NULL, NULL, "", log_dump_dir );
+
 }
 
 void cVideo :: Delete_CEGUI_Fake( void ) const
 {
+	
 	CEGUI::ResourceProvider *rp = pGuiSystem->getResourceProvider();
 	CEGUI::Renderer *renderer = pGuiSystem->getRenderer();
 
@@ -120,11 +121,20 @@ void cVideo :: Delete_CEGUI_Fake( void ) const
 
 void cVideo :: Init_CEGUI( void ) const
 {
+		// create logger
+	CEGUI::Logger *logger = new CEGUI::DefaultLogger();
+	// set logging level
+#ifdef _DEBUG
+	logger->setLoggingLevel( CEGUI::Informative );
+#else
+	logger->setLoggingLevel( CEGUI::Errors );
+#endif
+
 	// create renderer
 	try	
 	{	int windowWidth, windowHeight;
 		SDL_GetWindowSize(screen, &windowWidth, &windowHeight);
-		pGuiRenderer = &CEGUI::OpenGLRenderer::create( CEGUI::Size<int>( windowWidth, windowHeight) );
+		pGuiRenderer = &CEGUI::OpenGLRenderer::bootstrapSystem(CEGUI::Sizef( windowWidth, windowHeight) );
 	}
 	// catch CEGUI Exceptions
 	catch( CEGUI::Exception &ex )
@@ -136,7 +146,7 @@ void cVideo :: Init_CEGUI( void ) const
 	pGuiRenderer->enableExtraStateSettings( 1 );
 
 	// create Resource Provider
-	CEGUI::DefaultResourceProvider *rp = new CEGUI::DefaultResourceProvider();
+	CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*>(CEGUI::System::getSingleton().getResourceProvider());
 
 	// set Resource Provider directories
 	rp->setResourceGroupDirectory( "schemes", DATA_DIR "/" GUI_SCHEME_DIR "/" );
@@ -144,25 +154,20 @@ void cVideo :: Init_CEGUI( void ) const
 	rp->setResourceGroupDirectory( "fonts", DATA_DIR "/" GUI_FONT_DIR "/" );
 	rp->setResourceGroupDirectory( "looknfeels", DATA_DIR "/" GUI_LOOKNFEEL_DIR "/" );
 	rp->setResourceGroupDirectory( "layouts", DATA_DIR "/" GUI_LAYOUT_DIR "/" );
+	rp->setResourceGroupDirectory( "schemas", DATA_DIR "/" GUI_SCHEMAS_DIR "/" );
+
 	if( CEGUI::System::getDefaultXMLParserName().compare( "XercesParser" ) == 0 )
 	{
 		// Needed for Xerces to specify the schemas location
 		rp->setResourceGroupDirectory( "schemas", DATA_DIR "/" GAME_SCHEMA_DIR "/" );
 	}
 
-	// create logger
-	CEGUI::Logger *logger = new CEGUI::DefaultLogger();
-	// set logging level
-#ifdef _DEBUG
-	logger->setLoggingLevel( CEGUI::Informative );
-#else
-	logger->setLoggingLevel( CEGUI::Errors );
-#endif
+
 
 	// set initial mouse position
 	int mouse_x, mouse_y;
 	SDL_GetMouseState( &mouse_x, &mouse_y );
-	CEGUI::MouseCursor::setInitialMousePosition( CEGUI::Point( mouse_x, mouse_y ) );
+	CEGUI::MouseCursor::setInitialMousePosition( CEGUI::Vector2f( mouse_x, mouse_y ) );
 	// add custom widgets
 	CEGUI::WindowFactoryManager::addFactory<CEGUI::SMC_SpinnerFactory>();
 
@@ -173,7 +178,7 @@ void cVideo :: Init_CEGUI( void ) const
 	#ifdef _WIN32
 		pGuiSystem = &CEGUI::System::create( *pGuiRenderer, rp, NULL, NULL, NULL, "", (const CEGUI::utf8*)((pResource_Manager->user_data_dir + "cegui.log").c_str()) );
 	#else
-		pGuiSystem = &CEGUI::System::create( *pGuiRenderer, rp, NULL, NULL, NULL, "", pResource_Manager->user_data_dir + "cegui.log" );
+		pGuiSystem = CEGUI::System::getSingletonPtr();
 	#endif
 	}
 	// catch CEGUI Exceptions
@@ -187,16 +192,19 @@ void cVideo :: Init_CEGUI( void ) const
 void cVideo :: Init_CEGUI_Data( void ) const
 {
 	// set the default resource groups to be used
+	
 	CEGUI::Scheme::setDefaultResourceGroup( "schemes" );
-	CEGUI::Imageset::setDefaultResourceGroup( "imagesets" );
+	CEGUI::ImageManager::setImagesetDefaultResourceGroup( "imagesets" );
 	CEGUI::Font::setDefaultResourceGroup( "fonts" );
 	CEGUI::WidgetLookManager::setDefaultResourceGroup( "looknfeels" );
 	CEGUI::WindowManager::setDefaultResourceGroup( "layouts" );
 
+	CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-12.font");
+
 	// load the scheme file, which auto-loads the imageset
 	try
 	{
-		CEGUI::SchemeManager::getSingleton().create( "TaharezLook.scheme" );
+		CEGUI::SchemeManager::getSingleton().createFromFile( "TaharezLook.scheme" , "schemes");
 	}
 	// catch CEGUI Exceptions
 	catch( CEGUI::Exception &ex )
@@ -206,15 +214,15 @@ void cVideo :: Init_CEGUI_Data( void ) const
 	}
 
 	// default mouse cursor
-	pGuiSystem->setDefaultMouseCursor( "TaharezLook", "MouseArrow" );
-	// force new mouse image
-	CEGUI::MouseCursor::getSingleton().setImage( &CEGUI::ImagesetManager::getSingleton().get( "TaharezLook" ).getImage( "MouseArrow" ) );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage( "MouseArrow" );
+
+
 	// default tooltip
-	pGuiSystem->setDefaultTooltip( "TaharezLook/Tooltip" );
+	CEGUI::System::getSingleton().getDefaultGUIContext().setDefaultTooltipType( "TaharezLook/Tooltip" );
 
 	// create default root window
-	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadWindowLayout( "default.layout" );
-	pGuiSystem->setGUISheet( window_root );
+	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "default.layout" );
+	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow( window_root );
 	window_root->activate();
 }
 
@@ -390,7 +398,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	if( m_initialised )
 	{
 		// check if CEGUI is initialized
-		bool cegui_initialized = pGuiSystem->getGUISheet() != NULL;
+		bool cegui_initialized =  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow() != NULL;
 
 		// show loading screen
 		if( cegui_initialized )
@@ -505,10 +513,7 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 	{
 		printf( "Error: SDL_GetWMInfo not implemented\n" );
 	}
-#ifdef __unix__
-	// get context
-	glx_context = glXGetCurrentContext();
-#endif
+
 
 	// initialize opengl
 	Init_OpenGL();
@@ -526,10 +531,10 @@ void cVideo :: Init_Video( bool reload_textures_from_file /* = 0 */, bool use_pr
 		pFont->Restore_Textures();
 
 		// send new size to CEGUI
-		pGuiSystem->notifyDisplaySizeChanged( CEGUI::Size<int>( static_cast<float>(screen_w), static_cast<float>(screen_h) ) );
+		pGuiSystem->notifyDisplaySizeChanged( CEGUI::Sizef( static_cast<float>(screen_w), static_cast<float>(screen_h) ) );
 
 		// check if CEGUI is initialized
-		bool cegui_initialized = pGuiSystem->getGUISheet() != NULL;
+		bool cegui_initialized =  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow() != NULL;
 
 		// show loading screen
 		if( cegui_initialized )
@@ -987,10 +992,7 @@ void cVideo :: Make_GL_Context_Current( void )
 		wglMakeCurrent( GetDC( wm_info.window ), wm_info.hglrc );
 	}
 #elif __unix__
-	if( glx_context != NULL )
-	{
-		glXMakeCurrent( wm_info.info.x11.display, wm_info.info.x11.window, glx_context );
-	}
+
 #elif __APPLE__
 	// party time
 #endif
@@ -1004,7 +1006,7 @@ void cVideo :: Make_GL_Context_Inactive( void )
 #ifdef _WIN32
 	wglMakeCurrent( NULL, NULL );
 #elif __unix__
-	glXMakeCurrent( wm_info.info.x11.display, None, NULL );
+
 #elif __APPLE__
 	// party time
 #endif
@@ -1032,7 +1034,7 @@ void cVideo :: Render( bool threaded /* = 0 */ )
 
 	if( threaded )
 	{
-		pGuiSystem->renderGUI();
+		CEGUI::System::getSingleton().renderAllGUIContexts();
 
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_GUI]->Update();
@@ -1067,7 +1069,7 @@ void cVideo :: Render( bool threaded /* = 0 */ )
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_GAME]->Update();
 
-		pGuiSystem->renderGUI();
+		CEGUI::System::getSingleton().renderAllGUIContexts();
 
 		// update performance timer
 		pFramerate->m_perf_timer[PERF_RENDER_GUI]->Update();
@@ -2410,13 +2412,13 @@ void Draw_Effect_In( Effect_Fadein effect /* = EFFECT_IN_RANDOM */, float speed 
 
 void Loading_Screen_Init( void )
 {
-	if( CEGUI::WindowManager::getSingleton().isWindowPresent( "loading" ) )
+	if(  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "loading" ) != nullptr )
 	{
 		printf( "Warning: Loading Screen already initialized." );
 		return;
 	}
 
-	CEGUI::Window *guisheet = pGuiSystem->getGUISheet();
+	CEGUI::Window *guisheet =  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
 
 	// hide all windows
 	for( unsigned int i = 0, gui_windows = guisheet->getChildCount(); i < gui_windows; i++ )
@@ -2425,8 +2427,8 @@ void Loading_Screen_Init( void )
 	}
 
 	// Create loading window
-	CEGUI::Window *loading_window = CEGUI::WindowManager::getSingleton().loadWindowLayout( "loading.layout" );
-	guisheet->addChildWindow( loading_window );
+	CEGUI::Window *loading_window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "loading.layout" );
+	guisheet->addChild( loading_window );
 
 	// set info text
 	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_loading" ));
@@ -2462,7 +2464,7 @@ void Loading_Screen_Draw( void )
 
 	// Render
 	pRenderer->Render();
-	pGuiSystem->renderGUI();
+	CEGUI::System::getSingleton().renderAllGUIContexts();
 	SDL_GL_SwapWindow( screen );
 }
 
@@ -2473,10 +2475,10 @@ void Loading_Screen_Exit( void )
 	// loading window is present
 	if( loading_window )
 	{
-		CEGUI::Window *guisheet = pGuiSystem->getGUISheet();
+		CEGUI::Window *guisheet = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
 
 		// delete loading window
-		guisheet->removeChildWindow( loading_window );
+		guisheet->removeChild( loading_window );
 		CEGUI::WindowManager::getSingleton().destroyWindow( loading_window );
 
 		// show windows again

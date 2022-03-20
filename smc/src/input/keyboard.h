@@ -18,8 +18,10 @@
 
 #include "../core/global_basic.h"
 #include "../core/global_game.h"
+
+#include <CEGUI/CEGUI.h>
 // SDL
-#include "SDL.h"
+#include <SDL2/SDL.h>
 
 namespace SMC
 {
@@ -72,7 +74,7 @@ public:
 	};
 
 	// Translate a SDL_Keycode to the proper CEGUI::Key
-	unsigned int SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const;
+	 CEGUI::Key::Scan SDL_Keycode_to_CEGUIKey( const SDL_Keycode key ) const;
 
 	// Pressed keys
 	Uint8 m_keys[SDLK_AUDIOFASTFORWARD - SDLK_UNKNOWN];

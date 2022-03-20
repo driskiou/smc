@@ -173,7 +173,7 @@ enum LevelLandType
 	#define DATA_DIR "."
 #else
 	#ifndef DATA_DIR
-		#define DATA_DIR "data"
+		#define DATA_DIR "/home/ludovic/Programmation/SMC/smc/src/build/RelWithDebInfo/data"
 	#endif
 #endif
 
@@ -191,9 +191,10 @@ enum LevelLandType
 // GUI
 #define GUI_SCHEME_DIR "gui/schemes"
 #define GUI_IMAGESET_DIR "gui/imagesets"
-#define GUI_FONT_DIR "gui/font"
-#define GUI_LAYOUT_DIR "gui/layout"
+#define GUI_FONT_DIR "gui/fonts"
+#define GUI_LAYOUT_DIR "gui/layouts"
 #define GUI_LOOKNFEEL_DIR "gui/looknfeel"
+#define GUI_SCHEMAS_DIR "gui/xml_shemas"
 // User
 #define USER_SAVEGAME_DIR "savegames"
 #define USER_SCREENSHOT_DIR "screenshots"

@@ -244,6 +244,11 @@ public:
 
 	// object we are constructing
 	cSave *m_savegame;
+
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+
+	private:
+	const CEGUI::String m_default_resource = "default";
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

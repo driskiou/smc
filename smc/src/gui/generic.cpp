@@ -32,11 +32,11 @@
 
 // CEGUI
 #include <CEGUI/WindowManager.h>
-#include "CEGUIFontManager.h"
+#include <CEGUI/FontManager.h>
 #include <CEGUI/widgets/Editbox.h>
 #include <CEGUI/widgets/FrameWindow.h>
 #include <CEGUI/widgets/PushButton.h>
-#include "elements/CEGUIMultiLineEditbox.h"
+#include <CEGUI/widgets/MultiLineEditbox.h>
 
 namespace SMC
 {
@@ -58,8 +58,8 @@ cDialogBox :: ~cDialogBox( void )
 void cDialogBox :: Init( void )
 {
 	// load layout
-	window = CEGUI::WindowManager::getSingleton().loadWindowLayout( layout_file );
-	pGuiSystem->getGUISheet()->addChildWindow( window );
+	window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( layout_file );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( window );
 
 	// hide mouse on exit
 	if( !pMouseCursor->m_active )
@@ -77,7 +77,7 @@ void cDialogBox :: Exit( void )
 		pMouseCursor->Set_Active( 0 );
 	}
 
-	pGuiSystem->getGUISheet()->removeChildWindow( window );
+	pGuiSystem->getDefaultGUIContext().getRootWindow()->removeChild( window );
 	CEGUI::WindowManager::getSingleton().destroyWindow( window );
 }
 
@@ -132,7 +132,7 @@ std::string cDialogBox_Text :: Enter( std::string default_text, std::string titl
 	box_editbox->setText( reinterpret_cast<const CEGUI::utf8*>(default_text.c_str()) );
 	box_editbox->setTooltipText( reinterpret_cast<const CEGUI::utf8*>(title_text.c_str()) );
 	box_editbox->activate();
-	box_editbox->setCaratIndex( default_text.length() );
+	box_editbox->setCaretIndex( default_text.length() );
 
 	finished = 0;
 
@@ -356,13 +356,13 @@ void Draw_Static_Text( const std::string &text, const Color *color_text /* = &wh
 	bool draw = 1;
 
 	// Statictext window
-	CEGUI::Window *window_statictext = CEGUI::WindowManager::getSingleton().loadWindowLayout( "statictext.layout" );
-	pGuiSystem->getGUISheet()->addChildWindow( window_statictext );
+	CEGUI::Window *window_statictext = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "statictext.layout" );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( window_statictext );
 	// get default text
 	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_default" ));
 
 	// set text
-	text_default->setProperty( "TextColours", CEGUI::PropertyHelper::colourToString( CEGUI::Colour( static_cast<float>(color_text->red) / 255, static_cast<float>(color_text->green) / 255, static_cast<float>(color_text->blue) / 255, 1 ) ) );
+	text_default->setProperty( "TextColours", CEGUI::PropertyHelper<CEGUI::Colour>::toString( CEGUI::Colour( static_cast<float>(color_text->red) / 255, static_cast<float>(color_text->green) / 255, static_cast<float>(color_text->blue) / 255, 1 ) ) );
 	CEGUI::String gui_text = reinterpret_cast<const CEGUI::utf8*>(text.c_str());
 	text_default->setText( gui_text );
 
@@ -428,7 +428,7 @@ void Draw_Static_Text( const std::string &text, const Color *color_text /* = &wh
 		Clear_Input_Events();
 	}
 
-	pGuiSystem->getGUISheet()->removeChildWindow( window_statictext );
+	pGuiSystem->getDefaultGUIContext().getRootWindow()->removeChild( window_statictext );
 	CEGUI::WindowManager::getSingleton().destroyWindow( window_statictext );
 }
 
@@ -617,7 +617,7 @@ void Set_Clipboard_Content( std::string str )
 
 bool GUI_Copy_To_Clipboard( bool cut )
 {
-	CEGUI::Window *sheet = CEGUI::System::getSingleton().getGUISheet();
+	CEGUI::Window *sheet = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
 
 	// no sheet
 	if( !sheet )
@@ -687,7 +687,7 @@ bool GUI_Copy_To_Clipboard( bool cut )
 
 bool GUI_Paste_From_Clipboard( void )
 {
-	CEGUI::Window *sheet = CEGUI::System::getSingleton().getGUISheet();
+	CEGUI::Window *sheet = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow();
 
 	// no sheet
 	if( !sheet )
@@ -727,7 +727,7 @@ bool GUI_Paste_From_Clipboard( void )
 		// set new text
 		editbox->setText( new_text.insert( beg, clipboard_text ) );
 		// set new carat index
-		editbox->setCaratIndex( editbox->getCaratIndex() + clipboard_text.length() );
+		editbox->setCaretIndex( editbox->getCaretIndex() + clipboard_text.length() );
 	}
 	// Editbox
 	else if( type.find( "/Editbox" ) != CEGUI::String::npos )
@@ -751,7 +751,7 @@ bool GUI_Paste_From_Clipboard( void )
 		// set new text
 		editbox->setText( new_text.insert( beg, clipboard_text ) );
 		// set new carat index
-		editbox->setCaratIndex( editbox->getCaratIndex() + clipboard_text.length() );
+		editbox->setCaretIndex( editbox->getCaretIndex() + clipboard_text.length() );
 	}
 	else
 	{

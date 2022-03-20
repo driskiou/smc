@@ -24,7 +24,7 @@
 #include "../core/filesystem/resource_manager.h"
 #include "../core/filesystem/filesystem.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 #include <CEGUI/Exceptions.h>
 
 namespace SMC
@@ -106,15 +106,15 @@ cPreferences :: ~cPreferences( void )
 	//
 }
 
-const CEGUI::String & getDefaultResourceGroup () const
+const CEGUI::String & cPreferences :: getDefaultResourceGroup () const
 {
-	return m_default_resource;
+	return m_xml_default_resource;
 }
 
 bool cPreferences :: Load( const std::string &filename /* = "" */ )
 {
-	m_default_resource.clear();
-	m_default_resource.append(filename);
+	m_xml_default_resource.clear();
+	m_xml_default_resource.append(filename);
 
 	Reset_All();
 	
@@ -152,7 +152,7 @@ bool cPreferences :: Load( const std::string &filename /* = "" */ )
 	#ifdef _WIN32
 		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, (const CEGUI::utf8*)m_config_filename.c_str(), DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", "" );
 	#else
-		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, m_config_filename, DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", m_default_resource );
+		CEGUI::System::getSingleton().getXMLParser()->parseXMLFile( *this, m_config_filename, DATA_DIR "/" GAME_SCHEMA_DIR "/Config.xsd", "default" );
 	#endif
 	}
 	// catch CEGUI Exceptions

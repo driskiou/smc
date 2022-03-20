@@ -71,10 +71,15 @@ public:
 	virtual void Function_Reload( void );
 	virtual void Function_Settings( void );
 
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+	
 	// parent level
 	cLevel *m_level;
 	// Level Settings
 	cLevel_Settings *m_settings_screen;
+
+private:
+	const CEGUI::String m_default_resource = "default";
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

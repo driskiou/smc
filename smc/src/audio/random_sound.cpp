@@ -489,7 +489,7 @@ void cRandom_Sound :: Editor_Activate( void )
 	editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cRandom_Sound::Editor_Filename_Text_Changed, this ) );
 
 	// continuous
-	CEGUI::ToggleButton *checkbox = static_cast<CEGUI::ToggleButton *>(wmgr.createWindow( "TaharezLook/Checkbox", "editor_sound_continuous" ));
+	CEGUI::ToggleButton *checkbox = static_cast<CEGUI::ToggleButton *>(wmgr.createWindow(  "editor_sound_continuous" ));
 	Editor_Add( UTF8_("Continuous"), UTF8_("Check if the sound should be played continuously instead of randomly"), checkbox, 50 );
 
 	checkbox->setSelected( m_continuous );

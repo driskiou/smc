@@ -20,7 +20,7 @@
 #include "../core/i18n.h"
 #include "../overworld/world_editor.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/Exceptions.h>
 #include <CEGUI/widgets/Editbox.h>
@@ -324,6 +324,11 @@ void cLayer :: Add( cLayer_Line_Point_Start *line_point )
 	}
 }
 
+ const CEGUI::String & cLayer ::  getDefaultResourceGroup () const
+{
+	return m_default_resource;
+}
+
 void cLayer :: Load( const std::string &filename )
 {
 	Delete_All();
@@ -576,11 +581,11 @@ void cLayer :: elementEnd( const CEGUI::String &element )
 		{
 			if( m_xml_attributes.exists( "Y1" ) )
 			{
-				m_xml_attributes.add( "Y1", CEGUI::PropertyHelper::floatToString( m_xml_attributes.getValueAsFloat( "Y1" ) - 600.0f ) );
+				m_xml_attributes.add( "Y1", CEGUI::PropertyHelper<float>::toString( m_xml_attributes.getValueAsFloat( "Y1" ) - 600.0f ) );
 			}
 			if( m_xml_attributes.exists( "Y2" ) )
 			{
-				m_xml_attributes.add( "Y2", CEGUI::PropertyHelper::floatToString( m_xml_attributes.getValueAsFloat( "Y2" ) - 600.0f ) );
+				m_xml_attributes.add( "Y2", CEGUI::PropertyHelper<float>::toString( m_xml_attributes.getValueAsFloat( "Y2" ) - 600.0f ) );
 			}
 		}
 

@@ -523,11 +523,11 @@ void cLevel_Exit :: Editor_State_Update( void )
 	CEGUI::WindowManager &wmgr = CEGUI::WindowManager::getSingleton();
 
 	// path identifier
-	CEGUI::Editbox *editbox_path_identifier = static_cast<CEGUI::Editbox *>(wmgr.getWindow( "level_exit_path_identifier" ));
+	CEGUI::Editbox *editbox_path_identifier = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "level_exit_path_identifier" ));
 	// destination level
-	CEGUI::Editbox *editbox_destination_level = static_cast<CEGUI::Editbox *>(wmgr.getWindow( "level_exit_destination_level" ));
+	CEGUI::Editbox *editbox_destination_level = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "level_exit_destination_level" ));
 	// direction
-	//CEGUI::Combobox *combobox_direction = static_cast<CEGUI::Combobox *>(wmgr.getWindow( "level_exit_direction" ));
+	//CEGUI::Combobox *combobox_direction = static_cast<CEGUI::Combobox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "level_exit_direction" ));
 
 
 	if( m_exit_motion == CAMERA_MOVE_ALONG_PATH || m_exit_motion == CAMERA_MOVE_ALONG_PATH_BACKWARDS )

@@ -22,7 +22,7 @@
 #include "../input/mouse.h"
 #include "../video/animation.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 
 namespace SMC
 {

@@ -61,6 +61,9 @@ public:
 
 	// world comment
 	std::string m_comment;
+
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+
 private:
 	// XML element start
 	virtual void elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes );
@@ -71,6 +74,8 @@ private:
 
 	// XML element property list
 	CEGUI::XMLAttributes m_xml_attributes;
+
+	const CEGUI::String m_default_resource = "default";
 };
 
 /* *** *** *** *** *** *** *** *** cOverworld *** *** *** *** *** *** *** *** *** */
@@ -209,6 +214,8 @@ public:
 	// HUD current level name
 	cHudSprite *m_hud_level_name;
 
+	virtual const CEGUI::String & getDefaultResourceGroup () const;
+
 private:
 	// XML element start
 	virtual void elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes );
@@ -217,6 +224,8 @@ private:
  
 	// XML element property list
 	CEGUI::XMLAttributes m_xml_attributes;
+
+	CEGUI::String m_default_resource = "default";
 };
 
 /* Returns a World Object if element name is available else NULL

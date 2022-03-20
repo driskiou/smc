@@ -17,7 +17,7 @@
 #define SMC_COLOR_H
 
 // SDL
-#include "SDL.h"
+#include <SDL2/SDL.h>
 // CEGUI
 #include <CEGUI/Colour.h>
 

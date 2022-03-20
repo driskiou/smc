@@ -16,11 +16,15 @@
 #ifndef SMC_GL_SURFACE_H
 #define SMC_GL_SURFACE_H
 
+// SDL
+#include <GL/glew.h>
+#include <SDL2/SDL.h>
+
+
 #include "../core/global_basic.h"
 #include "../core/math/point.h"
-// SDL
-#include "SDL.h"
-#include "SDL_opengl.h"
+
+
 
 namespace SMC
 {

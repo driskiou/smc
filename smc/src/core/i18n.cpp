@@ -15,7 +15,7 @@
 
 #include "../core/global_basic.h"
 #include "../core/i18n.h"
-#include "SDL.h"
+#include <SDL2/SDL.h>
 #include "SDL_opengl.h"
 
 namespace SMC

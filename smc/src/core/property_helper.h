@@ -18,7 +18,7 @@
 
 #include "../core/global_basic.h"
 #include "../core/global_game.h"
-#include "SDL.h"
+#include <SDL2/SDL.h>
 #include <algorithm>
 // CEGUI
 #include <CEGUI/String.h>

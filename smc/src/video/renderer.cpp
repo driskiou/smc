@@ -17,7 +17,7 @@
 #include "../core/game_core.h"
 #include <algorithm>
 // SDL
-#include "SDL.h"
+#include <SDL2/SDL.h>
 #include "SDL_opengl.h"
 
 namespace SMC

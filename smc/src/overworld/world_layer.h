@@ -166,6 +166,8 @@ public:
 	// parent overworld
 	cOverworld *m_overworld;
 
+	virtual const CEGUI::String &  getDefaultResourceGroup () const;
+	
 private:
 	// XML element start
 	virtual void elementStart( const CEGUI::String &element, const CEGUI::XMLAttributes &attributes );
@@ -174,6 +176,8 @@ private:
 
 	// XML element property list
 	CEGUI::XMLAttributes m_xml_attributes;
+
+	CEGUI::String m_default_resource = "default";
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

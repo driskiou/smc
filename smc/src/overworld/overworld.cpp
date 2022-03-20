@@ -31,7 +31,7 @@
 #include "../core/filesystem/filesystem.h"
 #include "../core/filesystem/resource_manager.h"
 // CEGUI
-#include <CEGUI/CEGUIXMLParser.h>
+#include <CEGUI/XMLParser.h>
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/Exceptions.h>
 
@@ -53,6 +53,11 @@ cOverworld_description :: cOverworld_description( void )
 cOverworld_description :: ~cOverworld_description( void )
 {
 	//
+}
+
+const CEGUI::String & cOverworld_description :: getDefaultResourceGroup () const
+{
+	return m_default_resource;
 }
 
 void cOverworld_description :: Load( void )
@@ -402,6 +407,11 @@ void cOverworld :: Save( void )
 
 	// show info
 	pHud_Debug->Set_Text( _("World ") + m_description->m_name + _(" saved") );
+}
+
+const CEGUI::String & cOverworld :: getDefaultResourceGroup () const
+{
+	return m_default_resource;
 }
 
 void cOverworld :: Enter( const GameMode old_mode /* = MODE_NOTHING */ )
@@ -1163,7 +1173,7 @@ cSprite *Create_World_Object_From_XML( const CEGUI::String &element, CEGUI::XMLA
 		{
 			if( attributes.exists( "posy" ) )
 			{
-				attributes.add( "posy", CEGUI::PropertyHelper::floatToString( attributes.getValueAsFloat( "posy" ) - 600.0f ) );
+				attributes.add( "posy", CEGUI::PropertyHelper<float>::toString( attributes.getValueAsFloat( "posy" ) - 600.0f ) );
 			}
 		}
 		// if V.1.9 and lower : change old bridge to bridge 1 vertical
@@ -1214,7 +1224,7 @@ cSprite *Create_World_Object_From_XML( const CEGUI::String &element, CEGUI::XMLA
 		{
 			if( attributes.exists( "y" ) )
 			{
-				attributes.add( "y", CEGUI::PropertyHelper::floatToString( attributes.getValueAsFloat( "y" ) - 600.0f ) );
+				attributes.add( "y", CEGUI::PropertyHelper<float>::toString( attributes.getValueAsFloat( "y" ) - 600.0f ) );
 			}
 		}
 
@@ -1227,7 +1237,7 @@ cSprite *Create_World_Object_From_XML( const CEGUI::String &element, CEGUI::XMLA
 		{
 			if( attributes.exists( "pos_y" ) )
 			{
-				attributes.add( "pos_y", CEGUI::PropertyHelper::floatToString( attributes.getValueAsFloat( "pos_y" ) - 600.0f ) );
+				attributes.add( "pos_y", CEGUI::PropertyHelper<float>::toString( attributes.getValueAsFloat( "pos_y" ) - 600.0f ) );
 			}
 		}
 
@@ -1240,11 +1250,11 @@ cSprite *Create_World_Object_From_XML( const CEGUI::String &element, CEGUI::XMLA
 		{
 			if( attributes.exists( "Y1" ) )
 			{
-				attributes.add( "Y1", CEGUI::PropertyHelper::floatToString( attributes.getValueAsFloat( "Y1" ) - 600.0f ) );
+				attributes.add( "Y1", CEGUI::PropertyHelper<float>::toString( attributes.getValueAsFloat( "Y1" ) - 600.0f ) );
 			}
 			if( attributes.exists( "Y2" ) )
 			{
-				attributes.add( "Y2", CEGUI::PropertyHelper::floatToString( attributes.getValueAsFloat( "Y2" ) - 600.0f ) );
+				attributes.add( "Y2", CEGUI::PropertyHelper<float>::toString( attributes.getValueAsFloat( "Y2" ) - 600.0f ) );
 			}
 		}
 

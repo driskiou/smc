@@ -18,7 +18,7 @@
 
 #include "../core/global_basic.h"
 // SDL
-#include "SDL.h"
+#include <SDL2/SDL.h>
 // CEGUI
 #include <CEGUI/XMLHandler.h>
 #include <CEGUI/XMLAttributes.h>
@@ -208,7 +208,7 @@ private:
 	virtual void elementEnd( const CEGUI::String &element );
 	// handles an item
 	void handle_item( CEGUI::XMLAttributes attributes );
-	const CEGUI::String m_default_resource;
+	CEGUI::String m_xml_default_resource = "default";
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

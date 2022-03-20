@@ -27,7 +27,7 @@
 #include "../core/filesystem/filesystem.h"
 // CEGUI
 #include <CEGUI/WindowManager.h>
-#include "CEGUIFontManager.h"
+#include <CEGUI/FontManager.h>
 
 namespace SMC
 {
@@ -884,8 +884,8 @@ cDebugDisplay :: cDebugDisplay( cSprite_Manager *sprite_manager )
 	m_active_counter = -1;
 
 	// debug text window
-	m_window_debug_text = CEGUI::WindowManager::getSingleton().loadWindowLayout( "debugtext.layout" );
-	pGuiSystem->getGUISheet()->addChildWindow( m_window_debug_text );
+	m_window_debug_text = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "debugtext.layout" );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( m_window_debug_text );
 	// debug text
 	m_text_debug_text = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_debugmessage" ));
 	// hide
@@ -932,7 +932,7 @@ cDebugDisplay :: cDebugDisplay( cSprite_Manager *sprite_manager )
 
 cDebugDisplay :: ~cDebugDisplay( void )
 {
-	pGuiSystem->getGUISheet()->removeChildWindow( m_window_debug_text );
+	pGuiSystem->getDefaultGUIContext().getRootWindow()->removeChild( m_window_debug_text );
 	CEGUI::WindowManager::getSingleton().destroyWindow( m_window_debug_text );
 
 	for( HudSpriteList::iterator itr = m_sprites.begin(); itr != m_sprites.end(); ++itr )
@@ -990,7 +990,7 @@ void cDebugDisplay :: Update( void )
 		// add newlines
 		text_height *= 1 + std::count(m_text.begin(), m_text.end(), '\n');
 
-		m_text_debug_text->setSize( CEGUI::UVector2( CEGUI::UDim( 0, ( text_width + 15 ) * global_upscalex ), CEGUI::UDim( 0, ( text_height + 15 ) * global_upscaley ) ) );
+		m_text_debug_text->setSize( CEGUI::Size<CEGUI::UDim>( CEGUI::UDim( 0, ( text_width + 15 ) * global_upscalex ), CEGUI::UDim( 0, ( text_height + 15 ) * global_upscaley ) ) );
 		m_text_debug_text->setXPosition( CEGUI::UDim( 0, ( ( game_res_w * 0.5f ) - text_width * 0.5f ) * global_upscalex ) );
 	}
 }

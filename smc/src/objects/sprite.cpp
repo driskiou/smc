@@ -27,10 +27,10 @@
 #include "../core/i18n.h"
 // CEGUI
 #include <CEGUI/WindowManager.h>
-#include "CEGUIFontManager.h"
+#include <CEGUI/FontManager.h>
 #include <CEGUI/widgets/Editbox.h>
 #include "CEGUI/widgets/Combobox.h"
-#include "elements/CEGUIComboDropList.h"
+#include <CEGUI/widgets/ComboDropList.h>
 
 namespace SMC
 {
@@ -1463,7 +1463,7 @@ void cSprite :: Editor_Add( const CEGUI::String &name, const CEGUI::String &tool
 	}
 
 	// get gui sheet
-	CEGUI::Window *guisheet = pGuiSystem->getGUISheet();
+	CEGUI::Window *guisheet = pGuiSystem->getDefaultGUIContext().getRootWindow();
 	// get window manager
 	CEGUI::WindowManager &wmgr = CEGUI::WindowManager::getSingleton();
 
@@ -1497,8 +1497,8 @@ void cSprite :: Editor_Add( const CEGUI::String &name, const CEGUI::String &tool
 	m_editor_windows.push_back( settings_item );
 
 	// add to main window
-	guisheet->addChildWindow( window_name );
-	guisheet->addChildWindow( window_setting );
+	guisheet->addChild( window_name );
+	guisheet->addChild( window_setting );
 }
 
 void cSprite :: Editor_Activate( void )
@@ -1580,8 +1580,8 @@ void cSprite :: Editor_Position_Update( void )
 		}
 
 		// get window text width
-		float window_name_width = window_name->getWidth().asAbsolute( static_cast<float>(game_res_w) ) * global_downscalex;
-		float window_name_height = window_name->getHeight().asAbsolute( static_cast<float>(game_res_h) ) * global_downscaley;
+		float window_name_width = CEGUI::CoordConverter::asAbsolute( window_name->getWidth(), static_cast<float>(game_res_w) ) * global_downscalex;
+		float window_name_height = CEGUI::CoordConverter::asAbsolute( window_name->getHeight(), static_cast<float>(game_res_h) ) * global_downscaley; 
 
 		// get window setting width
 		float window_setting_width;
@@ -1590,14 +1590,14 @@ void cSprite :: Editor_Position_Update( void )
 		// if combobox get the editbox/droplist dimension
 		if( window_setting->getType() == "TaharezLook/Combobox" )
 		{
-			window_setting_width = static_cast<CEGUI::Combobox *>(window_setting)->getDropList()->getWidth().asAbsolute( static_cast<float>(game_res_w) ) * global_downscalex;
-			window_setting_height = static_cast<CEGUI::Combobox *>(window_setting)->getEditbox()->getHeight().asAbsolute( static_cast<float>(game_res_h) ) * global_downscaley;
+			window_setting_width = CEGUI::CoordConverter::asAbsolute( static_cast<CEGUI::Combobox *>(window_setting)->getDropList()->getWidth(), static_cast<float>(game_res_w) ) * global_downscalex;
+			window_setting_height = CEGUI::CoordConverter::asAbsolute( static_cast<CEGUI::Combobox *>(window_setting)->getDropList()->getHeight(), static_cast<float>(game_res_h) ) * global_downscaley;
 		}
 		// get default dimension
 		else
 		{
-			window_setting_width = window_setting->getWidth().asAbsolute( static_cast<float>(game_res_w) ) * global_downscalex;
-			window_setting_height = window_setting->getHeight().asAbsolute( static_cast<float>(game_res_h) ) * global_downscaley;
+			window_setting_width = CEGUI::CoordConverter::asAbsolute( window_setting->getWidth(), static_cast<float>(game_res_w) ) * global_downscalex;
+			window_setting_height = CEGUI::CoordConverter::asAbsolute( window_setting->getHeight(), static_cast<float>(game_res_h) ) * global_downscaley; 
 		}
 
 		// update row height

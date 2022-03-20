@@ -25,7 +25,7 @@
 #include "../level/level.h"
 // CEGUI
 #include <CEGUI/WindowManager.h>
-#include "elements/CEGUIMultiLineEditbox.h"
+#include <CEGUI/widgets/MultiLineEditbox.h>
 #include <CEGUI/widgets/Scrollbar.h>
 
 namespace SMC
@@ -108,7 +108,7 @@ void cText_Box :: Activate( void )
 	CEGUI::MultiLineEditbox *editbox = static_cast<CEGUI::MultiLineEditbox *>(wmgr.createWindow( "TaharezLook/MultiLineEditbox", "text_box_text" ));
 
 	// add to main window
-	pGuiSystem->getGUISheet()->addChildWindow( editbox );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( editbox );
 
 
 	// set on top

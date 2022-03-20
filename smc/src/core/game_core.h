@@ -16,6 +16,7 @@
 #ifndef SMC_GAME_CORE_H
 #define SMC_GAME_CORE_H
 
+
 #include "../core/property_helper.h"
 #include "../objects/sprite.h"
 #include "../core/camera.h"

@@ -30,7 +30,7 @@
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/widgets/Listbox.h>
-#include "elements/CEGUIListboxItem.h"
+#include <CEGUI/widgets/ListboxItem.h>
 
 namespace SMC
 {
@@ -377,7 +377,8 @@ bool cMenuCore :: Key_Down( SDL_Keycode key )
 		// random level name
 		std::string lvl_name;
 
-		if( !CEGUI::WindowManager::getSingleton().isWindowPresent( "listbox_levels" ) )
+
+		if( !CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "listbox_levels" ) )
 		{
 			// Create temporary start menu
 			cMenu_Start *menu_start = new cMenu_Start();

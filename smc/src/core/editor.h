@@ -261,7 +261,7 @@ private:
 	// XML element Item Tag list
 	CEGUI::XMLAttributes m_xml_attributes;
 
-	const CEGUI::String m_default_resource;
+	const CEGUI::String m_default_resource = "default";
 
 };
 

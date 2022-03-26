@@ -80,9 +80,9 @@ void cFont_Manager :: Init( void )
 	}
 
 	// open fonts
-	m_font_normal = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/default_bold.ttf", 18 );
-	m_font_small = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/default_bold.ttf", 11 );
-	m_font_very_small = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/default_bold.ttf", 9 );
+	m_font_normal = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/DejaVuSans.ttf", 18 );
+	m_font_small = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/DejaVuSans.ttf", 11 );
+	m_font_very_small = TTF_OpenFont( DATA_DIR "/" GUI_FONT_DIR "/DejaVuSans.ttf", 9 );
 
 	// if loading failed
 	if( !m_font_normal || !m_font_small || !m_font_very_small )

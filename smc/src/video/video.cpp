@@ -214,14 +214,14 @@ void cVideo :: Init_CEGUI_Data( void ) const
 	}
 
 	// default mouse cursor
-	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage( "MouseArrow" );
+	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage( "TaharezLook/MouseArrow" );
 
 
 	// default tooltip
 	CEGUI::System::getSingleton().getDefaultGUIContext().setDefaultTooltipType( "TaharezLook/Tooltip" );
 
 	// create default root window
-	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "default.layout" );
+	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "TreeDemoTaharez.layout" );
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow( window_root );
 	window_root->activate();
 }

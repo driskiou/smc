@@ -192,15 +192,12 @@ void cVideo :: Init_CEGUI( void ) const
 void cVideo :: Init_CEGUI_Data( void ) const
 {
 	// set the default resource groups to be used
-	
 	CEGUI::Scheme::setDefaultResourceGroup( "schemes" );
 	CEGUI::ImageManager::setImagesetDefaultResourceGroup( "imagesets" );
 	CEGUI::Font::setDefaultResourceGroup( "fonts" );
 	CEGUI::WidgetLookManager::setDefaultResourceGroup( "looknfeels" );
 	CEGUI::WindowManager::setDefaultResourceGroup( "layouts" );
-
-	CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-12.font");
-
+	CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-10.font");
 	// load the scheme file, which auto-loads the imageset
 	try
 	{
@@ -212,17 +209,17 @@ void cVideo :: Init_CEGUI_Data( void ) const
 		printf( "CEGUI Scheme Exception occurred : %s\n", ex.getMessage().c_str() );
 		exit( EXIT_FAILURE );
 	}
-
 	// default mouse cursor
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage( "TaharezLook/MouseArrow" );
 
 
 	// default tooltip
 	CEGUI::System::getSingleton().getDefaultGUIContext().setDefaultTooltipType( "TaharezLook/Tooltip" );
-
 	// create default root window
-	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "TreeDemoTaharez.layout" );
+	CEGUI::Window *window_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "default.layout" );
+		window_root->activate();
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow( window_root );
+		window_root->activate();
 	window_root->activate();
 }
 
@@ -771,7 +768,7 @@ void cVideo :: Init_Image_Cache( bool recreate /* = 0 */, bool draw_gui /* = 0 *
 	if( draw_gui )
 	{
 		// get progress bar
-		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "progress_bar" ));
+		progress_bar = static_cast<CEGUI::ProgressBar *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "progress_bar" ));
 		progress_bar->setProgress( 0 );
 
 		// set loading screen text
@@ -2412,7 +2409,7 @@ void Draw_Effect_In( Effect_Fadein effect /* = EFFECT_IN_RANDOM */, float speed 
 
 void Loading_Screen_Init( void )
 {
-	if(  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "loading" ) != nullptr )
+	if(  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "loading" ) != nullptr )
 	{
 		printf( "Warning: Loading Screen already initialized." );
 		return;
@@ -2426,19 +2423,20 @@ void Loading_Screen_Init( void )
 		guisheet->getChildAtIdx( i )->hide();
 	}
 
+
 	// Create loading window
 	CEGUI::Window *loading_window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "loading.layout" );
 	guisheet->addChild( loading_window );
 
 	// set info text
-	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_loading" ));
+	CEGUI::Window *text_default = guisheet->getChildRecursive( "text_loading" );
 	text_default->setText( _("Loading") );
 }
 
 void Loading_Screen_Draw_Text( const std::string &str_info /* = "Loading" */ )
 {
 	// set info text
-	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_loading" ));
+	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "text_loading" ));
 	if( !text_default )
 	{
 		printf( "Warning: Loading Screen not initialized." );
@@ -2470,7 +2468,7 @@ void Loading_Screen_Draw( void )
 
 void Loading_Screen_Exit( void )
 {
-	CEGUI::Window *loading_window = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "loading" );
+	CEGUI::Window *loading_window = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "loading" );
 
 	// loading window is present
 	if( loading_window )

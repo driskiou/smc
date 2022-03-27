@@ -1197,11 +1197,11 @@ void cMoving_Platform :: Editor_State_Update( void )
 	CEGUI::WindowManager &wmgr = CEGUI::WindowManager::getSingleton();
 
 	// path identifier
-	CEGUI::Editbox *editbox_path_identifier = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_moving_platform_path_identifier" ));
+	CEGUI::Editbox *editbox_path_identifier = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_moving_platform_path_identifier" ));
 	// direction
-	CEGUI::Combobox *combobox_direction = static_cast<CEGUI::Combobox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_moving_platform_direction" ));
+	CEGUI::Combobox *combobox_direction = static_cast<CEGUI::Combobox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_moving_platform_direction" ));
 	// max distance
-	CEGUI::Editbox *editbox_max_distance = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_moving_platform_max_distance" ));
+	CEGUI::Editbox *editbox_max_distance = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_moving_platform_max_distance" ));
 
 	if( m_move_type == MOVING_PLATFORM_TYPE_PATH || m_move_type == MOVING_PLATFORM_TYPE_PATH_BACKWARDS )
 	{

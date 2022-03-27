@@ -193,7 +193,7 @@ enum LevelLandType
 #define GUI_IMAGESET_DIR "gui/imagesets"
 #define GUI_FONT_DIR "gui/fonts"
 #define GUI_LAYOUT_DIR "gui/layouts"
-#define GUI_LOOKNFEEL_DIR "gui/looknfeel"
+#define GUI_LOOKNFEEL_DIR "gui/looknfeels"
 #define GUI_SCHEMAS_DIR "gui/xml_shemas"
 // User
 #define USER_SAVEGAME_DIR "savegames"

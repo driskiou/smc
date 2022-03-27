@@ -240,7 +240,7 @@ void cEditor::Init( void )
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( m_editor_window );
 
 	// Get TabControl
-	m_tabcontrol_menu = static_cast<CEGUI::TabControl *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "tabcontrol_editor" ));
+	m_tabcontrol_menu = static_cast<CEGUI::TabControl *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "tabcontrol_editor" ));
 	// fixme : CEGUI does not detect the mouse enter event if in the listbox or any other window in it
 	// TabControl Menu Tab Events
 	m_tabcontrol_menu->getTabContents( "editor_tab_menu" )->subscribeEvent( CEGUI::Window::EventMouseEntersArea, CEGUI::Event::Subscriber( &cEditor::Editor_Mouse_Enter, this ) );
@@ -248,12 +248,12 @@ void cEditor::Init( void )
 	m_tabcontrol_menu->getTabContents( "editor_tab_items" )->subscribeEvent( CEGUI::Window::EventMouseEntersArea, CEGUI::Event::Subscriber( &cEditor::Editor_Mouse_Enter, this ) );
 
 	// Get Menu Listbox
-	m_listbox_menu = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_menu" ));
+	m_listbox_menu = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_menu" ));
 	// Menu Listbox events
 	m_listbox_menu->subscribeEvent( CEGUI::Window::EventMouseEntersArea, CEGUI::Event::Subscriber( &cEditor::Editor_Mouse_Enter, this ) );
 	m_listbox_menu->subscribeEvent( CEGUI::Listbox::EventSelectionChanged, CEGUI::Event::Subscriber( &cEditor::Menu_Select, this ) );
 	// Get Items Listbox
-	m_listbox_items = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_items" ));
+	m_listbox_items = static_cast<CEGUI::Listbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_items" ));
 	// Items Listbox events
 	m_listbox_items->subscribeEvent( CEGUI::Window::EventMouseEntersArea, CEGUI::Event::Subscriber( &cEditor::Editor_Mouse_Enter, this ) );
 	m_listbox_items->subscribeEvent( CEGUI::Listbox::EventSelectionChanged, CEGUI::Event::Subscriber( &cEditor::Item_Select, this ) );
@@ -286,7 +286,7 @@ void cEditor :: Unload( void )
 	Unload_Item_Menu();
 
 	// close help window
-	if( CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_help_window" ) )
+	if( CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_help_window" ) )
 	{
 		Window_Help_Exit_Clicked( CEGUI::EventArgs() );
 	}
@@ -653,7 +653,7 @@ bool cEditor :: Key_Down( SDL_Keycode key )
 	// help
 	else if( key == SDLK_F1 )
 	{
-		if( CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_help_window" ) )
+		if( CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_help_window" ) )
 		{
 			Window_Help_Exit_Clicked( CEGUI::EventArgs() );
 		}
@@ -1216,7 +1216,7 @@ bool cEditor :: Load_Item_Menu( std::string item_tags )
 void cEditor :: Unload_Item_Menu( void )
 {
 	// already unloaded
-	if( !CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_items" ) )
+	if( !CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_items" ) )
 	{
 		return;
 	}
@@ -1702,7 +1702,7 @@ bool cEditor :: Is_Tag_Available( const std::string &str, const std::string &tag
 
 bool cEditor :: Window_Help_Exit_Clicked( const CEGUI::EventArgs &event )
 {
-	CEGUI::Window *window_help = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "editor_help_window" );
+	CEGUI::Window *window_help = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "editor_help_window" );
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->removeChild( window_help );
 	CEGUI::WindowManager::getSingleton().destroyWindow( window_help );
 

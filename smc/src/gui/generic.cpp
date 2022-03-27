@@ -115,13 +115,13 @@ void cDialogBox_Text :: Init( std::string title_text )
 	cDialogBox::Init();
 
 	// get window
-	CEGUI::FrameWindow *box_window = static_cast<CEGUI::FrameWindow *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_text_window" ));
+	CEGUI::FrameWindow *box_window = static_cast<CEGUI::FrameWindow *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_text_window" ));
 	box_window->setText( reinterpret_cast<const CEGUI::utf8*>(title_text.c_str()) );
 	box_window->setSizingEnabled( 0 );
 	box_window->getCloseButton()->subscribeEvent( CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber( &cDialogBox_Text::Button_window_quit_clicked, this ) );
 
 	// get editbox
-	box_editbox = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_text_editbox" ));
+	box_editbox = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_text_editbox" ));
 }
 
 std::string cDialogBox_Text :: Enter( std::string default_text, std::string title_text, bool auto_no_text /* = 1 */ )
@@ -210,7 +210,7 @@ void cDialogBox_Question :: Init( bool with_cancel )
 	cDialogBox::Init();
 
 	// get window
-	box_window = static_cast<CEGUI::FrameWindow *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_question_window" ));
+	box_window = static_cast<CEGUI::FrameWindow *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_question_window" ));
 	box_window->activate();
 
 	// subscribe close button
@@ -229,7 +229,7 @@ int cDialogBox_Question :: Enter( std::string text, bool with_cancel /* = 0 */ )
 	Init( with_cancel );
 
 	// get text
-	CEGUI::Editbox *box_text = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_question_text" ));
+	CEGUI::Editbox *box_text = static_cast<CEGUI::Editbox *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_question_text" ));
 	box_text->setText( reinterpret_cast<const CEGUI::utf8*>(text.c_str()) );
 
 
@@ -245,11 +245,11 @@ int cDialogBox_Question :: Enter( std::string text, bool with_cancel /* = 0 */ )
 	}
 
 	// Button Yes
-	CEGUI::PushButton *button_yes = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_question_button_yes" ));
+	CEGUI::PushButton *button_yes = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_question_button_yes" ));
 	// Button No
-	CEGUI::PushButton *button_no = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_question_button_no" ));
+	CEGUI::PushButton *button_no = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_question_button_no" ));
 	// Button Cancel
-	CEGUI::PushButton *button_cancel = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "box_question_button_cancel" ));
+	CEGUI::PushButton *button_cancel = static_cast<CEGUI::PushButton *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "box_question_button_cancel" ));
 
 	// if without cancel
 	if( !with_cancel )
@@ -343,8 +343,12 @@ void Gui_Handle_Time( void )
 	// get current "run-time" in seconds
 	float t = 0.001f * SDL_GetTicks();
 
+    const auto elapsed  = t - last_time_pulse;
+
+
 	// inject the time that passed since the last call
-	CEGUI::System::getSingleton().injectTimePulse( t - last_time_pulse );
+	CEGUI::System::getSingleton().injectTimePulse(elapsed );
+	CEGUI::System::getSingleton().getDefaultGUIContext().injectTimePulse( elapsed );
 
 	// store the new time as the last time
 	last_time_pulse = t;
@@ -359,7 +363,7 @@ void Draw_Static_Text( const std::string &text, const Color *color_text /* = &wh
 	CEGUI::Window *window_statictext = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( "statictext.layout" );
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( window_statictext );
 	// get default text
-	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChild( "text_default" ));
+	CEGUI::Window *text_default = static_cast<CEGUI::Window *>(CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->getChildRecursive( "text_default" ));
 
 	// set text
 	text_default->setProperty( "TextColours", CEGUI::PropertyHelper<CEGUI::Colour>::toString( CEGUI::Colour( static_cast<float>(color_text->red) / 255, static_cast<float>(color_text->green) / 255, static_cast<float>(color_text->blue) / 255, 1 ) ) );

@@ -3,8 +3,8 @@
 <GUILayout  version="4" >
     <Window type="DefaultWindow"  Name="default" >
         <Property Name="InheritsAlpha" Value="False" />
-        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property Name="MaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="Area" Value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Property Name="MousePassThroughEnabled" Value="True" />
     </Window>
 </GUILayout>

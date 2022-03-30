@@ -95,7 +95,7 @@ void cMenu_Base :: Init_GUI( void )
 		return;
 	}
 
-	m_gui_window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( m_layout_file.c_str() );
+	m_gui_window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile( m_layout_file);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild( m_gui_window );
 }
 
@@ -1225,7 +1225,7 @@ void cMenu_Options :: Init_GUI( void )
 	CEGUI::Window *tabwindow = wmgr.loadLayoutFromFile( "menu/tab_game.layout" );
 	m_tabcontrol->addTab( tabwindow );
 	// tab video
-	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_video.layout" );
+/*	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_video.layout" );
 	m_tabcontrol->addTab( tabwindow );
 	// tab audio
 	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_audio.layout" );
@@ -1245,7 +1245,7 @@ void cMenu_Options :: Init_GUI( void )
 	Init_GUI_Audio();
 	Init_GUI_Keyboard();
 	Init_GUI_Joystick();
-	Init_GUI_Editor();
+	Init_GUI_Editor();*/
 }
 
 void cMenu_Options :: Init_GUI_Game( void )

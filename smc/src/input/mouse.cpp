@@ -196,28 +196,20 @@ bool cMouseCursor :: Handle_Mouse_Down( Uint8 button )
 		// mouse buttons
 		case SDL_BUTTON_LEFT:
 		{
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::LeftButton ) )
-			{
-				return 1;
-			}
+
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::MouseButton::LeftButton );
 			m_left = 1;
 			break;
 		}
 		case SDL_BUTTON_MIDDLE:
 		{
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::MiddleButton ) )
-			{
-				return 1;
-			}
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::MouseButton::MiddleButton );
 			m_middle = 1;
 			break;
 		}
 		case SDL_BUTTON_RIGHT:
 		{
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::RightButton ) )
-			{
-				return 1;
-			}
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown( CEGUI::MouseButton::RightButton );
 			m_right = 1;
 			break;
 		}

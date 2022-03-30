@@ -18,9 +18,9 @@
 		<Window type="TaharezLook/Spinner" name="game_spinner_camera_hor_speed" >
 			<Property name="TooltipText" value="Camera Horizontal Speed" />
 			<Property name="StepSize" value="0.1" />
-			<Property name="Currentvalue" value="0" />
-			<Property name="Maximumvalue" value="32767" />
-			<Property name="Minimumvalue" value="0" />
+			<Property name="CurrentValue" value="0" />
+			<Property name="MaximumValue" value="32767" />
+			<Property name="MinimumValue" value="0" />
 			<Property name="TextInputMode" value="FloatingPoint" />
 			<Property name="MaxSize" value="{{1,0},{1,0}}" />
 			<Property name="Area" value="{{0.3,0},{0.13,0},{0.42,0},{0.2,0}}" />
@@ -28,9 +28,9 @@
 		<Window type="TaharezLook/Spinner" name="game_spinner_camera_ver_speed" >
 			<Property name="TooltipText" value="Camera Vertical Speed" />
 			<Property name="StepSize" value="0.1" />
-			<Property name="Currentvalue" value="0" />
-			<Property name="Maximumvalue" value="32767" />
-			<Property name="Minimumvalue" value="0" />
+			<Property name="CurrentValue" value="0" />
+			<Property name="MaximumValue" value="32767" />
+			<Property name="MinimumValue" value="0" />
 			<Property name="TextInputMode" value="FloatingPoint" />
 			<Property name="MaxSize" value="{{1,0},{1,0}}" />
 			<Property name="Area" value="{{0.3,0},{0.21,0},{0.42,0},{0.28,0}}" />

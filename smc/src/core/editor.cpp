@@ -98,7 +98,7 @@ cEditor_Item_Object :: cEditor_Item_Object( const std::string &text, const CEGUI
 	m_parent = parent;
 	list_text = new CEGUI::ListboxTextItem( reinterpret_cast<const CEGUI::utf8*>(text.c_str()) );
 	list_text->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-	list_text->setSelectionBrushImage(  "ListboxSelectionBrush" );
+	list_text->setSelectionBrushImage(  "TaharezLook/ListboxSelectionBrush" );
 
 	m_image = NULL;
 	sprite_obj = NULL;
@@ -198,7 +198,7 @@ cEditor_Menu_Object :: ~cEditor_Menu_Object( void )
 void cEditor_Menu_Object :: Init( void )
 {
 	setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-	setSelectionBrushImage(  "ListboxSelectionBrush" );
+	setSelectionBrushImage(  "TaharezLook/ListboxSelectionBrush" );
 }
 
 /* *** *** *** *** *** *** *** cEditor *** *** *** *** *** *** *** *** *** *** */

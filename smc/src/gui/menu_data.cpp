@@ -408,7 +408,7 @@ void cMenu_Start :: Init_GUI( void )
 		}
 
 		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-		item->setSelectionBrushImage( "ListboxSelectionBrush" );
+		item->setSelectionBrushImage( "TaharezLook/ListboxSelectionBrush" );
 		listbox_campaigns->addItem( item );
 	}
 
@@ -459,7 +459,7 @@ void cMenu_Start :: Init_GUI( void )
 		}
 
 		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-		item->setSelectionBrushImage( "ListboxSelectionBrush" );
+		item->setSelectionBrushImage( "TaharezLook/ListboxSelectionBrush" );
 		listbox_worlds->addItem( item );
 	}
 
@@ -596,7 +596,7 @@ void cMenu_Start :: Get_Levels( std::string dir, CEGUI::Colour color )
 
 
 		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-		item->setSelectionBrushImage( "ListboxSelectionBrush" );
+		item->setSelectionBrushImage( "TaharezLook/ListboxSelectionBrush" );
 		listbox_levels->addItem( item );
 	}
 }
@@ -1225,7 +1225,7 @@ void cMenu_Options :: Init_GUI( void )
 	CEGUI::Window *tabwindow = wmgr.loadLayoutFromFile( "menu/tab_game.layout" );
 	m_tabcontrol->addTab( tabwindow );
 	// tab video
-/*	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_video.layout" );
+	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_video.layout" );
 	m_tabcontrol->addTab( tabwindow );
 	// tab audio
 	tabwindow = wmgr.loadLayoutFromFile( "menu/tab_audio.layout" );
@@ -1245,7 +1245,7 @@ void cMenu_Options :: Init_GUI( void )
 	Init_GUI_Audio();
 	Init_GUI_Keyboard();
 	Init_GUI_Joystick();
-	Init_GUI_Editor();*/
+	Init_GUI_Editor();
 }
 
 void cMenu_Options :: Init_GUI_Game( void )
@@ -2191,7 +2191,7 @@ void cMenu_Options :: Build_Shortcut_List( bool joystick /* = 0 */ )
 		
 		CEGUI::ListboxTextItem *item = new CEGUI::ListboxTextItem( shortcut_item.m_name, 0, shortcut_item.m_key );
 		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-		item->setSelectionBrushImage(  "ListboxSelectionBrush" );
+		item->setSelectionBrushImage( "TaharezLook/ListboxSelectionBrush" );
 		unsigned int row_id = listbox->addRow( item, 0 );
 
 		// Get shortcut key name
@@ -2233,7 +2233,7 @@ void cMenu_Options :: Build_Shortcut_List( bool joystick /* = 0 */ )
 			item->setTextColours( CEGUI::Colour( 0.9f, 0.6f, 0.0f ) );
 		}
 		item->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-		item->setSelectionBrushImage( "ListboxSelectionBrush" );
+		item->setSelectionBrushImage( "TaharezLook/ListboxSelectionBrush" );
 		listbox->setItem( item, 1, row_id );
 	}
 }

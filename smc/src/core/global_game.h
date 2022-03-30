@@ -173,7 +173,7 @@ enum LevelLandType
 	#define DATA_DIR "."
 #else
 	#ifndef DATA_DIR
-		#define DATA_DIR "/home/ludovic/Programmation/SMC/smc/src/build/RelWithDebInfo/data"
+		#define DATA_DIR "/home/ludovic/Programmation/SMC/smc/data"
 	#endif
 #endif
 

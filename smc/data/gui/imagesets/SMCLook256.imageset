@@ -18,7 +18,7 @@
     <Image name="MouseTarget" xPos="364" yPos="254" width="34" height="34" XOffset="-16" YOffset="-16" />
     <Image name="StaticRight" xPos="126" yPos="178" width="12" height="12" />
     <Image name="CheckboxMark" xPos="220" yPos="32" width="24" height="24" />
-    <Image name="EditBoxCarat" xPos="120" yPos="216" width="8" height="36" />
+    <Image name="EditBoxCaret" xPos="120" yPos="216" width="8" height="36" />
     <Image name="EditBoxRight" xPos="98" yPos="216" width="16" height="32" />
     <Image name="GenericBrush" xPos="18" yPos="142" width="2" height="2" />
     <Image name="ListboxRight" xPos="124" yPos="178" width="14" height="12" />

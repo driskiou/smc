@@ -406,7 +406,19 @@
                 <HorzFormat type="Stretched" />
             </ImageryComponent>
         </ImagerySection>
-
+        <ImagerySection name="Caret">
+            <ImageryComponent>
+                <Area>
+                    <Dim type="LeftEdge" ><AbsoluteDim value="0" /></Dim>
+                    <Dim type="TopEdge" ><AbsoluteDim value="0" /></Dim>
+                    <Dim type="Width" ><ImageDim name="TaharezLook/EditBoxCaret" dimension="Width" /></Dim>
+                    <Dim type="BottomEdge" ><UnifiedDim scale="1.0" type="BottomEdge" /></Dim>
+                </Area>
+                <Image name="TaharezLook/EditBoxCaret" />
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
         <StateImagery name="Enabled">
             <Layer>
                 <Section section="container_normal" />
@@ -1770,7 +1782,16 @@
                 <HorzFormat type="Stretched" />
             </ImageryComponent>
         </ImagerySection>
-
+        <ImagerySection name="Caret">
+            <ImageryComponent>
+                <Area>
+                    <Dim type="Width" ><ImageDim name="TaharezLook/EditBoxCaret" dimension="Width" /></Dim>
+                </Area>
+                <Image name="TaharezLook/EditBoxCaret" />
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
         <StateImagery name="Enabled">
             <Layer>
                 <Section section="container_normal" />
@@ -2620,7 +2641,16 @@
                 <Image component="Background" name="TaharezLook/MultiLineEditboxBackdrop" />
             </FrameComponent>
         </ImagerySection>
-
+        <ImagerySection name="Caret">
+            <ImageryComponent>
+                <Area>
+                    <Dim type="Width" ><ImageDim name="TaharezLook/EditBoxCaret" dimension="Width" /></Dim>
+                </Area>
+                <Image name="TaharezLook/EditBoxCaret" />
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
         <StateImagery name="Enabled">
             <Layer>
                 <Section section="main" />

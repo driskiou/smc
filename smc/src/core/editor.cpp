@@ -150,7 +150,7 @@ void cEditor_Item_Object :: Init( cSprite *sprite )
 	// create CEGUI link
 	cEditor_CEGUI_Texture *texture = new cEditor_CEGUI_Texture( *pGuiRenderer, sprite_obj->m_start_image->m_image, CEGUI::Sizef( sprite_obj->m_start_image->m_tex_w, sprite_obj->m_start_image->m_tex_h ) );
 	const auto imageset_name = "editor_item " + list_text->getText() + " " + CEGUI::PropertyHelper<unsigned int>::toString( m_parent->getItemCount() );
-	m_image = dynamic_cast<CEGUI::BasicImage*>(&CEGUI::ImageManager::getSingleton().create( "default" , imageset_name ));
+	m_image = dynamic_cast<CEGUI::BasicImage*>(&CEGUI::ImageManager::getSingleton().create( "BasicImage" , imageset_name ));
 	m_image->setTexture(texture);
 	m_image->setArea( CEGUI::Rectf(CEGUI::Vector2f(0.0,0.0),texture->getSize()) );
 

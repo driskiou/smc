@@ -198,6 +198,7 @@ void cVideo :: Init_CEGUI_Data( void ) const
 	CEGUI::WidgetLookManager::setDefaultResourceGroup( "looknfeels" );
 	CEGUI::WindowManager::setDefaultResourceGroup( "layouts" );
 	CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-10.font");
+	CEGUI::FontManager::getSingleton().createFromFile("bluebold1024_medium.font");
 	// load the scheme file, which auto-loads the imageset
 	try
 	{

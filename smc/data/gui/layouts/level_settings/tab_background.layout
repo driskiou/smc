@@ -54,7 +54,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_images_preview" >
             <Property name="Text" value="Preview" />
-            <Property name="Tooltip" value="Gradient and selected background image preview" />
+            <Property name="TooltipText" value="Gradient and selected background image preview" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.4,0},{0.01,0},{0.5,0},{0.06,0}}" />
@@ -62,7 +62,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_speed" >
             <Property name="Text" value="Speed X" />
-            <Property name="Tooltip" value="Image X scrolling speed. A value of 5 is the camera speed" />
+            <Property name="TooltipText" value="Image X scrolling speed. A value of 5 is the camera speed" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.14,0},{0.41,0},{0.25,0},{0.46,0}}" />
@@ -70,68 +70,68 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_posx" >
             <Property name="Text" value="Pos X" />
-            <Property name="Tooltip" value="Position X" />
+            <Property name="TooltipText" value="Position X" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.5,0},{0.41,0},{0.56,0},{0.46,0}}" />
             <Property name="BackgroundEnabled" value="False" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_start_red" >
-            <Property name="Tooltip" value="Background color 1 red" />
+            <Property name="TooltipText" value="Background color 1 red" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.14,0},{0.07,0},{0.215,0},{0.12,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_start_green" >
-            <Property name="Tooltip" value="Background color 1 green" />
+            <Property name="TooltipText" value="Background color 1 green" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.22,0},{0.07,0},{0.295,0},{0.12,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_start_blue" >
-            <Property name="Tooltip" value="Background color 1 blue" />
+            <Property name="TooltipText" value="Background color 1 blue" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.3,0},{0.07,0},{0.375,0},{0.12,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_end_red" >
-            <Property name="Tooltip" value="Background color 2 red" />
+            <Property name="TooltipText" value="Background color 2 red" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.14,0},{0.13,0},{0.215,0},{0.18,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_end_green" >
-            <Property name="Tooltip" value="Background color 2 green" />
+            <Property name="TooltipText" value="Background color 2 green" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.22,0},{0.13,0},{0.295,0},{0.18,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_color_end_blue" >
-            <Property name="Tooltip" value="Background color 2 blue" />
+            <Property name="TooltipText" value="Background color 2 blue" />
             <Property name="MaxTextLength" value="3" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.3,0},{0.13,0},{0.375,0},{0.18,0}}" />
             <Property name="ValidationString" value="[0-9]*" />
         </Window>
         <Window type="TaharezLook/Listbox" name="listbox_backgrounds" >
-            <Property name="Tooltip" value="Backgrounds list" />
+            <Property name="TooltipText" value="Backgrounds list" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.013296,0},{0.349544,0},{0.128994,0},{0.486703,0}}" />
             <Property name="MouseCursorImage" value="set:TaharezLook image:MouseTarget" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_image_name" >
-            <Property name="Tooltip" value="Background image filename" />
+            <Property name="TooltipText" value="Background image filename" />
             <Property name="MaxTextLength" value="1073741823" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.25,0},{0.34,0},{0.8,0},{0.39,0}}" />
         </Window>
         <Window type="TaharezLook/SMC_Spinner" name="spinner_bg_image_speed_x" >
-            <Property name="Tooltip" value="Image X scrolling speed" />
+            <Property name="TooltipText" value="Image X scrolling speed" />
             <Property name="StepSize" value="1" />
             <Property name="CurrentValue" value="0" />
             <Property name="MaximumValue" value="32767" />
@@ -141,7 +141,7 @@
             <Property name="Area" value="{{0.25,0},{0.41,0},{0.35,0},{0.46,0}}" />
         </Window>
         <Window type="TaharezLook/SMC_Spinner" name="spinner_bg_image_speed_y" >
-            <Property name="Tooltip" value="Image Y scrolling speed" />
+            <Property name="TooltipText" value="Image Y scrolling speed" />
             <Property name="StepSize" value="1" />
             <Property name="CurrentValue" value="0" />
             <Property name="MaximumValue" value="32767" />
@@ -151,7 +151,7 @@
             <Property name="Area" value="{{0.39,0},{0.41,0},{0.49,0},{0.46,0}}" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_image_posx" >
-            <Property name="Tooltip" value="Image position X" />
+            <Property name="TooltipText" value="Image position X" />
             <Property name="MaxTextLength" value="1073741823" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.56,0},{0.41,0},{0.66,0},{0.46,0}}" />
@@ -159,7 +159,7 @@
         </Window>
         <Window type="TaharezLook/Combobox" name="combo_bg_image_type" >
             <Property name="Text" value="Disabled" />
-            <Property name="Tooltip" value="Background image type" />
+            <Property name="TooltipText" value="Background image type" />
             <Property name="ReadOnly" value="True" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="ClippedByParent" value="False" />
@@ -168,21 +168,21 @@
         </Window>
         <Window type="TaharezLook/Button" name="button_add_background_image" >
             <Property name="Text" value="Add" />
-            <Property name="Tooltip" value="Add a background image" />
+            <Property name="TooltipText" value="Add a background image" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.013129,0},{0.254437,0},{0.096879,0},{0.294438,0}}" />
             <Property name="MouseCursorImage" value="set:TaharezLook image:MouseArrow" />
         </Window>
         <Window type="TaharezLook/Button" name="button_delete_background_image" >
             <Property name="Text" value="Delete" />
-            <Property name="Tooltip" value="Delete a background image" />
+            <Property name="TooltipText" value="Delete a background image" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.013131,0},{0.304877,0},{0.098131,0},{0.341545,0}}" />
             <Property name="MouseCursorImage" value="set:TaharezLook image:MouseArrow" />
         </Window>
         <Window type="TaharezLook/StaticText" name="text_color_start" >
             <Property name="Text" value="Color Start" />
-            <Property name="Tooltip" value="Start Color" />
+            <Property name="TooltipText" value="Start Color" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.07,0},{0.135,0},{0.12,0}}" />
@@ -190,7 +190,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_color_end" >
             <Property name="Text" value="Color End" />
-            <Property name="Tooltip" value="End Color" />
+            <Property name="TooltipText" value="End Color" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.13,0},{0.135,0},{0.18,0}}" />
@@ -203,7 +203,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_speed_y" >
             <Property name="Text" value="Y" />
-            <Property name="Tooltip" value="Image X scrolling speed" />
+            <Property name="TooltipText" value="Image X scrolling speed" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.36,0},{0.41,0},{0.39,0},{0.46,0}}" />
@@ -211,21 +211,21 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_posy" >
             <Property name="Text" value="Y" />
-            <Property name="Tooltip" value="Position Y" />
+            <Property name="TooltipText" value="Position Y" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.67,0},{0.41,0},{0.7,0},{0.46,0}}" />
             <Property name="BackgroundEnabled" value="False" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_image_posy" >
-            <Property name="Tooltip" value="Image position Y" />
+            <Property name="TooltipText" value="Image position Y" />
             <Property name="MaxTextLength" value="1073741823" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.7,0},{0.41,0},{0.8,0},{0.46,0}}" />
             <Property name="ValidationString" value="[-+]?[0-9]*\.?[0-9]*" />
         </Window>
         <Window type="TaharezLook/Editbox" name="editbox_bg_image_posz" >
-            <Property name="Tooltip" value="Image position Z" />
+            <Property name="TooltipText" value="Image position Z" />
             <Property name="MaxTextLength" value="1073741823" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.84,0},{0.41,0},{0.94,0},{0.46,0}}" />
@@ -233,7 +233,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_posz" >
             <Property name="Text" value="Z" />
-            <Property name="Tooltip" value="Use values ranging from 0.00011 to 0.121" />
+            <Property name="TooltipText" value="Use values ranging from 0.00011 to 0.121" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.81,0},{0.41,0},{0.84,0},{0.46,0}}" />
@@ -241,14 +241,14 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_const_vel_x" >
             <Property name="Text" value="Const V. X" />
-            <Property name="Tooltip" value="Constant X scrolling velocity" />
+            <Property name="TooltipText" value="Constant X scrolling velocity" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.14,0},{0.47,0},{0.25,0},{0.52,0}}" />
             <Property name="BackgroundEnabled" value="False" />
         </Window>
         <Window type="TaharezLook/SMC_Spinner" name="spinner_bg_image_const_vel_x" >
-            <Property name="Tooltip" value="Constant X scrolling velocity" />
+            <Property name="TooltipText" value="Constant X scrolling velocity" />
             <Property name="StepSize" value="1" />
             <Property name="CurrentValue" value="0" />
             <Property name="MaximumValue" value="32767" />
@@ -259,14 +259,14 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_bg_image_const_vel_y" >
             <Property name="Text" value="Y" />
-            <Property name="Tooltip" value="Constant Y scrolling velocity" />
+            <Property name="TooltipText" value="Constant Y scrolling velocity" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.36,0},{0.47,0},{0.39,0},{0.52,0}}" />
             <Property name="BackgroundEnabled" value="False" />
         </Window>
         <Window type="TaharezLook/SMC_Spinner" name="spinner_bg_image_const_vel_y" >
-            <Property name="Tooltip" value="Constant Y scrolling velocity" />
+            <Property name="TooltipText" value="Constant Y scrolling velocity" />
             <Property name="StepSize" value="1" />
             <Property name="CurrentValue" value="0" />
             <Property name="MaximumValue" value="32767" />

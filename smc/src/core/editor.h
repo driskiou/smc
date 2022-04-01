@@ -79,7 +79,7 @@ public:
 	// parent
 	const CEGUI::Listbox *m_parent;
 	// text
-	CEGUI::ListboxTextItem *list_text;
+	CEGUI::String m_text;
 	// cegui image
 	CEGUI::BasicImage*m_image;
 	// sprite

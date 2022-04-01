@@ -13,7 +13,7 @@
         </Window>
         <Window Type="TaharezLook/Button" name="button_apply" >
             <Property name="Text" value="Apply" />
-            <Property name="Tooltip" value="Apply and exit" />
+            <Property name="TooltipText" value="Apply and exit" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.872346,0},{0.944156,0},{0.972346,0},{0.987489,0}}" />
             <Property name="MouseCursorImage" value="set:TaharezLook image:MouseArrow" />

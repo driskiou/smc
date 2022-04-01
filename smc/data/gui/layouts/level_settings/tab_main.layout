@@ -8,7 +8,7 @@
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
         <Window type="TaharezLook/StaticText" name="text_level_filename" >
             <Property name="Text" value="Name" />
-            <Property name="Tooltip" value="If the filename is changed the file is automatically renamed." />
+            <Property name="TooltipText" value="If the filename is changed the file is automatically renamed." />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.01,0},{0.1,0},{0.06,0}}" />
@@ -16,7 +16,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_music_filename" >
             <Property name="Text" value="Music" />
-            <Property name="Tooltip" value="Music filename" />
+            <Property name="TooltipText" value="Music filename" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.5,0},{0.01,0},{0.61,0},{0.06,0}}" />
@@ -24,7 +24,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_author" >
             <Property name="Text" value="Author" />
-            <Property name="Tooltip" value="Level Author name(s)" />
+            <Property name="TooltipText" value="Level Author name(s)" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.07,0},{0.1,0},{0.12,0}}" />
@@ -32,7 +32,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_version" >
             <Property name="Text" value="Version" />
-            <Property name="Tooltip" value="Level version" />
+            <Property name="TooltipText" value="Level version" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.13,0},{0.1,0},{0.18,0}}" />
@@ -40,7 +40,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_camera_limit_w" >
             <Property name="Text" value="Limit Width" />
-            <Property name="Tooltip" value="Camera Limit width" />
+            <Property name="TooltipText" value="Camera Limit width" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.51,0},{0.16,0},{0.56,0}}" />
@@ -48,7 +48,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_last_saved" >
             <Property name="Text" value="Last save time" />
-            <Property name="Tooltip" value="The last time this level was saved" />
+            <Property name="TooltipText" value="The last time this level was saved" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.94,0},{0.17,0},{0.99,0}}" />
@@ -109,7 +109,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_camera_fixed_hor_vel" >
             <Property name="Text" value="Fixed Velocity" />
-            <Property name="Tooltip" value="Camera fixed horizontal velocity" />
+            <Property name="TooltipText" value="Camera fixed horizontal velocity" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.01,0},{0.57,0},{0.16,0},{0.62,0}}" />
@@ -122,7 +122,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_camera_limit_h" >
             <Property name="Text" value="Height" />
-            <Property name="Tooltip" value="Camera Limit height" />
+            <Property name="TooltipText" value="Camera Limit height" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.31,0},{0.51,0},{0.39,0},{0.56,0}}" />
@@ -136,7 +136,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_difficulty" >
             <Property name="Text" value="Difficulty" />
-            <Property name="Tooltip" value="Difficulty of this level" />
+            <Property name="TooltipText" value="Difficulty of this level" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.5,0},{0.07,0},{0.61,0},{0.12,0}}" />
@@ -152,7 +152,7 @@
         </Window>
         <Window type="TaharezLook/StaticText" name="text_land_type" >
             <Property name="Text" value="Land Type" />
-            <Property name="Tooltip" value="The mainly used type of land sprites" />
+            <Property name="TooltipText" value="The mainly used type of land sprites" />
             <Property name="FrameEnabled" value="False" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Area" value="{{0.5,0},{0.13,0},{0.61,0},{0.18,0}}" />

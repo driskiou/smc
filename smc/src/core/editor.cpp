@@ -93,13 +93,9 @@ void cEditor_CEGUI_Texture :: cleanupOpenGLTexture( void )
 /* *** *** *** *** *** *** *** *** cEditor_Item_Object *** *** *** *** *** *** *** *** *** */
 
 cEditor_Item_Object :: cEditor_Item_Object( const std::string &text, const CEGUI::Listbox *parent )
-: CEGUI::ListboxItem( "" )
+: CEGUI::ListboxItem( "" ), m_text(text)
 {
 	m_parent = parent;
-	list_text = new CEGUI::ListboxTextItem( reinterpret_cast<const CEGUI::utf8*>(text.c_str()) );
-	list_text->setSelectionColours( CEGUI::Colour( 0.33f, 0.33f, 0.33f ) );
-	list_text->setSelectionBrushImage(  "TaharezLook/ListboxSelectionBrush" );
-
 	m_image = NULL;
 	sprite_obj = NULL;
 	preview_scale = 1;
@@ -109,7 +105,7 @@ cEditor_Item_Object :: cEditor_Item_Object( const std::string &text, const CEGUI
 
 cEditor_Item_Object :: ~cEditor_Item_Object( void )
 {
-	delete list_text;
+
 
 	if( m_image )
 	{
@@ -136,9 +132,6 @@ void cEditor_Item_Object :: Init( cSprite *sprite )
 	*/
 	sprite_obj = sprite;
 
-	// CEGUI settings
-	list_text->setTextColours( Get_Massive_Type_Color( sprite_obj->m_massive_type ).Get_cegui_Color() );
-
 	if( !sprite_obj->m_start_image || !pPreferences->m_editor_show_item_images )
 	{
 		return;
@@ -149,7 +142,7 @@ void cEditor_Item_Object :: Init( cSprite *sprite )
 
 	// create CEGUI link
 	cEditor_CEGUI_Texture *texture = new cEditor_CEGUI_Texture( *pGuiRenderer, sprite_obj->m_start_image->m_image, CEGUI::Sizef( sprite_obj->m_start_image->m_tex_w, sprite_obj->m_start_image->m_tex_h ) );
-	const auto imageset_name = "editor_item " + list_text->getText() + " " + CEGUI::PropertyHelper<unsigned int>::toString( m_parent->getItemCount() );
+	const auto imageset_name = "editor_item " + m_text + " " + CEGUI::PropertyHelper<unsigned int>::toString( m_parent->getItemCount() );
 	m_image = dynamic_cast<CEGUI::BasicImage*>(&CEGUI::ImageManager::getSingleton().create( "BasicImage" , imageset_name ));
 	m_image->setTexture(texture);
 	m_image->setArea( CEGUI::Rectf(CEGUI::Vector2f(0.0,0.0),texture->getSize()) );
@@ -158,7 +151,7 @@ void cEditor_Item_Object :: Init( cSprite *sprite )
 
 CEGUI::Sizef cEditor_Item_Object :: getPixelSize( void ) const
 {
-	CEGUI::Sizef tmp = list_text->getPixelSize();
+	CEGUI::Sizef tmp(0,0);
 
 	if( pPreferences->m_editor_show_item_images )
 	{
@@ -174,11 +167,15 @@ void cEditor_Item_Object :: draw( CEGUI::GeometryBuffer& buffer, const CEGUI::Re
 	// image
 	if( m_image && pPreferences->m_editor_show_item_images )
 	{
-		m_image->render( buffer, CEGUI::Rectf(m_image->getRenderedOffset(), m_image->getRenderedSize() ),
-		 clipper, CEGUI::ColourRect(CEGUI::Colour(1.0f, 1.0f, 1.0f, alpha)) );
+		const auto rec = CEGUI::Rectf(targetRect.left() + 15, targetRect.top() + 22, targetRect.left() + 15 + (sprite_obj->m_start_image->m_start_w * preview_scale * global_upscalex), targetRect.top() + 22 + (sprite_obj->m_start_image->m_start_h * preview_scale * global_upscaley) );
+				m_image->render( buffer,
+				 rec,
+				    clipper,  CEGUI::ColourRect(CEGUI::Colour(1.0f, 1.0f, 1.0f, alpha)) 
+                   );
+
 	}
-	// name text
-	list_text->draw( buffer, targetRect, alpha, clipper );
+	CEGUI::FontManager::getSingleton().getIterator().getCurrentValue()->drawText(buffer, m_text, CEGUI::Vector2f(targetRect.left(),targetRect.top()), clipper, CEGUI::ColourRect(Get_Massive_Type_Color( sprite_obj->m_massive_type ).Get_cegui_Color()) );
+
 }
 
 /* *** *** *** *** *** *** *** *** cEditor_Menu_Object *** *** *** *** *** *** *** *** *** */

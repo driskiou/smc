@@ -8,7 +8,7 @@
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -19,47 +19,46 @@
 #include "../core/global_basic.h"
 #include "../objects/box.h"
 
-namespace SMC
-{
+namespace SMC {
 
-/* *** *** *** *** *** *** *** *** cSpinBox *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** *** *** cSpinBox *** *** *** *** *** *** *** *** ***
+ */
 
-class cSpinBox : public cBaseBox
-{
+class cSpinBox : public cBaseBox {
 public:
-	// constructor
-	cSpinBox( cSprite_Manager *sprite_manager );
-	// create from stream
-	cSpinBox( CEGUI::XMLAttributes &attributes, cSprite_Manager *sprite_manager );
-	// destructor
-	virtual ~cSpinBox( void );
+  // constructor
+  cSpinBox(cSprite_Manager *sprite_manager);
+  // create from stream
+  cSpinBox(CEGUI::XMLAttributes &attributes, cSprite_Manager *sprite_manager);
+  // destructor
+  virtual ~cSpinBox(void);
 
-	// init defaults
-	void Init( void );
+  // init defaults
+  void Init(void);
 
-	// copy
-	virtual cSpinBox *Copy( void ) const;
+  // copy
+  virtual cSpinBox *Copy(void) const;
 
-	// load from stream
-	virtual void Load_From_XML( CEGUI::XMLAttributes &attributes );
-	// save to stream
-	virtual void Save_To_XML( CEGUI::XMLSerializer &stream );
+  // load from stream
+  virtual void Load_From_XML(CEGUI::XMLAttributes &attributes);
+  // save to stream
+  virtual void Save_To_XML(CEGUI::XMLSerializer &stream);
 
-	// Activate the Spinning
-	virtual void Activate( void );
-	// Stop the Spinning
-	void Stop( void );
-	// update
-	virtual void Update( void );
+  // Activate the Spinning
+  virtual void Activate(void);
+  // Stop the Spinning
+  void Stop(void);
+  // update
+  virtual void Update(void);
 
-	// if update is valid for the current state
-	virtual bool Is_Update_Valid( void );
+  // if update is valid for the current state
+  virtual bool Is_Update_Valid(void);
 
-	// spin counter
-	float m_spin_counter;
+  // spin counter
+  float m_spin_counter;
 
-	// if spinning
-	bool m_spin;
+  // if spinning
+  bool m_spin;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

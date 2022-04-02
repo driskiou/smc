@@ -8,7 +8,7 @@
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -16,54 +16,53 @@
 #ifndef SMC_HUD_H
 #define SMC_HUD_H
 
-#include "../objects/movingsprite.h"
 #include "../core/obj_manager.h"
+#include "../objects/movingsprite.h"
 
-namespace SMC
-{
+namespace SMC {
 
-/* *** *** *** *** *** *** *** cHudSprite *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** *** cHudSprite *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cHudSprite : public cSprite
-{
+class cHudSprite : public cSprite {
 public:
-	cHudSprite( cSprite_Manager *sprite_manager );
-	virtual ~cHudSprite( void );
-	
-	// copy this sprite
-	virtual cHudSprite *Copy( void ) const;
+  cHudSprite(cSprite_Manager *sprite_manager);
+  virtual ~cHudSprite(void);
+
+  // copy this sprite
+  virtual cHudSprite *Copy(void) const;
 };
 
-/* *** *** *** *** *** *** *** cHud_Manager *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** *** cHud_Manager *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cHud_Manager : public cObject_Manager<cHudSprite>
-{
+class cHud_Manager : public cObject_Manager<cHudSprite> {
 public:
-	cHud_Manager( cSprite_Manager *sprite_manager );
-	virtual ~cHud_Manager( void );
+  cHud_Manager(cSprite_Manager *sprite_manager);
+  virtual ~cHud_Manager(void);
 
-	// Load the complete HUD
-	void Load( void );
-	// Unload the complete HUD
-	void Unload( void );
+  // Load the complete HUD
+  void Load(void);
+  // Unload the complete HUD
+  void Unload(void);
 
-	// Update and reload text
-	void Update_Text( void );
-	// Update the objects
-	void Update( void );
-	// Draw the objects
-	void Draw( void );
+  // Update and reload text
+  void Update_Text(void);
+  // Update the objects
+  void Update(void);
+  // Draw the objects
+  void Draw(void);
 
-	// Set the parent sprite manager
-	void Set_Sprite_Manager( cSprite_Manager *sprite_manager );
+  // Set the parent sprite manager
+  void Set_Sprite_Manager(cSprite_Manager *sprite_manager);
 
-	// the parent sprite manager
-	cSprite_Manager *m_sprite_manager;
+  // the parent sprite manager
+  cSprite_Manager *m_sprite_manager;
 
-	typedef vector<cHudSprite *> HudSpriteList;
+  typedef vector<cHudSprite *> HudSpriteList;
 
-	// true if loaded
-	bool m_loaded;
+  // true if loaded
+  bool m_loaded;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
@@ -71,201 +70,206 @@ public:
 // The HUD Manager
 extern cHud_Manager *pHud_Manager;
 
-/* *** *** *** *** *** *** *** *** PointsText *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** *** *** PointsText *** *** *** *** *** *** *** ***
+ * *** */
 
-struct PointsText : public cHudSprite
-{
+struct PointsText : public cHudSprite {
 public:
-	PointsText( cSprite_Manager *sprite_manager );
-	virtual ~PointsText( void );
+  PointsText(cSprite_Manager *sprite_manager);
+  virtual ~PointsText(void);
 
-	float m_vely;
-	unsigned int m_points;
+  float m_vely;
+  unsigned int m_points;
 };
 
-/* *** *** *** *** *** cMenuBackground *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cMenuBackground *** *** *** *** *** *** *** *** *** ***
+ * *** *** */
 
-class cMenuBackground : public cHudSprite
-{
+class cMenuBackground : public cHudSprite {
 public:
-	cMenuBackground( cSprite_Manager *sprite_manager );
-	virtual ~cMenuBackground( void );
+  cMenuBackground(cSprite_Manager *sprite_manager);
+  virtual ~cMenuBackground(void);
 
-	virtual void Draw( cSurface_Request *request = NULL );
+  virtual void Draw(cSurface_Request *request = NULL);
 
-	cGL_Surface *m_maryo_head;
-	cGL_Surface *m_goldpiece;
+  cGL_Surface *m_maryo_head;
+  cGL_Surface *m_goldpiece;
 
-	GL_point m_rect_maryo_head;
-	GL_point m_rect_goldpiece;
+  GL_point m_rect_maryo_head;
+  GL_point m_rect_goldpiece;
 };
 
-/* *** *** *** *** *** cStatusText *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cStatusText *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cStatusText : public cHudSprite
-{
+class cStatusText : public cHudSprite {
 public:
-	cStatusText( cSprite_Manager *sprite_manager );
-	virtual ~cStatusText( void );
-	
-	virtual void Draw( cSurface_Request *request = NULL );
+  cStatusText(cSprite_Manager *sprite_manager);
+  virtual ~cStatusText(void);
+
+  virtual void Draw(cSurface_Request *request = NULL);
 };
 
-/* *** *** *** *** *** cPlayerPoints *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cPlayerPoints *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cPlayerPoints : public cStatusText
-{
+class cPlayerPoints : public cStatusText {
 public:
-	cPlayerPoints( cSprite_Manager *sprite_manager );
-	virtual ~cPlayerPoints( void );
+  cPlayerPoints(cSprite_Manager *sprite_manager);
+  virtual ~cPlayerPoints(void);
 
-	void Set_Points( long points );
-	void Add_Points( unsigned int points, float x = 0.0f, float y = 0.0f, std::string strtext = "", const Color &color = static_cast<Uint8>(255), bool allow_multiplier = 0 );
+  void Set_Points(long points);
+  void Add_Points(unsigned int points, float x = 0.0f, float y = 0.0f,
+                  std::string strtext = "",
+                  const Color &color = static_cast<Uint8>(255),
+                  bool allow_multiplier = 0);
 
-	// removes all point texts
-	void Clear( void );
+  // removes all point texts
+  void Clear(void);
 
-	virtual void Draw( cSurface_Request *request = NULL );
+  virtual void Draw(cSurface_Request *request = NULL);
 
-	typedef vector<PointsText *> PointsTextList;
-	PointsTextList m_points_objects;
+  typedef vector<PointsText *> PointsTextList;
+  PointsTextList m_points_objects;
 };
 
-/* *** *** *** *** *** cGoldDisplay *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cGoldDisplay *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cGoldDisplay : public cStatusText
-{
+class cGoldDisplay : public cStatusText {
 public:
-	cGoldDisplay( cSprite_Manager *sprite_manager );
-	virtual ~cGoldDisplay( void );
+  cGoldDisplay(cSprite_Manager *sprite_manager);
+  virtual ~cGoldDisplay(void);
 
-	void Set_Gold( int gold );
-	void Add_Gold( int gold );
+  void Set_Gold(int gold);
+  void Add_Gold(int gold);
 
-	virtual void Draw( cSurface_Request *request = NULL );
+  virtual void Draw(cSurface_Request *request = NULL);
 };
 
-/* *** *** *** *** *** cLiveDisplay *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cLiveDisplay *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cLiveDisplay : public cStatusText
-{
+class cLiveDisplay : public cStatusText {
 public:
-	cLiveDisplay( cSprite_Manager *sprite_manager );
-	virtual ~cLiveDisplay( void );
+  cLiveDisplay(cSprite_Manager *sprite_manager);
+  virtual ~cLiveDisplay(void);
 
-	void Set_Lives( int lives );
-	void Add_Lives( int lives );
+  void Set_Lives(int lives);
+  void Add_Lives(int lives);
 
-	virtual void Draw( cSurface_Request *request = NULL );
+  virtual void Draw(cSurface_Request *request = NULL);
 };
 
-/* *** *** *** *** *** cTimeDisplay *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cTimeDisplay *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cTimeDisplay : public cStatusText
-{
+class cTimeDisplay : public cStatusText {
 public:
-	cTimeDisplay( cSprite_Manager *sprite_manager );
-	virtual ~cTimeDisplay( void );
+  cTimeDisplay(cSprite_Manager *sprite_manager);
+  virtual ~cTimeDisplay(void);
 
-	// update
-	virtual void Update( void );
-	// draw
-	virtual void Draw( cSurface_Request *request = NULL );
+  // update
+  virtual void Update(void);
+  // draw
+  virtual void Draw(cSurface_Request *request = NULL);
 
-	// Set time
-	void Set_Time( Uint32 milliseconds );
+  // Set time
+  void Set_Time(Uint32 milliseconds);
 
-	// reset
-	void Reset( void );
+  // reset
+  void Reset(void);
 
-	char m_text[50];
-	Uint32 m_last_update_seconds;
-	Uint32 m_milliseconds;
+  char m_text[50];
+  Uint32 m_last_update_seconds;
+  Uint32 m_milliseconds;
 };
 
-/* *** *** *** *** *** cItemBox *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cItemBox *** *** *** *** *** *** *** *** *** *** *** ***
+ */
 
-class cItemBox : public cStatusText
-{
+class cItemBox : public cStatusText {
 public:
-	cItemBox( cSprite_Manager *sprite_manager );
-	virtual ~cItemBox( void );
+  cItemBox(cSprite_Manager *sprite_manager);
+  virtual ~cItemBox(void);
 
-	// Set the parent sprite manager
-	virtual void Set_Sprite_Manager( cSprite_Manager *sprite_manager );
+  // Set the parent sprite manager
+  virtual void Set_Sprite_Manager(cSprite_Manager *sprite_manager);
 
-	// update
-	virtual void Update( void );
-	// draw
-	virtual void Draw( cSurface_Request *request = NULL );
+  // update
+  virtual void Update(void);
+  // draw
+  virtual void Draw(cSurface_Request *request = NULL);
 
-	/* Set the item
-	* sound : if set the box sound is played
-	*/
-	void Set_Item( SpriteType item_type, bool sound = 1 );
-	// Activates the itembox
-	void Request_Item( void );
-	// push the item back to the itembox
-	void Push_back( void );
-	
-	void Reset( void );
+  /* Set the item
+   * sound : if set the box sound is played
+   */
+  void Set_Item(SpriteType item_type, bool sound = 1);
+  // Activates the itembox
+  void Request_Item(void);
+  // push the item back to the itembox
+  void Push_back(void);
 
-	/* The current Item
-	 * uses the Item defines
-	 */
-	SpriteType m_item_id;
+  void Reset(void);
 
-	// alpha effect
-	float m_item_counter;
-	// alpha effect mod
-	bool m_item_counter_mod;
+  /* The current Item
+   * uses the Item defines
+   */
+  SpriteType m_item_id;
 
-	// itembox color
-	Color m_box_color;
+  // alpha effect
+  float m_item_counter;
+  // alpha effect mod
+  bool m_item_counter_mod;
 
-	// stored item
-	cMovingSprite *m_item;
+  // itembox color
+  Color m_box_color;
+
+  // stored item
+  cMovingSprite *m_item;
 };
 
-/* *** *** *** *** *** cDebugDisplay *** *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** cDebugDisplay *** *** *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cDebugDisplay : public cStatusText
-{
+class cDebugDisplay : public cStatusText {
 public:
-	cDebugDisplay( cSprite_Manager *sprite_manager );
-	virtual ~cDebugDisplay( void );
+  cDebugDisplay(cSprite_Manager *sprite_manager);
+  virtual ~cDebugDisplay(void);
 
-	// update
-	virtual void Update( void );
-	// draw
-	virtual void Draw( cSurface_Request *request = NULL );
-	// draw the frames per second info
-	void Draw_fps( void );
-	// draw the debug mode info
-	void Draw_Debug_Mode( void );
-	// draw the performance debug mode info
-	void Draw_Performance_Debug_Mode( void );
+  // update
+  virtual void Update(void);
+  // draw
+  virtual void Draw(cSurface_Request *request = NULL);
+  // draw the frames per second info
+  void Draw_fps(void);
+  // draw the debug mode info
+  void Draw_Debug_Mode(void);
+  // draw the performance debug mode info
+  void Draw_Performance_Debug_Mode(void);
 
-	// set the debug text to display
-	void Set_Text( const std::string &ntext, float display_time = speedfactor_fps * 2.0f );
+  // set the debug text to display
+  void Set_Text(const std::string &ntext,
+                float display_time = speedfactor_fps * 2.0f);
 
-	// display text
-	std::string m_text, m_text_old;
-	// text counter
-	float m_counter;
+  // display text
+  std::string m_text, m_text_old;
+  // text counter
+  float m_counter;
 
-	// CEGUI debug text
-	CEGUI::Window *m_window_debug_text, *m_text_debug_text;
+  // CEGUI debug text
+  CEGUI::Window *m_window_debug_text, *m_text_debug_text;
 
-	// last game mode
-	GameMode m_game_mode_last;
-	// last level text
-	std::string m_level_old;
-	// last object counters
-	int m_obj_counter, m_pass_counter, m_mass_counter, m_enemy_counter, m_active_counter;
-	// sprites
-	typedef vector<cHudSprite *> HudSpriteList;
-	HudSpriteList m_sprites;
+  // last game mode
+  GameMode m_game_mode_last;
+  // last level text
+  std::string m_level_old;
+  // last object counters
+  int m_obj_counter, m_pass_counter, m_mass_counter, m_enemy_counter,
+      m_active_counter;
+  // sprites
+  typedef vector<cHudSprite *> HudSpriteList;
+  HudSpriteList m_sprites;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

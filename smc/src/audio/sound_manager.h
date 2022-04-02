@@ -8,7 +8,7 @@
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -22,68 +22,65 @@
 // also includes needed SDL headers
 #include "SDL_mixer.h"
 
-namespace SMC
-{
+namespace SMC {
 
-/* *** *** *** *** *** *** *** Sound object *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** *** Sound object *** *** *** *** *** *** *** *** ***
+ * *** */
 
-class cSound
-{
+class cSound {
 public:
-	cSound( void );
-	virtual ~cSound( void );
-	
-	// Load the data
-	bool Load( const std::string &filename );
-	// Free the data
-	void Free( void );
+  cSound(void);
+  virtual ~cSound(void);
 
-	// filename
-	std::string m_filename;
-	// data if loaded else null
-	Mix_Chunk *m_chunk;
+  // Load the data
+  bool Load(const std::string &filename);
+  // Free the data
+  void Free(void);
+
+  // filename
+  std::string m_filename;
+  // data if loaded else null
+  Mix_Chunk *m_chunk;
 };
 
 typedef vector<cSound *> SoundList;
 
-/* *** *** *** *** *** *** cSound_Manager *** *** *** *** *** *** *** *** *** *** *** */
+/* *** *** *** *** *** *** cSound_Manager *** *** *** *** *** *** *** *** ***
+ * *** *** */
 
 /*  Keeps track of all sounds in memory
  *
  * Operators:
  * - cSound_Manager [path]
  * - cSound_Manager [ID]
-*/
-class cSound_Manager : public cObject_Manager<cSound>
-{
+ */
+class cSound_Manager : public cObject_Manager<cSound> {
 public:
-	cSound_Manager( void );
-	virtual ~cSound_Manager( void );
+  cSound_Manager(void);
+  virtual ~cSound_Manager(void);
 
-	// Return the Sound from Path
-	virtual cSound *Get_Pointer( const std::string &path ) const;
+  // Return the Sound from Path
+  virtual cSound *Get_Pointer(const std::string &path) const;
 
-	/* Add a Sound
-	 * Should always have the path set
-	 */
-	void Add( cSound *item );
+  /* Add a Sound
+   * Should always have the path set
+   */
+  void Add(cSound *item);
 
-	cSound *operator [] ( unsigned int identifier ) const
-	{
-		return cObject_Manager<cSound>::Get_Pointer( identifier );
-	}
-	
-	cSound *operator [] ( const std::string &path ) const
-	{
-		return Get_Pointer( path );
-	}
+  cSound *operator[](unsigned int identifier) const {
+    return cObject_Manager<cSound>::Get_Pointer(identifier);
+  }
 
-	// Delete all Sounds, but keep object vector entries
-	void Delete_Sounds( void );
+  cSound *operator[](const std::string &path) const {
+    return Get_Pointer(path);
+  }
+
+  // Delete all Sounds, but keep object vector entries
+  void Delete_Sounds(void);
 
 private:
-	// sounds loaded since initialization
-	unsigned int m_load_count;
+  // sounds loaded since initialization
+  unsigned int m_load_count;
 };
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

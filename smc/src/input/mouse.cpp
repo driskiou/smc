@@ -277,28 +277,22 @@ bool cMouseCursor :: Handle_Mouse_Up( Uint8 button )
 		case SDL_BUTTON_LEFT:
 		{
 			m_left = 0;
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::LeftButton ) )
-			{
-				return 1;
-			}
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::LeftButton ); 
+
 		}
 		break;
 		case SDL_BUTTON_MIDDLE:
 		{
 			m_middle = 0;
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::MiddleButton ) )
-			{
-				return 1;
-			}
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::MiddleButton );
+
 		}
 		break;
 		case SDL_BUTTON_RIGHT:
 		{
 			m_right = 0;
-			if( CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::RightButton ) )
-			{
-				return 1;
-			}
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp( CEGUI::RightButton );
+
 		}
 		break;
 		default:

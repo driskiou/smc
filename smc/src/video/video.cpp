@@ -1146,6 +1146,7 @@ cGL_Surface *cVideo :: Get_Surface( std::string filename, bool print_errors /* =
 
 cVideo::cSoftware_Image cVideo :: Load_Image( std::string filename, bool load_settings /* = 1 */, bool print_errors /* = 1 */ ) const
 {
+
 	// pixmaps dir must be given
 	if( filename.find( DATA_DIR "/" GAME_PIXMAPS_DIR "/" ) == std::string::npos ) 
 	{
@@ -1226,7 +1227,18 @@ cVideo::cSoftware_Image cVideo :: Load_Image( std::string filename, bool load_se
 
 		return software_image;
 	}
+	else{
+		/// convert if image has a bad pixel format
+		if(sdl_surface->format->format != SDL_PIXELFORMAT_RGBA32)
+		{
+			SDL_PixelFormat * target = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32);
+			SDL_Surface * surface = SDL_ConvertSurface(sdl_surface, target, 0);
+			SDL_FreeSurface(sdl_surface);
+			SDL_FreeFormat(target);
+			sdl_surface = surface;
+		}
 
+	}
 	software_image.m_sdl_surface = sdl_surface;
 	software_image.m_settings = settings;
 	return software_image;

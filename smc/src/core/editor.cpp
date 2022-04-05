@@ -125,7 +125,7 @@ void cEditor_Item_Object ::Init(cSprite *sprite) {
   // get scale
   preview_scale = pVideo->Get_Scale(
       sprite_obj->m_start_image,
-      static_cast<float>(pPreferences->m_editor_item_image_size) * 2.0f,
+      static_cast<float>(pPreferences->m_editor_item_image_size),
       static_cast<float>(pPreferences->m_editor_item_image_size));
 
   // create CEGUI link

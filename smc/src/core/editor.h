@@ -28,253 +28,261 @@
 #include <CEGUI/widgets/Listbox.h>
 #include <CEGUI/widgets/ListboxTextItem.h>
 
-namespace SMC {
+namespace SMC
+{
 
-/* *** *** *** *** *** *** *** cEditor_Object_Settings_Item *** *** *** *** ***
- * *** *** *** *** *** */
+  /* *** *** *** *** *** *** *** cEditor_Object_Settings_Item *** *** *** *** ***
+   * *** *** *** *** *** */
 
-class cEditor_Object_Settings_Item {
-public:
-  cEditor_Object_Settings_Item(void);
-  ~cEditor_Object_Settings_Item(void);
+  class cEditor_Object_Settings_Item
+  {
+  public:
+    cEditor_Object_Settings_Item(void);
+    ~cEditor_Object_Settings_Item(void);
 
-  // name
-  CEGUI::Window *window_name;
-  // settings
-  CEGUI::Window *window_setting;
-  // if set start new row
-  bool advance_row;
-};
+    // name
+    CEGUI::Window *window_name;
+    // settings
+    CEGUI::Window *window_setting;
+    // if set start new row
+    bool advance_row;
+  };
 
-/* *** *** *** *** *** *** *** *** cEditor_CEGUI_Texture *** *** *** *** *** ***
- * *** *** *** */
+  /* *** *** *** *** *** *** *** *** cEditor_CEGUI_Texture *** *** *** *** *** ***
+   * *** *** *** */
 
-// Todo : Needed for CEGUI 0.7.5 to not delete our opengl texture. Remove this
-// if CEGUI 0.8 has an option for it.
-class cEditor_CEGUI_Texture : public CEGUI::OpenGLTexture {
-public:
-  cEditor_CEGUI_Texture(CEGUI::OpenGLRenderer &owner, GLuint tex,
-                        const CEGUI::Sizef &size);
-  ~cEditor_CEGUI_Texture(void);
+  // Todo : Needed for CEGUI 0.7.5 to not delete our opengl texture. Remove this
+  // if CEGUI 0.8 has an option for it.
+  class cEditor_CEGUI_Texture : public CEGUI::OpenGLTexture
+  {
+  public:
+    cEditor_CEGUI_Texture(CEGUI::OpenGLRenderer &owner, GLuint tex,
+                          const CEGUI::Sizef &size);
+    cEditor_CEGUI_Texture(CEGUI::OpenGLRenderer &owner, const CEGUI::String &name,
+                          const CEGUI::String &filename, const CEGUI::String &resourceGroup);
+    ~cEditor_CEGUI_Texture(void);
 
-  void cleanupOpenGLTexture(void);
-};
+    void cleanupOpenGLTexture(void);
+  };
 
-/* *** *** *** *** *** *** *** *** cEditor_Item_Object *** *** *** *** *** ***
- * *** *** *** */
+  /* *** *** *** *** *** *** *** *** cEditor_Item_Object *** *** *** *** *** ***
+   * *** *** *** */
 
-class cEditor_Item_Object : public CEGUI::ListboxItem {
-public:
-  cEditor_Item_Object(const std::string &text, const CEGUI::Listbox *parent);
-  virtual ~cEditor_Item_Object(void);
+  class cEditor_Item_Object : public CEGUI::ListboxItem
+  {
+  public:
+    cEditor_Item_Object(const std::string &text, const CEGUI::Listbox *parent);
+    virtual ~cEditor_Item_Object(void);
 
-  // Initialize
-  void Init(cSprite *sprite);
+    // Initialize
+    void Init(cSprite *sprite);
 
-  // overridden from base class
-  virtual CEGUI::Sizef getPixelSize(void) const;
-  // overridden from base class
-  void draw(CEGUI::GeometryBuffer &buffer, const CEGUI::Rectf &targetRect,
-            float alpha, const CEGUI::Rectf *clipper) const;
+    // overridden from base class
+    virtual CEGUI::Sizef getPixelSize(void) const;
+    // overridden from base class
+    void draw(CEGUI::GeometryBuffer &buffer, const CEGUI::Rectf &targetRect,
+              float alpha, const CEGUI::Rectf *clipper) const;
 
-  // parent
-  const CEGUI::Listbox *m_parent;
-  // text
-  CEGUI::String m_text;
-  // cegui image
-  CEGUI::BasicImage *m_image;
-  // sprite
-  cSprite *sprite_obj;
-  // preview image scale
-  float preview_scale;
-};
+    // parent
+    const CEGUI::Listbox *m_parent;
+    // text
+    CEGUI::String m_text;
+    // cegui image
+    CEGUI::BasicImage *m_image;
+    // sprite
+    cSprite *sprite_obj;
+    // preview image scale
+    float preview_scale;
+  };
 
-/* *** *** *** *** *** *** *** *** cEditor_Menu_Object *** *** *** *** *** ***
- * *** *** *** */
+  /* *** *** *** *** *** *** *** *** cEditor_Menu_Object *** *** *** *** *** ***
+   * *** *** *** */
 
-class cEditor_Menu_Object : public CEGUI::ListboxTextItem {
-public:
-  cEditor_Menu_Object(const std::string &text);
-  virtual ~cEditor_Menu_Object(void);
+  class cEditor_Menu_Object : public CEGUI::ListboxTextItem
+  {
+  public:
+    cEditor_Menu_Object(const std::string &text);
+    virtual ~cEditor_Menu_Object(void);
 
-  // Initialize
-  void Init(void);
+    // Initialize
+    void Init(void);
 
-  // name
-  std::string name;
-  // tags or function name if function
-  std::string tags;
+    // name
+    std::string name;
+    // tags or function name if function
+    std::string tags;
 
-  // if type is a function
-  bool bfunction;
-  // if this is a header
-  bool header;
-};
+    // if type is a function
+    bool bfunction;
+    // if this is a header
+    bool header;
+  };
 
-/* *** *** *** *** *** *** *** cEditor *** *** *** *** *** *** *** *** *** ***
- */
-
-class cEditor : public CEGUI::XMLHandler {
-public:
-  cEditor(cSprite_Manager *sprite_manager);
-  virtual ~cEditor(void);
-
-  // Initialize Editor
-  virtual void Init(void);
-  // Unload Editor
-  virtual void Unload(void);
-
-  // Toggle
-  void Toggle(void);
-  // Enable
-  virtual void Enable(void);
-  /* Disable
-   * native_mode : if unset the current game mode isn't altered
+  /* *** *** *** *** *** *** *** cEditor *** *** *** *** *** *** *** *** *** ***
    */
-  virtual void Disable(bool native_mode = 1);
 
-  // Update Editor
-  virtual void Update(void);
-  // Draw the Editor Menus
-  virtual void Draw(void);
+  class cEditor : public CEGUI::XMLHandler
+  {
+  public:
+    cEditor(cSprite_Manager *sprite_manager);
+    virtual ~cEditor(void);
 
-  // Function : Process_Input
-  // static input handler
-  void Process_Input(void);
-  // Handle Input event
-  virtual bool Handle_Event(SDL_Event *ev);
-  /* handle key down event
-   * returns true if processed
-   */
-  virtual bool Key_Down(SDL_Keycode key);
-  /* handle mouse button down event
-   * returns true if processed
-   */
-  virtual bool Mouse_Down(Uint8 button);
-  /* handle mouse button up event
-   * returns true if processed
-   */
-  virtual bool Mouse_Up(Uint8 button);
+    // Initialize Editor
+    virtual void Init(void);
+    // Unload Editor
+    virtual void Unload(void);
 
-  // Set the parent sprite manager
-  virtual void Set_Sprite_Manager(cSprite_Manager *sprite_manager);
+    // Toggle
+    void Toggle(void);
+    // Enable
+    virtual void Enable(void);
+    /* Disable
+     * native_mode : if unset the current game mode isn't altered
+     */
+    virtual void Disable(bool native_mode = 1);
 
-  // ##### Main Menu
+    // Update Editor
+    virtual void Update(void);
+    // Draw the Editor Menus
+    virtual void Draw(void);
 
-  // Add Menu Entry
-  void Add_Menu_Object(const std::string &name, std::string tags,
-                       CEGUI::Colour normal_color = CEGUI::Colour(1, 1, 1));
-  // Set Active Menu Entry
-  virtual void Activate_Menu_Item(cEditor_Menu_Object *entry);
+    // Function : Process_Input
+    // static input handler
+    void Process_Input(void);
+    // Handle Input event
+    virtual bool Handle_Event(SDL_Event *ev);
+    /* handle key down event
+     * returns true if processed
+     */
+    virtual bool Key_Down(SDL_Keycode key);
+    /* handle mouse button down event
+     * returns true if processed
+     */
+    virtual bool Mouse_Down(Uint8 button);
+    /* handle mouse button up event
+     * returns true if processed
+     */
+    virtual bool Mouse_Up(Uint8 button);
 
-  // ##### Item Menu
-  // Load an defined Menu
-  virtual bool Load_Item_Menu(std::string item_tag);
-  // Unload the Menu
-  void Unload_Item_Menu(void);
-  /* Add an Object to the Item list
-   * if nName is set it will not use the object name
-   * if image is set the default object image is not used
-   */
-  void Add_Item_Object(cSprite *sprite, std::string new_name = "",
-                       cGL_Surface *image = NULL);
-  // Loads all Image Items
-  void Load_Image_Items(std::string dir);
-  // Active Item Entry
-  virtual void Activate_Item(cEditor_Item_Object *entry);
-  // return the sprite object
-  virtual cSprite *Get_Object(const CEGUI::String &element,
-                              CEGUI::XMLAttributes &attributes,
-                              int engine_version);
+    // Set the parent sprite manager
+    virtual void Set_Sprite_Manager(cSprite_Manager *sprite_manager);
 
-  // #### Editor Functions
-  /* copy the given object(s) next to itself into the given direction
-   * if offset is given it will be used instead of the auto calculated direction
-   * size returns the new object(s)
-   */
-  cSprite_List Copy_Direction(const cSprite_List &objects,
-                              const ObjectDirection dir) const;
-  cSprite *Copy_Direction(const cSprite *obj, const ObjectDirection dir,
-                          int offset = 0) const;
-  /* Select same obect types
-   * if type is basic sprite the image filename and massivetype is also compared
-   */
-  void Select_Same_Object_Types(const cSprite *obj);
-  // Replace the selected basic sprites
-  void Replace_Sprites(void);
+    // ##### Main Menu
 
-  // CEGUI events
-  bool
-  Editor_Mouse_Enter(const CEGUI::EventArgs &event); // Mouse entered Window
-  bool Menu_Select(const CEGUI::EventArgs &event);   // Menu selected item
-  bool Item_Select(const CEGUI::EventArgs &event);   // Item selected item
+    // Add Menu Entry
+    void Add_Menu_Object(const std::string &name, std::string tags,
+                         CEGUI::Colour normal_color = CEGUI::Colour(1, 1, 1));
+    // Set Active Menu Entry
+    virtual void Activate_Menu_Item(cEditor_Menu_Object *entry);
 
-  // Menu functions
-  void Function_Exit(void);
-  virtual bool Function_New(void) { return 0; };
-  virtual void Function_Load(void){};
-  virtual void Function_Save(bool with_dialog = 0){};
-  virtual void Function_Save_as(void){};
-  virtual void Function_Delete(void){};
-  virtual void Function_Reload(void){};
-  virtual void Function_Settings(void){};
+    // ##### Item Menu
+    // Load an defined Menu
+    virtual bool Load_Item_Menu(std::string item_tag);
+    // Unload the Menu
+    void Unload_Item_Menu(void);
+    /* Add an Object to the Item list
+     * if nName is set it will not use the object name
+     * if image is set the default object image is not used
+     */
+    void Add_Item_Object(cSprite *sprite, std::string new_name = "",
+                         cGL_Surface *image = NULL);
+    // Loads all Image Items
+    void Load_Image_Items(std::string dir);
+    // Active Item Entry
+    virtual void Activate_Item(cEditor_Item_Object *entry);
+    // return the sprite object
+    virtual cSprite *Get_Object(const CEGUI::String &element,
+                                CEGUI::XMLAttributes &attributes,
+                                int engine_version);
 
-  // the parent sprite manager
-  cSprite_Manager *m_sprite_manager;
-  // true if editor is active
-  bool m_enabled;
+    // #### Editor Functions
+    /* copy the given object(s) next to itself into the given direction
+     * if offset is given it will be used instead of the auto calculated direction
+     * size returns the new object(s)
+     */
+    cSprite_List Copy_Direction(const cSprite_List &objects,
+                                const ObjectDirection dir) const;
+    cSprite *Copy_Direction(const cSprite *obj, const ObjectDirection dir,
+                            int offset = 0) const;
+    /* Select same obect types
+     * if type is basic sprite the image filename and massivetype is also compared
+     */
+    void Select_Same_Object_Types(const cSprite *obj);
+    // Replace the selected basic sprites
+    void Replace_Sprites(void);
 
-  // Editor filenames
-  std::string m_menu_filename;
-  std::string m_items_filename;
+    // CEGUI events
+    bool
+    Editor_Mouse_Enter(const CEGUI::EventArgs &event); // Mouse entered Window
+    bool Menu_Select(const CEGUI::EventArgs &event);   // Menu selected item
+    bool Item_Select(const CEGUI::EventArgs &event);   // Item selected item
 
-  // Required item tag
-  std::string m_editor_item_tag;
-  // editor camera speed
-  float m_camera_speed;
+    // Menu functions
+    void Function_Exit(void);
+    virtual bool Function_New(void) { return 0; };
+    virtual void Function_Load(void){};
+    virtual void Function_Save(bool with_dialog = 0){};
+    virtual void Function_Save_as(void){};
+    virtual void Function_Delete(void){};
+    virtual void Function_Reload(void){};
+    virtual void Function_Settings(void){};
 
-  // Timer until the Menu will be minimized
-  float m_menu_timer;
+    // the parent sprite manager
+    cSprite_Manager *m_sprite_manager;
+    // true if editor is active
+    bool m_enabled;
 
-  // Objects with tags
-  typedef vector<cImage_Settings_Data *> TaggedItemImageSettingsList;
-  TaggedItemImageSettingsList m_tagged_item_images;
-  typedef vector<cSprite *> TaggedItemObjectsList;
-  TaggedItemObjectsList m_tagged_item_objects;
+    // Editor filenames
+    std::string m_menu_filename;
+    std::string m_items_filename;
 
-  // CEGUI window
-  CEGUI::Window *m_editor_window;
-  CEGUI::Listbox *m_listbox_menu;
-  CEGUI::Listbox *m_listbox_items;
-  CEGUI::TabControl *m_tabcontrol_menu;
+    // Required item tag
+    std::string m_editor_item_tag;
+    // editor camera speed
+    float m_camera_speed;
 
-  virtual const CEGUI::String &getDefaultResourceGroup() const;
+    // Timer until the Menu will be minimized
+    float m_menu_timer;
 
-protected:
-  // Check if the given tag is available in the string
-  bool Is_Tag_Available(const std::string &str, const std::string &tag,
-                        unsigned int search_pos = 0);
+    // Objects with tags
+    typedef vector<cImage_Settings_Data *> TaggedItemImageSettingsList;
+    TaggedItemImageSettingsList m_tagged_item_images;
+    typedef vector<cSprite *> TaggedItemObjectsList;
+    TaggedItemObjectsList m_tagged_item_objects;
 
-  // Exit the help window
-  bool Window_Help_Exit_Clicked(const CEGUI::EventArgs &event);
+    // CEGUI window
+    CEGUI::Window *m_editor_window;
+    CEGUI::Listbox *m_listbox_menu;
+    CEGUI::Listbox *m_listbox_items;
+    CEGUI::TabControl *m_tabcontrol_menu;
 
-private:
-  // XML element start
-  virtual void elementStart(const CEGUI::String &element,
-                            const CEGUI::XMLAttributes &attributes);
-  // XML element end
-  virtual void elementEnd(const CEGUI::String &element);
+    virtual const CEGUI::String &getDefaultResourceGroup() const;
 
-  void Handle_Item(const CEGUI::XMLAttributes &attributes);
-  void Handle_Menu(const CEGUI::XMLAttributes &attributes);
+  protected:
+    // Check if the given tag is available in the string
+    bool Is_Tag_Available(const std::string &str, const std::string &tag,
+                          unsigned int search_pos = 0);
 
-  // XML element Item Tag list
-  CEGUI::XMLAttributes m_xml_attributes;
+    // Exit the help window
+    bool Window_Help_Exit_Clicked(const CEGUI::EventArgs &event);
 
-  const CEGUI::String m_default_resource = "default";
-};
+  private:
+    // XML element start
+    virtual void elementStart(const CEGUI::String &element,
+                              const CEGUI::XMLAttributes &attributes);
+    // XML element end
+    virtual void elementEnd(const CEGUI::String &element);
 
-/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
+    void Handle_Item(const CEGUI::XMLAttributes &attributes);
+    void Handle_Menu(const CEGUI::XMLAttributes &attributes);
+
+    // XML element Item Tag list
+    CEGUI::XMLAttributes m_xml_attributes;
+
+    const CEGUI::String m_default_resource = "default";
+  };
+
+  /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 
 } // namespace SMC
 

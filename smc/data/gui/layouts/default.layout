@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <GUILayout  version="4" >
-    <Window type="DefaultWindow"  Name="default" >
-        <Property Name="InheritsAlpha" Value="False" />
-        <Property Name="MaxSize" Value="{{1,0},{1,0}}" />
-        <Property Name="Area" Value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Property Name="MousePassThroughEnabled" Value="True" />
+    <Window type="DefaultWindow"  Namevalue="default" >
+        <Property name="InheritsAlpha" value="False" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="MousePassThroughEnabled" value="True" />
+        
     </Window>
 </GUILayout>

@@ -33,6 +33,9 @@ include_directories(${X11_INCLUDE_DIR})
 
 
 add_executable(smc core/main.cpp
+	net/httplib.h 
+	net/httpClient.cpp 
+	net/httpClient.h
 	audio/audio.cpp 
 	audio/audio.h 
 	audio/random_sound.cpp 

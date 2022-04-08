@@ -19,3 +19,5 @@
 
 /smc/.vscode
 /smc/src/build
+smc/src/.editorconfig
+/smc/src/.vscode/

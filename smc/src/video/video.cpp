@@ -75,8 +75,6 @@ namespace SMC
 
     SDL_VERSION(&wm_info.version);
 
-    m_render_thread = boost::thread();
-
     m_initialised = 0;
   }
 
@@ -1123,7 +1121,7 @@ namespace SMC
       // make main thread inactive
       Make_GL_Context_Inactive();
       // start render thread
-      m_render_thread = boost::thread(&cVideo::Render_From_Thread, this);
+      m_render_thread = std::thread(&cVideo::Render_From_Thread, this);
     }
     // single thread mode
     else

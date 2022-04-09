@@ -28,7 +28,6 @@ find_package(SDL2_IMAGE  REQUIRED)
 find_package(SDL2_TTF  REQUIRED)
 find_package(SDL2_MIXER  REQUIRED)
 find_package(X11 REQUIRED)
-find_package(Boost COMPONENTS thread filesystem system REQUIRED)
 find_package(CEGUI-0  REQUIRED)
 find_package(CEGUI-0-OPENGL  REQUIRED)
 find_package(Qt6 COMPONENTS Core REQUIRED)
@@ -209,7 +208,7 @@ add_executable(smc core/main.cpp
 
 
 
-target_link_libraries(smc Qt6::Core ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY} Boost::thread Boost::system)
+target_link_libraries(smc Qt6::Core ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY}  )
 
 if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" OR CMAKE_BUILD_TYPE STREQUAL "Debug")
 target_compile_definitions(smc PUBLIC "_DEBUG")

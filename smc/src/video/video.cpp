@@ -13,6 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QImage>
+
 #include "video/video.h"
 #include "core/filesystem/filesystem.h"
 #include "core/filesystem/resource_manager.h"
@@ -42,12 +44,6 @@
 #include <CEGUI/SchemeManager.h>
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/falagard/WidgetLookManager.h>
-
-// png
-#include <png.h>
-#ifndef PNG_COLOR_TYPE_RGBA
-#define PNG_COLOR_TYPE_RGBA PNG_COLOR_TYPE_RGB_ALPHA
-#endif
 
 namespace SMC
 {
@@ -1971,90 +1967,13 @@ namespace SMC
                              unsigned int height, unsigned int bpp /* = 4 */,
                              bool reverse_data /* = 0 */) const
   {
-    FILE *fp = NULL;
+    QImage image(data, width, height, bpp, bpp == 4 ? QImage::Format_RGBA8888 : QImage::Format_RGB888);
 
-// fixme : Check if there is a more portable way f.e. with imbue()
-#ifdef _WIN32
-    fp = _wfopen(utf8_to_ucs2(filename).c_str(), L"wb");
-#else
-    fp = fopen(filename.c_str(), "wb");
-#endif
-
-    if (!fp)
-    {
-      printf("Warning: cVideo :: Save_Surface : Could not create file for "
-             "writing\n");
-      return;
-    }
-
-    int png_color_type;
-
-    if (bpp == 4)
-    {
-      png_color_type = PNG_COLOR_TYPE_RGBA;
-    }
-    else if (bpp == 3)
-    {
-      png_color_type = PNG_COLOR_TYPE_RGB;
-    }
-    else
-    {
-      printf("Warning: cVideo :: Save_Surface : %s Unknown bytes per pixel %d\n",
-             filename.c_str(), bpp);
-      fclose(fp);
-      return;
-    }
-
-    png_structp png_ptr =
-        png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-    png_infop info_ptr = png_create_info_struct(png_ptr);
-
-    png_init_io(png_ptr, fp);
-
-    png_set_IHDR(png_ptr, info_ptr, width, height, 8 /* bit depth */,
-                 png_color_type, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
-                 PNG_FILTER_TYPE_DEFAULT);
-
-    png_write_info(png_ptr, info_ptr);
-
-    png_uint_32 png_height = height;
-    png_uint_32 row_bytes = width * bpp;
-
-    png_byte *image = new png_byte[png_height * row_bytes];
-    png_bytep *row_pointers = new png_bytep[png_height];
-
-    // create image data
-    int img_size = png_height * row_bytes;
-    for (int i = 0; i < img_size; ++i)
-    {
-      image[i] = data[i];
-    }
-
-    // create row pointers
     if (reverse_data)
     {
-      for (unsigned int i = 0; i < png_height; i++)
-      {
-        // reverse direction because of opengl glReadPixels
-        row_pointers[png_height - 1 - i] = image + (i * row_bytes);
-      }
+      image = image.mirrored(false, true);
     }
-    else
-    {
-      for (unsigned int i = 0; i < png_height; i++)
-      {
-        row_pointers[i] = image + (i * row_bytes);
-      }
-    }
-
-    png_write_image(png_ptr, row_pointers);
-    png_write_end(png_ptr, info_ptr);
-    png_destroy_write_struct(&png_ptr, &info_ptr);
-
-    delete[] image;
-    delete[] row_pointers;
-
-    fclose(fp);
+    image.save(QString::fromStdString(filename));
   }
 
   /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */

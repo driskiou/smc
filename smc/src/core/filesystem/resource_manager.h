@@ -16,8 +16,8 @@
 #ifndef SMC_RESOURCE_MANAGER_H
 #define SMC_RESOURCE_MANAGER_H
 
-#include "../../core/global_basic.h"
-#include "../../core/global_game.h"
+#include "../core/global_basic.h"
+#include "../core/global_game.h"
 
 namespace SMC {
 

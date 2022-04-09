@@ -16,10 +16,10 @@
 #ifndef SMC_WORLD_LAYER_H
 #define SMC_WORLD_LAYER_H
 
-#include "../core/global_basic.h"
-#include "../core/obj_manager.h"
-#include "../objects/movingsprite.h"
-#include "../overworld/world_waypoint.h"
+#include "core/global_basic.h"
+#include "core/obj_manager.h"
+#include "objects/movingsprite.h"
+#include "overworld/world_waypoint.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>

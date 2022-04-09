@@ -13,15 +13,15 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../enemies/rokko.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../gui/hud.h"
-#include "../input/mouse.h"
-#include "../level/level_player.h"
-#include "../video/animation.h"
-#include "../video/gl_surface.h"
-#include "../video/renderer.h"
+#include "enemies/rokko.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "gui/hud.h"
+#include "input/mouse.h"
+#include "level/level_player.h"
+#include "video/animation.h"
+#include "video/gl_surface.h"
+#include "video/renderer.h"
 // CEGUI
 #include "CEGUI/widgets/Combobox.h"
 #include "CEGUI/widgets/ListboxTextItem.h"

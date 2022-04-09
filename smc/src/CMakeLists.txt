@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 
 project(smc LANGUAGES CXX)
 
@@ -10,9 +10,15 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_CXX_STANDARD 20)
 
+
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 set(CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+list(APPEND CMAKE_PREFIX_PATH "/home/ludovic/Qt/6.2.4/gcc_64")
 
 set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
@@ -25,6 +31,7 @@ find_package(X11 REQUIRED)
 find_package(Boost COMPONENTS thread filesystem system REQUIRED)
 find_package(CEGUI-0  REQUIRED)
 find_package(CEGUI-0-OPENGL  REQUIRED)
+find_package(Qt6 COMPONENTS Core REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${CEGUI_OPENGL_INCLUDE_DIRS})
@@ -200,7 +207,9 @@ add_executable(smc core/main.cpp
 
 )
 
-target_link_libraries(smc ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY} Boost::thread Boost::filesystem Boost::system)
+
+
+target_link_libraries(smc Qt6::Core ${X11_LIBRARIES}  ${SDL2_LIBRARIES} ${CEGUI_OPENGL_LIBRARIES} ${CEGUI_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${SDL2_IMG_LIBRAIES} ${PNG_LIBRARY} Boost::thread Boost::system)
 
 if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" OR CMAKE_BUILD_TYPE STREQUAL "Debug")
 target_compile_definitions(smc PUBLIC "_DEBUG")

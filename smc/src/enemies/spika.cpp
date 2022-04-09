@@ -13,15 +13,15 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../enemies/spika.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/sprite_manager.h"
-#include "../enemies/bosses/turtle_boss.h"
-#include "../gui/hud.h"
-#include "../level/level.h"
-#include "../level/level_player.h"
-#include "../video/gl_surface.h"
+#include "enemies/spika.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/sprite_manager.h"
+#include "enemies/bosses/turtle_boss.h"
+#include "gui/hud.h"
+#include "level/level.h"
+#include "level/level_player.h"
+#include "video/gl_surface.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 

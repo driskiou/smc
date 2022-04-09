@@ -16,7 +16,7 @@
 #ifndef SMC_TURTLE_H
 #define SMC_TURTLE_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

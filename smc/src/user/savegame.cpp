@@ -13,17 +13,17 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../user/savegame.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/filesystem/resource_manager.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/obj_manager.h"
-#include "../level/level.h"
-#include "../level/level_player.h"
-#include "../overworld/overworld.h"
-#include "../overworld/world_manager.h"
-#include "../user/preferences.h"
+#include "user/savegame.h"
+#include "core/filesystem/filesystem.h"
+#include "core/filesystem/resource_manager.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/obj_manager.h"
+#include "level/level.h"
+#include "level/level_player.h"
+#include "overworld/overworld.h"
+#include "overworld/world_manager.h"
+#include "user/preferences.h"
 // CEGUI
 #include <CEGUI/Exceptions.h>
 #include <CEGUI/XMLParser.h>

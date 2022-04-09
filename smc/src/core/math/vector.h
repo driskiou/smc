@@ -17,8 +17,8 @@
 #ifndef SMC_VECTOR_H
 #define SMC_VECTOR_H
 
-#include "../../core/global_game.h"
-#include "../../core/math/utilities.h"
+#include "../core/global_game.h"
+#include "../core/math/utilities.h"
 
 namespace SMC {
 

@@ -16,8 +16,8 @@
 #ifndef SMC_STAR_H
 #define SMC_STAR_H
 
-#include "../core/global_basic.h"
-#include "../objects/powerup.h"
+#include "core/global_basic.h"
+#include "objects/powerup.h"
 
 namespace SMC {
 

@@ -16,8 +16,8 @@
 #ifndef SMC_PATH_H
 #define SMC_PATH_H
 
-#include "../core/global_basic.h"
-#include "../objects/sprite.h"
+#include "core/global_basic.h"
+#include "objects/sprite.h"
 
 namespace SMC {
 

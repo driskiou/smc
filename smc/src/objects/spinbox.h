@@ -16,8 +16,8 @@
 #ifndef SMC_SPINBOX_H
 #define SMC_SPINBOX_H
 
-#include "../core/global_basic.h"
-#include "../objects/box.h"
+#include "core/global_basic.h"
+#include "objects/box.h"
 
 namespace SMC {
 

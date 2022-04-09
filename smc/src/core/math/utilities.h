@@ -16,8 +16,8 @@
 #ifndef SMC_UTILITIES_H
 #define SMC_UTILITIES_H
 
-#include "../../core/global_basic.h"
-#include "../../core/global_game.h"
+#include "../core/global_basic.h"
+#include "../core/global_game.h"
 // for rand()
 #include <cstdlib>
 

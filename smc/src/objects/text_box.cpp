@@ -13,16 +13,16 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/text_box.h"
-#include "../audio/audio.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/main.h"
-#include "../input/joystick.h"
-#include "../input/keyboard.h"
-#include "../level/level.h"
-#include "../user/preferences.h"
+#include "objects/text_box.h"
+#include "audio/audio.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/main.h"
+#include "input/joystick.h"
+#include "input/keyboard.h"
+#include "level/level.h"
+#include "user/preferences.h"
 // CEGUI
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/widgets/MultiLineEditbox.h>

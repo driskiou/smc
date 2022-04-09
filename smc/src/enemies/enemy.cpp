@@ -13,13 +13,13 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../enemies/enemy.h"
-#include "../core/camera.h"
-#include "../core/game_core.h"
-#include "../level/level_manager.h"
-#include "../level/level_player.h"
-#include "../user/savegame.h"
-#include "../video/animation.h"
+#include "enemies/enemy.h"
+#include "core/camera.h"
+#include "core/game_core.h"
+#include "level/level_manager.h"
+#include "level/level_player.h"
+#include "user/savegame.h"
+#include "video/animation.h"
 
 namespace SMC {
 

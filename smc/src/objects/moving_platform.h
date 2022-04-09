@@ -16,9 +16,9 @@
 #ifndef SMC_MOVING_PLATFORM_H
 #define SMC_MOVING_PLATFORM_H
 
-#include "../core/global_basic.h"
-#include "../objects/animated_sprite.h"
-#include "../objects/path.h"
+#include "core/global_basic.h"
+#include "objects/animated_sprite.h"
+#include "objects/path.h"
 
 namespace SMC {
 

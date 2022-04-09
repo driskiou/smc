@@ -16,7 +16,7 @@
 #ifndef SMC_I18N_H
 #define SMC_I18N_H
 
-#include "../core/global_game.h"
+#include "core/global_game.h"
 #include <libintl.h>
 #include <string>
 

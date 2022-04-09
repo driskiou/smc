@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../../core/filesystem/resource_manager.h"
-#include "../../core/filesystem/filesystem.h"
+#include "../core/filesystem/resource_manager.h"
+#include "../core/filesystem/filesystem.h"
 #include <cstdio>
 
 namespace SMC {

@@ -13,13 +13,13 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../audio/audio.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../level/level.h"
-#include "../overworld/overworld.h"
-#include "../user/preferences.h"
+#include "audio/audio.h"
+#include "core/filesystem/filesystem.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "level/level.h"
+#include "overworld/overworld.h"
+#include "user/preferences.h"
 
 namespace SMC {
 

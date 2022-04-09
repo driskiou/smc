@@ -24,9 +24,9 @@
 #include <CEGUI/CEGUI.h>
 #include <CEGUI/RendererModules/OpenGL/GLRenderer.h>
 
-#include "../core/global_basic.h"
-#include "../core/global_game.h"
-#include "../video/color.h"
+#include "core/global_basic.h"
+#include "core/global_game.h"
+#include "video/color.h"
 
 #ifdef __unix__
 #define NO_SDL_GLEXT

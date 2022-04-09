@@ -13,9 +13,9 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/spinbox.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
+#include "objects/spinbox.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
 
 namespace SMC {
 

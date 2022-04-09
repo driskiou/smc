@@ -16,9 +16,9 @@
 #ifndef SMC_ENEMY_H
 #define SMC_ENEMY_H
 
-#include "../audio/audio.h"
-#include "../core/framerate.h"
-#include "../objects/animated_sprite.h"
+#include "audio/audio.h"
+#include "core/framerate.h"
+#include "objects/animated_sprite.h"
 
 namespace SMC {
 

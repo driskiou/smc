@@ -13,16 +13,16 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../input/joystick.h"
-#include "../core/game_core.h"
-#include "../core/global_basic.h"
-#include "../gui/hud.h"
-#include "../gui/menu.h"
-#include "../input/keyboard.h"
-#include "../level/level.h"
-#include "../level/level_player.h"
-#include "../overworld/overworld.h"
-#include "../user/preferences.h"
+#include "input/joystick.h"
+#include "core/game_core.h"
+#include "core/global_basic.h"
+#include "gui/hud.h"
+#include "gui/menu.h"
+#include "input/keyboard.h"
+#include "level/level.h"
+#include "level/level_player.h"
+#include "overworld/overworld.h"
+#include "user/preferences.h"
 
 namespace SMC {
 

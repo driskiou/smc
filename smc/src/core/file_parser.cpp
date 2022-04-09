@@ -13,9 +13,9 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../core/file_parser.h"
-#include "../core/game_core.h"
-#include "../core/global_basic.h"
+#include "core/file_parser.h"
+#include "core/game_core.h"
+#include "core/global_basic.h"
 #include <cstdio>
 
 namespace SMC

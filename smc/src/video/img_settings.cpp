@@ -13,11 +13,11 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../video/img_settings.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/game_core.h"
-#include "../core/math/size.h"
-#include "../core/math/utilities.h"
+#include "video/img_settings.h"
+#include "core/filesystem/filesystem.h"
+#include "core/game_core.h"
+#include "core/math/size.h"
+#include "core/math/utilities.h"
 
 namespace SMC {
 

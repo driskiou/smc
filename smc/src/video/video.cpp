@@ -13,22 +13,22 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../video/video.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/filesystem/resource_manager.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/main.h"
-#include "../core/math/size.h"
-#include "../core/math/utilities.h"
-#include "../gui/hud.h"
-#include "../gui/spinner.h"
-#include "../input/mouse.h"
-#include "../user/preferences.h"
-#include "../video/font.h"
-#include "../video/img_settings.h"
-#include "../video/renderer.h"
+#include "video/video.h"
+#include "core/filesystem/filesystem.h"
+#include "core/filesystem/resource_manager.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/main.h"
+#include "core/math/size.h"
+#include "core/math/utilities.h"
+#include "gui/hud.h"
+#include "gui/spinner.h"
+#include "input/mouse.h"
+#include "user/preferences.h"
+#include "video/font.h"
+#include "video/img_settings.h"
+#include "video/renderer.h"
 // SDL
 #include <SDL2/SDL_opengl.h>
 // CEGUI

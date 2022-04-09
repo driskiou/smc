@@ -13,12 +13,12 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/star.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../level/level_player.h"
-#include "../video/animation.h"
+#include "objects/star.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "level/level_player.h"
+#include "video/animation.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 

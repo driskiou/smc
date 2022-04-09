@@ -16,13 +16,13 @@
 #ifndef SMC_OVERWORLD_H
 #define SMC_OVERWORLD_H
 
-#include "../audio/random_sound.h"
-#include "../gui/hud.h"
-#include "../overworld/world_layer.h"
-#include "../overworld/world_manager.h"
-#include "../overworld/world_player.h"
-#include "../overworld/world_sprite_manager.h"
-#include "../overworld/world_waypoint.h"
+#include "audio/random_sound.h"
+#include "gui/hud.h"
+#include "overworld/world_layer.h"
+#include "overworld/world_manager.h"
+#include "overworld/world_player.h"
+#include "overworld/world_sprite_manager.h"
+#include "overworld/world_waypoint.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>

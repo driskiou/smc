@@ -16,11 +16,11 @@
 #ifndef SMC_WORLD_PLAYER_H
 #define SMC_WORLD_PLAYER_H
 
-#include "../core/global_basic.h"
-#include "../gui/hud.h"
-#include "../level/level_player.h"
-#include "../overworld/world_layer.h"
-#include "../overworld/world_waypoint.h"
+#include "core/global_basic.h"
+#include "gui/hud.h"
+#include "level/level_player.h"
+#include "overworld/world_layer.h"
+#include "overworld/world_waypoint.h"
 
 namespace SMC {
 

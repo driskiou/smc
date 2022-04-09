@@ -16,10 +16,10 @@
 #ifndef SMC_LEVEL_MANAGER_H
 #define SMC_LEVEL_MANAGER_H
 
-#include "../core/camera.h"
-#include "../core/global_basic.h"
-#include "../core/obj_manager.h"
-#include "../level/level.h"
+#include "core/camera.h"
+#include "core/global_basic.h"
+#include "core/obj_manager.h"
+#include "level/level.h"
 
 namespace SMC {
 

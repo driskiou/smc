@@ -16,9 +16,9 @@
 #ifndef SMC_LEVEL_EXIT_H
 #define SMC_LEVEL_EXIT_H
 
-#include "../core/camera.h"
-#include "../core/global_basic.h"
-#include "../objects/animated_sprite.h"
+#include "core/camera.h"
+#include "core/global_basic.h"
+#include "objects/animated_sprite.h"
 
 namespace SMC {
 

@@ -13,17 +13,17 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../level/level_manager.h"
-#include "../audio/audio.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/filesystem/resource_manager.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/main.h"
-#include "../input/mouse.h"
-#include "../level/level_editor.h"
-#include "../objects/path.h"
-#include "../overworld/overworld.h"
+#include "level/level_manager.h"
+#include "audio/audio.h"
+#include "core/filesystem/filesystem.h"
+#include "core/filesystem/resource_manager.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/main.h"
+#include "input/mouse.h"
+#include "level/level_editor.h"
+#include "objects/path.h"
+#include "overworld/overworld.h"
 
 namespace SMC {
 

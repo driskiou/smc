@@ -13,7 +13,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../audio/sound_manager.h"
+#include "audio/sound_manager.h"
 
 namespace SMC {
 

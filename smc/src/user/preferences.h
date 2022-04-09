@@ -16,7 +16,7 @@
 #ifndef SMC_PREFERENCES_H
 #define SMC_PREFERENCES_H
 
-#include "../core/global_basic.h"
+#include "core/global_basic.h"
 // SDL
 #include <SDL2/SDL.h>
 // CEGUI

@@ -16,7 +16,7 @@
 #ifndef SMC_POINT_H
 #define SMC_POINT_H
 
-#include "../../core/math/utilities.h"
+#include "../core/math/utilities.h"
 #include <math.h>
 
 namespace SMC {

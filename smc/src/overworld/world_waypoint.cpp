@@ -13,17 +13,17 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../overworld/world_waypoint.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/math/utilities.h"
-#include "../level/level.h"
-#include "../overworld/overworld.h"
-#include "../user/preferences.h"
-#include "../video/gl_surface.h"
-#include "../video/renderer.h"
+#include "overworld/world_waypoint.h"
+#include "core/filesystem/filesystem.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/math/utilities.h"
+#include "level/level.h"
+#include "overworld/overworld.h"
+#include "user/preferences.h"
+#include "video/gl_surface.h"
+#include "video/renderer.h"
 // CEGUI
 #include "CEGUI/widgets/Combobox.h"
 #include "CEGUI/widgets/ListboxTextItem.h"

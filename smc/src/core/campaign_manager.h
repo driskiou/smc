@@ -16,92 +16,96 @@
 #ifndef SMC_CAMPAIGN_MANAGER_H
 #define SMC_CAMPAIGN_MANAGER_H
 
-#include "../core/global_basic.h"
-#include "../core/global_game.h"
-#include "../core/obj_manager.h"
+#include "core/global_basic.h"
+#include "core/global_game.h"
+#include "core/obj_manager.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>
 
-namespace SMC {
+namespace SMC
+{
 
-/* *** *** *** *** *** cCampaign *** *** *** *** *** *** *** *** *** *** *** ***
- */
-
-class cCampaign {
-public:
-  cCampaign(void);
-  ~cCampaign(void);
-
-  // save
-  bool Save(const std::string &filename);
-
-  // name
-  std::string m_name;
-  // target
-  std::string m_target;
-  // if not set it is a world
-  bool m_is_target_level;
-  // description
-  std::string m_description;
-  // last save time
-  time_t m_last_saved;
-  /* 0 if only in game directory
-   * 1 if only in user directory
-   * 2 if in both
+  /* *** *** *** *** *** cCampaign *** *** *** *** *** *** *** *** *** *** *** ***
    */
-  int m_user;
-};
 
-/* *** *** *** *** *** cCampaign_Manager *** *** *** *** *** *** *** *** *** ***
- * *** *** */
+  class cCampaign
+  {
+  public:
+    cCampaign(void);
+    ~cCampaign(void);
 
-class cCampaign_Manager : public cObject_Manager<cCampaign> {
-public:
-  cCampaign_Manager(void);
-  virtual ~cCampaign_Manager(void);
+    // save
+    bool Save(const std::string &filename);
 
-  // load all campaigns
-  void Load(void);
-  // load a campaign
-  cCampaign *Load_Campaign(const std::string &filename);
+    // name
+    std::string m_name;
+    // target
+    std::string m_target;
+    // if not set it is a world
+    bool m_is_target_level;
+    // description
+    std::string m_description;
+    // last save time
+    time_t m_last_saved;
+    /* 0 if only in game directory
+     * 1 if only in user directory
+     * 2 if in both
+     */
+    int m_user;
+  };
 
-  // Get campaign from name
-  cCampaign *Get_from_Name(const std::string &name);
-};
+  /* *** *** *** *** *** cCampaign_Manager *** *** *** *** *** *** *** *** *** ***
+   * *** *** */
 
-/* *** *** *** *** *** *** *** cCampaign_XML_Handler *** *** *** *** *** *** ***
- * *** *** *** */
+  class cCampaign_Manager : public cObject_Manager<cCampaign>
+  {
+  public:
+    cCampaign_Manager(void);
+    virtual ~cCampaign_Manager(void);
 
-class cCampaign_XML_Handler : public CEGUI::XMLHandler {
-public:
-  cCampaign_XML_Handler(const CEGUI::String &filename);
-  virtual ~cCampaign_XML_Handler(void);
+    // load all campaigns
+    void Load(void);
+    // load a campaign
+    cCampaign *Load_Campaign(const std::string &filename);
 
-  // XML element start
-  virtual void elementStart(const CEGUI::String &element,
-                            const CEGUI::XMLAttributes &attributes);
-  // XML element end
-  virtual void elementEnd(const CEGUI::String &element);
+    // Get campaign from name
+    cCampaign *Get_from_Name(const std::string &name);
+  };
 
-  // XML attributes list
-  CEGUI::XMLAttributes m_xml_attributes;
+  /* *** *** *** *** *** *** *** cCampaign_XML_Handler *** *** *** *** *** *** ***
+   * *** *** *** */
 
-  // object we are constructing
-  cCampaign *m_campaign;
+  class cCampaign_XML_Handler : public CEGUI::XMLHandler
+  {
+  public:
+    cCampaign_XML_Handler(const CEGUI::String &filename);
+    virtual ~cCampaign_XML_Handler(void);
 
-  virtual const CEGUI::String &getDefaultResourceGroup() const;
+    // XML element start
+    virtual void elementStart(const CEGUI::String &element,
+                              const CEGUI::XMLAttributes &attributes);
+    // XML element end
+    virtual void elementEnd(const CEGUI::String &element);
 
-private:
-  const CEGUI::String m_default_resource;
-};
+    // XML attributes list
+    CEGUI::XMLAttributes m_xml_attributes;
 
-/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
+    // object we are constructing
+    cCampaign *m_campaign;
 
-// Campaign Manager
-extern cCampaign_Manager *pCampaign_Manager;
+    virtual const CEGUI::String &getDefaultResourceGroup() const;
 
-/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
+  private:
+    const CEGUI::String m_default_resource;
+  };
+
+  /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
+
+  // Campaign Manager
+  extern cCampaign_Manager *pCampaign_Manager;
+
+  /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 
 } // namespace SMC
 

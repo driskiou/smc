@@ -16,8 +16,8 @@
 #ifndef SMC_GENERIC_H
 #define SMC_GENERIC_H
 
-#include "../core/global_basic.h"
-#include "../video/video.h"
+#include "core/global_basic.h"
+#include "video/video.h"
 
 namespace SMC {
 

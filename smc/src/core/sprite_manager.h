@@ -16,9 +16,9 @@
 #ifndef SMC_SPRITE_MANAGER_H
 #define SMC_SPRITE_MANAGER_H
 
-#include "../core/global_game.h"
-#include "../core/obj_manager.h"
-#include "../objects/movingsprite.h"
+#include "core/global_game.h"
+#include "core/obj_manager.h"
+#include "objects/movingsprite.h"
 
 namespace SMC {
 

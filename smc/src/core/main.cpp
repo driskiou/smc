@@ -13,31 +13,32 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../core/main.h"
-#include "../audio/audio.h"
-#include "../audio/sound_manager.h"
-#include "../core/campaign_manager.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/filesystem/resource_manager.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/global_basic.h"
-#include "../core/i18n.h"
-#include "../gui/generic.h"
-#include "../gui/menu.h"
-#include "../input/joystick.h"
-#include "../input/keyboard.h"
-#include "../input/mouse.h"
-#include "../level/level.h"
-#include "../level/level_editor.h"
-#include "../overworld/overworld.h"
-#include "../overworld/world_editor.h"
-#include "../overworld/world_manager.h"
-#include "../user/preferences.h"
-#include "../user/savegame.h"
-#include "../video/font.h"
-#include "../video/renderer.h"
-#include "../net/httpClient.h"
+#include "core/main.h"
+#include "audio/audio.h"
+#include "audio/sound_manager.h"
+#include "core/campaign_manager.h"
+#include "core/filesystem/filesystem.h"
+#include "core/filesystem/resource_manager.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/global_basic.h"
+#include "core/i18n.h"
+#include "gui/generic.h"
+#include "gui/menu.h"
+#include "input/joystick.h"
+#include "input/keyboard.h"
+#include "input/mouse.h"
+#include "level/level.h"
+#include "level/level_editor.h"
+#include "overworld/overworld.h"
+#include "overworld/world_editor.h"
+#include "overworld/world_manager.h"
+#include "user/preferences.h"
+#include "user/savegame.h"
+#include "video/font.h"
+#include "video/renderer.h"
+#include "net/httpClient.h"
+
 #ifdef __APPLE__
 // needed for datapath detection
 #include <CoreFoundation/CoreFoundation.h>
@@ -61,6 +62,7 @@ using namespace SMC;
 int main(int argc, char **argv)
 {
   printHttpClient();
+
 // todo : remove this apple hack
 #ifdef __APPLE__
   // dynamic datapath detection for OS X

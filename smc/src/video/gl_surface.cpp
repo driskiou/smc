@@ -13,11 +13,11 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../video/gl_surface.h"
-#include "../objects/sprite.h"
-#include "../video/img_manager.h"
-#include "../video/renderer.h"
-#include "../video/video.h"
+#include "video/gl_surface.h"
+#include "objects/sprite.h"
+#include "video/img_manager.h"
+#include "video/renderer.h"
+#include "video/video.h"
 
 namespace SMC {
 

@@ -13,12 +13,12 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../overworld/world_layer.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../overworld/overworld.h"
-#include "../overworld/world_editor.h"
-#include "../video/renderer.h"
+#include "overworld/world_layer.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "overworld/overworld.h"
+#include "overworld/world_editor.h"
+#include "video/renderer.h"
 // CEGUI
 #include <CEGUI/Exceptions.h>
 #include <CEGUI/WindowManager.h>

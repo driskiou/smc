@@ -16,7 +16,7 @@
 #ifndef SMC_FURBALL_H
 #define SMC_FURBALL_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

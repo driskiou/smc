@@ -16,7 +16,7 @@
 #ifndef SMC_FILE_PARSER_H
 #define SMC_FILE_PARSER_H
 
-#include "../core/global_game.h"
+#include "core/global_game.h"
 #include <string>
 
 namespace SMC {

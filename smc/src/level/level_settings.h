@@ -16,8 +16,8 @@
 #ifndef SMC_LEVEL_SETTINGS_H
 #define SMC_LEVEL_SETTINGS_H
 
-#include "../core/global_basic.h"
-#include "../gui/hud.h"
+#include "core/global_basic.h"
+#include "gui/hud.h"
 
 namespace SMC {
 

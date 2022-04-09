@@ -16,7 +16,7 @@
 #ifndef SMC_EATO_H
 #define SMC_EATO_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

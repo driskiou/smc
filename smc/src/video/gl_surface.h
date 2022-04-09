@@ -20,8 +20,8 @@
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 
-#include "../core/global_basic.h"
-#include "../core/math/point.h"
+#include "core/global_basic.h"
+#include "core/math/point.h"
 
 namespace SMC {
 

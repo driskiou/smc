@@ -16,9 +16,9 @@
 #ifndef SMC_MENU_DATA_H
 #define SMC_MENU_DATA_H
 
-#include "../core/global_basic.h"
-#include "../gui/hud.h"
-#include "../gui/menu.h"
+#include "core/global_basic.h"
+#include "gui/hud.h"
+#include "gui/menu.h"
 
 namespace SMC {
 

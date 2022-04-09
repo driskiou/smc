@@ -16,9 +16,9 @@
 #ifndef SMC_BONUSBOX_H
 #define SMC_BONUSBOX_H
 
-#include "../core/global_basic.h"
-#include "../objects/box.h"
-#include "../objects/powerup.h"
+#include "core/global_basic.h"
+#include "objects/box.h"
+#include "objects/powerup.h"
 
 namespace SMC {
 

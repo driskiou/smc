@@ -16,7 +16,7 @@
 #ifndef SMC_SPIKA_H
 #define SMC_SPIKA_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

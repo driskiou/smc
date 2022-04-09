@@ -16,7 +16,7 @@
 #ifndef SMC_ROKKO_H
 #define SMC_ROKKO_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

@@ -16,8 +16,8 @@
 #ifndef SMC_LEVEL_ENTRY_H
 #define SMC_LEVEL_ENTRY_H
 
-#include "../core/global_basic.h"
-#include "../objects/animated_sprite.h"
+#include "core/global_basic.h"
+#include "objects/animated_sprite.h"
 
 namespace SMC {
 

@@ -16,10 +16,10 @@
 #ifndef SMC_EDITOR_H
 #define SMC_EDITOR_H
 
-#include "../core/global_basic.h"
-#include "../gui/hud.h"
-#include "../objects/sprite.h"
-#include "../video/img_settings.h"
+#include "core/global_basic.h"
+#include "gui/hud.h"
+#include "objects/sprite.h"
+#include "video/img_settings.h"
 // CEGUI
 #include <CEGUI/BasicImage.h>
 #include <CEGUI/RendererModules/OpenGL/Texture.h>

@@ -13,14 +13,14 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../overworld/world_editor.h"
-#include "../audio/audio.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/game_core.h"
-#include "../core/global_basic.h"
-#include "../core/i18n.h"
-#include "../gui/generic.h"
-#include "../overworld/overworld.h"
+#include "overworld/world_editor.h"
+#include "audio/audio.h"
+#include "core/filesystem/filesystem.h"
+#include "core/game_core.h"
+#include "core/global_basic.h"
+#include "core/i18n.h"
+#include "gui/generic.h"
+#include "overworld/overworld.h"
 
 namespace SMC {
 

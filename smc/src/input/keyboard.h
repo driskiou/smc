@@ -16,8 +16,8 @@
 #ifndef SMC_KEYBOARD_H
 #define SMC_KEYBOARD_H
 
-#include "../core/global_basic.h"
-#include "../core/global_game.h"
+#include "core/global_basic.h"
+#include "core/global_game.h"
 
 #include <CEGUI/CEGUI.h>
 // SDL

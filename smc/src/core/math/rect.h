@@ -16,9 +16,9 @@
 #ifndef SMC_RECT_H
 #define SMC_RECT_H
 
-#include "../../core/global_game.h"
-#include "../../core/math/point.h"
-#include "../../core/math/utilities.h"
+#include "../core/global_game.h"
+#include "../core/math/point.h"
+#include "../core/math/utilities.h"
 #include <SDL2/SDL.h>
 
 namespace SMC {

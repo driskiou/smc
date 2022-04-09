@@ -16,7 +16,7 @@
 #ifndef SMC_THROMP_H
 #define SMC_THROMP_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

@@ -16,9 +16,9 @@
 #ifndef SMC_LEVEL_PLAYER_H
 #define SMC_LEVEL_PLAYER_H
 
-#include "../core/global_basic.h"
-#include "../objects/animated_sprite.h"
-#include "../objects/ball.h"
+#include "core/global_basic.h"
+#include "objects/animated_sprite.h"
+#include "objects/ball.h"
 
 namespace SMC {
 

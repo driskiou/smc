@@ -16,9 +16,9 @@
 #ifndef SMC_WORLD_MANAGER_H
 #define SMC_WORLD_MANAGER_H
 
-#include "../core/camera.h"
-#include "../core/global_basic.h"
-#include "../core/obj_manager.h"
+#include "core/camera.h"
+#include "core/global_basic.h"
+#include "core/obj_manager.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>

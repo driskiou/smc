@@ -17,10 +17,10 @@
 #define SMC_SPRITE_H
 
 // CEGUI
-#include "../core/collision.h"
-#include "../core/global_game.h"
-#include "../core/math/rect.h"
-#include "../video/video.h"
+#include "core/collision.h"
+#include "core/global_game.h"
+#include "core/math/rect.h"
+#include "video/video.h"
 #include <CEGUI/CEGUI.h>
 #include <CEGUI/XMLSerializer.h>
 

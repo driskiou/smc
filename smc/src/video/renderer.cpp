@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../video/renderer.h"
-#include "../core/game_core.h"
+#include "video/renderer.h"
+#include "core/game_core.h"
 #include <algorithm>
 // SDL
 #include "SDL_opengl.h"

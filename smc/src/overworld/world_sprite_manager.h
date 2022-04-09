@@ -16,9 +16,9 @@
 #ifndef SMC_WORLD_SPRITE_MANAGER_H
 #define SMC_WORLD_SPRITE_MANAGER_H
 
-#include "../core/global_basic.h"
-#include "../core/sprite_manager.h"
-#include "../overworld/overworld.h"
+#include "core/global_basic.h"
+#include "core/sprite_manager.h"
+#include "overworld/overworld.h"
 
 namespace SMC {
 

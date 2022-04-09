@@ -13,14 +13,14 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../gui/generic.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/main.h"
-#include "../input/keyboard.h"
-#include "../input/mouse.h"
-#include "../user/preferences.h"
-#include "../video/renderer.h"
+#include "gui/generic.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/main.h"
+#include "input/keyboard.h"
+#include "input/mouse.h"
+#include "user/preferences.h"
+#include "video/renderer.h"
 
 // CEGUI
 #include <CEGUI/FontManager.h>

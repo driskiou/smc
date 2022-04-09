@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../video/font.h"
-#include "../video/gl_surface.h"
+#include "video/font.h"
+#include "video/gl_surface.h"
 
 namespace SMC {
 

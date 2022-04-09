@@ -13,7 +13,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../../core/math/utilities.h"
+#include "../core/math/utilities.h"
 // for find_if()
 #include <algorithm>
 // for isdigit()

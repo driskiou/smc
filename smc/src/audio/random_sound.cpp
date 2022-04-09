@@ -13,14 +13,14 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../audio/random_sound.h"
-#include "../audio/audio.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/math/utilities.h"
-#include "../input/mouse.h"
-#include "../video/renderer.h"
+#include "audio/random_sound.h"
+#include "audio/audio.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/math/utilities.h" 
+#include "input/mouse.h"
+#include "video/renderer.h"
 // CEGUI
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/XMLAttributes.h>

@@ -16,7 +16,7 @@
 #ifndef SMC_KRUSH_H
 #define SMC_KRUSH_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

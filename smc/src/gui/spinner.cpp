@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../gui/spinner.h"
-#include "../core/game_core.h"
+#include "gui/spinner.h"
+#include "core/game_core.h"
 
 namespace CEGUI {
 

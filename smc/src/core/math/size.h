@@ -16,7 +16,7 @@
 #ifndef SMC_SIZE_H
 #define SMC_SIZE_H
 
-#include "../../core/global_game.h"
+#include "../core/global_game.h"
 
 namespace SMC {
 

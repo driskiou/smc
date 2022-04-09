@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../core/i18n.h"
-#include "../core/global_basic.h"
+#include "core/i18n.h"
+#include "core/global_basic.h"
 #include "SDL_opengl.h"
 #include <SDL2/SDL.h>
 

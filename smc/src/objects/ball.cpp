@@ -13,18 +13,18 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/ball.h"
-#include "../core/game_core.h"
-#include "../core/sprite_manager.h"
-#include "../enemies/enemy.h"
-#include "../enemies/gee.h"
-#include "../enemies/spika.h"
-#include "../gui/hud.h"
-#include "../level/level.h"
-#include "../level/level_player.h"
-#include "../objects/goldpiece.h"
-#include "../user/savegame.h"
-#include "../video/animation.h"
+#include "objects/ball.h"
+#include "core/game_core.h"
+#include "core/sprite_manager.h"
+#include "enemies/enemy.h"
+#include "enemies/gee.h"
+#include "enemies/spika.h"
+#include "gui/hud.h"
+#include "level/level.h"
+#include "level/level_player.h"
+#include "objects/goldpiece.h"
+#include "user/savegame.h"
+#include "video/animation.h"
 
 namespace SMC {
 

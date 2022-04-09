@@ -16,7 +16,7 @@
 #ifndef SMC_FILESYSTEM_H
 #define SMC_FILESYSTEM_H
 
-#include "../../core/global_basic.h"
+#include "../core/global_basic.h"
 
 namespace SMC {
 

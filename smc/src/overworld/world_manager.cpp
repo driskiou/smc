@@ -13,14 +13,14 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../overworld/world_manager.h"
-#include "../core/filesystem/filesystem.h"
-#include "../core/filesystem/resource_manager.h"
-#include "../core/game_core.h"
-#include "../input/mouse.h"
-#include "../overworld/overworld.h"
-#include "../overworld/world_editor.h"
-#include "../video/animation.h"
+#include "overworld/world_manager.h"
+#include "core/filesystem/filesystem.h"
+#include "core/filesystem/resource_manager.h"
+#include "core/game_core.h"
+#include "input/mouse.h"
+#include "overworld/overworld.h"
+#include "overworld/world_editor.h"
+#include "video/animation.h"
 // CEGUI
 #include <CEGUI/XMLParser.h>
 

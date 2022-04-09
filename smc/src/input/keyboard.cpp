@@ -13,20 +13,20 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../input/keyboard.h"
-#include "../audio/audio.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../gui/generic.h"
-#include "../gui/menu.h"
-#include "../input/joystick.h"
-#include "../input/mouse.h"
-#include "../level/level.h"
-#include "../level/level_editor.h"
-#include "../level/level_player.h"
-#include "../overworld/overworld.h"
-#include "../overworld/world_editor.h"
-#include "../user/preferences.h"
+#include "input/keyboard.h"
+#include "audio/audio.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "gui/generic.h"
+#include "gui/menu.h"
+#include "input/joystick.h"
+#include "input/mouse.h"
+#include "level/level.h"
+#include "level/level_editor.h"
+#include "level/level_player.h"
+#include "overworld/overworld.h"
+#include "overworld/world_editor.h"
+#include "user/preferences.h"
 
 namespace SMC
 {
@@ -115,6 +115,7 @@ namespace SMC
         CEGUI::System::getSingleton().getDefaultGUIContext().injectCutRequest();
       }
     }
+
     // use for translated unicode value
     else if (key >= 0x20 && key <= 0x7A)
     {

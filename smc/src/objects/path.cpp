@@ -13,16 +13,16 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/path.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/sprite_manager.h"
-#include "../enemies/static.h"
-#include "../input/mouse.h"
-#include "../level/level.h"
-#include "../objects/moving_platform.h"
-#include "../user/savegame.h"
-#include "../video/renderer.h"
+#include "objects/path.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/sprite_manager.h"
+#include "enemies/static.h"
+#include "input/mouse.h"
+#include "level/level.h"
+#include "objects/moving_platform.h"
+#include "user/savegame.h"
+#include "video/renderer.h"
 // CEGUI
 #include "CEGUI/widgets/Combobox.h"
 #include "CEGUI/widgets/ListboxTextItem.h"

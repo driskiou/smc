@@ -13,8 +13,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../overworld/world_sprite_manager.h"
-#include "../core/game_core.h"
+#include "overworld/world_sprite_manager.h"
+#include "core/game_core.h"
 
 namespace SMC {
 

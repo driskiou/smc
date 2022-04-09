@@ -16,8 +16,8 @@
 #ifndef SMC_GOLDPIECE_H
 #define SMC_GOLDPIECE_H
 
-#include "../core/global_basic.h"
-#include "../objects/animated_sprite.h"
+#include "core/global_basic.h"
+#include "objects/animated_sprite.h"
 
 namespace SMC {
 

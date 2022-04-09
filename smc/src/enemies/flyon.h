@@ -16,7 +16,7 @@
 #ifndef SMC_FLYON_H
 #define SMC_FLYON_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

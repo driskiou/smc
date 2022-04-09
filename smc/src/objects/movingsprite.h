@@ -16,7 +16,7 @@
 #ifndef SMC_MOVINGSPRITE_H
 #define SMC_MOVINGSPRITE_H
 
-#include "../objects/sprite.h"
+#include "objects/sprite.h"
 
 namespace SMC {
 

@@ -16,7 +16,7 @@
 #ifndef SMC_SAVEGAME_H
 #define SMC_SAVEGAME_H
 
-#include "../objects/sprite.h"
+#include "objects/sprite.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>

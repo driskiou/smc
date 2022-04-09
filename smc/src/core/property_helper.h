@@ -16,8 +16,8 @@
 #ifndef SMC_PROPERTY_HELPER_H
 #define SMC_PROPERTY_HELPER_H
 
-#include "../core/global_basic.h"
-#include "../core/global_game.h"
+#include "core/global_basic.h"
+#include "core/global_game.h"
 #include <SDL2/SDL.h>
 #include <algorithm>
 // CEGUI

@@ -16,8 +16,8 @@
 #ifndef SMC_AUDIO_H
 #define SMC_AUDIO_H
 
-#include "../audio/sound_manager.h"
-#include "../core/global_basic.h"
+#include "audio/sound_manager.h"
+#include "core/global_basic.h"
 
 namespace SMC {
 

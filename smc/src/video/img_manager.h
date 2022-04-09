@@ -16,10 +16,10 @@
 #ifndef SMC_IMG_MANAGER_H
 #define SMC_IMG_MANAGER_H
 
-#include "../core/global_basic.h"
-#include "../core/obj_manager.h"
-#include "../video/gl_surface.h"
-#include "../video/video.h"
+#include "core/global_basic.h"
+#include "core/obj_manager.h"
+#include "video/gl_surface.h"
+#include "video/video.h"
 
 namespace SMC {
 

@@ -16,7 +16,7 @@
 #ifndef SMC_LINE_H
 #define SMC_LINE_H
 
-#include "../../core/math/point.h"
+#include "../core/math/point.h"
 
 namespace SMC {
 

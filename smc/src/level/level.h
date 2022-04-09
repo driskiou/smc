@@ -16,12 +16,12 @@
 #ifndef SMC_LEVEL_H
 #define SMC_LEVEL_H
 
-#include "../audio/random_sound.h"
-#include "../core/global_basic.h"
-#include "../level/level_background.h"
-#include "../level/level_manager.h"
-#include "../objects/level_entry.h"
-#include "../video/animation.h"
+#include "audio/random_sound.h"
+#include "core/global_basic.h"
+#include "level/level_background.h"
+#include "level/level_manager.h"
+#include "objects/level_entry.h"
+#include "video/animation.h"
 // CEGUI
 #include <CEGUI/XMLAttributes.h>
 #include <CEGUI/XMLHandler.h>

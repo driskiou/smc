@@ -16,7 +16,7 @@
 #ifndef SMC_GEE_H
 #define SMC_GEE_H
 
-#include "../enemies/enemy.h"
+#include "enemies/enemy.h"
 
 namespace SMC {
 

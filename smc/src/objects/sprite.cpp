@@ -13,18 +13,18 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../objects/sprite.h"
-#include "../core/editor.h"
-#include "../core/framerate.h"
-#include "../core/game_core.h"
-#include "../core/i18n.h"
-#include "../core/sprite_manager.h"
-#include "../gui/hud.h"
-#include "../level/level.h"
-#include "../level/level_player.h"
-#include "../objects/movingsprite.h"
-#include "../video/gl_surface.h"
-#include "../video/renderer.h"
+#include "objects/sprite.h"
+#include "core/editor.h"
+#include "core/framerate.h"
+#include "core/game_core.h"
+#include "core/i18n.h"
+#include "core/sprite_manager.h"
+#include "gui/hud.h"
+#include "level/level.h"
+#include "level/level_player.h"
+#include "objects/movingsprite.h"
+#include "video/gl_surface.h"
+#include "video/renderer.h"
 // CEGUI
 #include "CEGUI/widgets/Combobox.h"
 #include <CEGUI/FontManager.h>
